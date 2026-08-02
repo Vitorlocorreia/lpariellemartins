@@ -25,7 +25,6 @@ export default function Signature({ className = "", width = 310, height = 80, co
       ease: "power1.inOut",
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 85%",
         toggleActions: "play none none none"
       }
     });

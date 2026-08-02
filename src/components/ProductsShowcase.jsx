@@ -30,7 +30,6 @@ export default function ProductsShowcase({ onOpenModal }) {
           clearProps: "all",
           scrollTrigger: {
             trigger: section,
-            start: "top 85%",
             toggleActions: "play none none none"
           }
         }

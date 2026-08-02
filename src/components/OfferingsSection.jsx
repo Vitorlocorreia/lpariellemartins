@@ -30,7 +30,6 @@ export default function OfferingsSection({ onOpenModal }) {
           ease: "power2.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 85%",
             toggleActions: "play none none none"
           }
         }

@@ -26,7 +26,6 @@ export default function WhyTrainSection() {
           clearProps: "all",
           scrollTrigger: {
             trigger: section,
-            start: "top 85%"
           }
         }
       );

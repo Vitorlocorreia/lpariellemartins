@@ -26,8 +26,7 @@ export default function AboutSection({ onOpenModal }) {
           ease: "power2.out",
           clearProps: "all",
           scrollTrigger: {
-            trigger: section,
-            start: "top 85%"
+            trigger: section
           }
         }
       );
@@ -42,8 +41,7 @@ export default function AboutSection({ onOpenModal }) {
           ease: "power2.out",
           clearProps: "all",
           scrollTrigger: {
-            trigger: section,
-            start: "top 85%"
+            trigger: section
           }
         }
       );

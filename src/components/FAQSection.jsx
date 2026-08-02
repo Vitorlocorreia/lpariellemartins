@@ -272,7 +272,7 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
         {
           opacity: 1, y: 0, stagger: 0.1, duration: 0.7,
           ease: "power2.out", clearProps: "all",
-          scrollTrigger: { trigger: section, start: "top 85%" }
+          scrollTrigger: { trigger: section }
         }
       );
     }, section);

@@ -27,7 +27,6 @@ export default function HowItWorks() {
           clearProps: "all",
           scrollTrigger: {
             trigger: section,
-            start: "top 85%"
           }
         }
       );

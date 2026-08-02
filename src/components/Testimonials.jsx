@@ -28,7 +28,6 @@ export default function Testimonials() {
           clearProps: "all",
           scrollTrigger: {
             trigger: section,
-            start: "top 85%"
           }
         }
       );
