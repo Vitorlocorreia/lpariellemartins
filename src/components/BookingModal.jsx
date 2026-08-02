@@ -1,0 +1,142 @@
+import React, { useState } from 'react';
+import { X, Calendar, Send } from 'lucide-react';
+
+export default function BookingModal({ isOpen, onClose, whatsappNumber = "5511999999999" }) {
+  const [formData, setFormData] = useState({
+    nome: '',
+    whatsapp: '',
+    bairro: '',
+    paraQuem: 'Para mim',
+    mensagem: ''
+  });
+
+  if (!isOpen) return null;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const text = `Olá Arielle! Gostaria de agendar uma avaliação gratuita.%0A%0A*Nome:* ${encodeURIComponent(formData.nome)}%0A*WhatsApp:* ${encodeURIComponent(formData.whatsapp)}%0A*Bairro/Cidade:* ${encodeURIComponent(formData.bairro)}%0A*Perfil:* ${encodeURIComponent(formData.paraQuem)}%0A*Mensagem:* ${encodeURIComponent(formData.mensagem || 'Tenho interesse em iniciar treinos focados na saúde e mobilidade.')}`;
+    
+    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div 
+        className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+        onClick={onClose}
+      />
+
+      {/* Modal Container */}
+      <div className="relative bg-[#F4F7FC] rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-blue-100 z-10 animate-fade-in max-h-[90vh] overflow-y-auto">
+        
+        {/* Close Button */}
+        <button 
+          onClick={onClose}
+          className="absolute top-5 right-5 p-2 text-[#1B2B5E] hover:bg-blue-100/60 rounded-full transition-colors"
+        >
+          <X size={20} />
+        </button>
+
+        {/* Modal Header */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="p-3 bg-blue-50 text-[#2563EB] rounded-2xl">
+            <Calendar size={24} />
+          </div>
+          <div>
+            <h3 className="font-serif text-2xl font-bold text-[#1B2B5E]">
+              Agendar Avaliação Gratuita
+            </h3>
+            <p className="text-xs text-[#334155]">Preencha os dados para combinar o melhor dia e horário</p>
+          </div>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#1B2B5E] mb-1.5">
+              Seu Nome Completo *
+            </label>
+            <input 
+              type="text" 
+              required
+              placeholder="Ex: Maria da Silva"
+              value={formData.nome}
+              onChange={(e) => setFormData({...formData, nome: e.target.value})}
+              className="w-full px-4 py-3 rounded-xl border border-blue-100 bg-white text-[#1B2B5E] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 text-sm"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#1B2B5E] mb-1.5">
+                WhatsApp *
+              </label>
+              <input 
+                type="tel" 
+                required
+                placeholder="(11) 99999-9999"
+                value={formData.whatsapp}
+                onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
+                className="w-full px-4 py-3 rounded-xl border border-blue-100 bg-white text-[#1B2B5E] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#1B2B5E] mb-1.5">
+                Bairro / Cidade *
+              </label>
+              <input 
+                type="text" 
+                required
+                placeholder="Ex: Moema, SP"
+                value={formData.bairro}
+                onChange={(e) => setFormData({...formData, bairro: e.target.value})}
+                className="w-full px-4 py-3 rounded-xl border border-blue-100 bg-white text-[#1B2B5E] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 text-sm"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#1B2B5E] mb-1.5">
+              O treino será para:
+            </label>
+            <select 
+              value={formData.paraQuem}
+              onChange={(e) => setFormData({...formData, paraQuem: e.target.value})}
+              className="w-full px-4 py-3 rounded-xl border border-blue-100 bg-white text-[#1B2B5E] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 text-sm"
+            >
+              <option value="Para mim">Para mim mesmo(a)</option>
+              <option value="Para meu pai / mãe">Para meu pai ou minha mãe</option>
+              <option value="Para um casal (dupla)">Para um casal (treino em dupla)</option>
+              <option value="Mentoria para Personal">Mentoria para mim (Personal Trainer)</option>
+              <option value="Outro familiar">Outro familiar</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#1B2B5E] mb-1.5">
+              Observações ou Histórico de Saúde (Opcional)
+            </label>
+            <textarea 
+              rows="3"
+              placeholder="Ex: Dores no joelho, prótese de quadril, hipertensão..."
+              value={formData.mensagem}
+              onChange={(e) => setFormData({...formData, mensagem: e.target.value})}
+              className="w-full px-4 py-3 rounded-xl border border-blue-100 bg-white text-[#1B2B5E] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 text-sm resize-none"
+            />
+          </div>
+
+          <button 
+            type="submit"
+            className="w-full flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-blue-500/25 transition-all text-base mt-2"
+          >
+            <Send size={18} />
+            <span>Enviar Solicitação via WhatsApp</span>
+          </button>
+        </form>
+
+      </div>
+    </div>
+  );
+}
