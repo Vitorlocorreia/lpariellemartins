@@ -24,7 +24,7 @@ export default function App() {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F4F7FC] text-[#1B2B5E] selection:bg-[#2563EB] selection:text-white pb-16 md:pb-0">
+    <div className="min-h-screen flex flex-col bg-[#F4F7FC] text-[#1B2B5E] selection:bg-[#2563EB] selection:text-white pb-16 md:pb-0 overflow-x-hidden w-full">
       {/* Navbar */}
       <Navbar 
         onOpenMobileMenu={() => setIsMobileMenuOpen(true)}

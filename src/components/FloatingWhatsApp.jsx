@@ -26,7 +26,7 @@ export default function FloatingWhatsApp({ whatsappUrl }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar pelo WhatsApp"
-      className="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:bg-[#20ba5a] hover:scale-110 flex items-center justify-center group transition-all duration-500"
+      className="hidden md:flex fixed bottom-6 right-6 z-40 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:bg-[#20ba5a] hover:scale-110 items-center justify-center group transition-all duration-500"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'scale(1) translateY(0)' : 'scale(0.5) translateY(20px)',

@@ -17,30 +17,34 @@ export default function MobileDrawer({ isOpen, onClose, onOpenModal, whatsappUrl
 
   return (
     <div className="fixed inset-0 z-50 lg:hidden">
-      <div 
-        className="fixed inset-0 bg-black/40 backdrop-blur-xs"
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
 
-      <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-[#FAF7F2] shadow-2xl p-6 flex flex-col justify-between animate-slide-in-right border-l border-[#E5EBE3]">
+      {/* Drawer Panel */}
+      <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-white shadow-2xl p-6 flex flex-col justify-between animate-slide-in-right border-l border-blue-100">
         <div>
-          <div className="flex items-center justify-between pb-4 border-b border-[#E5EBE3]">
+          {/* Header */}
+          <div className="flex items-center justify-between pb-4 border-b border-blue-100">
             <Logo />
-            <button 
+            <button
               onClick={onClose}
-              className="p-2 text-[#334131] hover:bg-[#E5EBE3] rounded-full"
+              className="p-2 text-[#1B2B5E] hover:bg-blue-50 rounded-full transition-colors"
             >
-              <X size={24} />
+              <X size={22} />
             </button>
           </div>
 
-          <nav className="mt-6 flex flex-col gap-4">
+          {/* Nav Links */}
+          <nav className="mt-6 flex flex-col gap-1">
             {navLinks.map((link, idx) => (
               <a
                 key={idx}
                 href={link.href}
                 onClick={onClose}
-                className="text-base font-medium text-[#334131] hover:text-[#6B7F62] border-b border-gray-100 pb-2.5"
+                className="text-sm font-semibold text-[#1B2B5E] hover:text-[#2563EB] hover:bg-blue-50 px-3 py-3 rounded-xl transition-all border-b border-blue-50 last:border-b-0"
               >
                 {link.name}
               </a>
@@ -48,21 +52,22 @@ export default function MobileDrawer({ isOpen, onClose, onOpenModal, whatsappUrl
           </nav>
         </div>
 
-        <div className="flex flex-col gap-3 pt-6 border-t border-[#E5EBE3]">
-          <button 
+        {/* Bottom CTAs */}
+        <div className="flex flex-col gap-3 pt-6 border-t border-blue-100">
+          <button
             onClick={() => { onClose(); onOpenModal(); }}
-            className="w-full flex items-center justify-center gap-2 bg-[#6B7F62] text-white font-medium py-3 px-5 rounded-full shadow-sm text-sm"
+            className="w-full flex items-center justify-center gap-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold py-3.5 px-5 rounded-xl shadow-md shadow-blue-500/25 text-sm transition-all active:scale-95"
           >
             <Calendar size={16} />
-            <span>Agende uma conversa</span>
+            <span>Agendar Avaliação</span>
           </button>
-          <a 
+          <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 border border-[#6B7F62] text-[#334131] font-medium py-3 px-5 rounded-full text-sm text-center"
+            className="w-full flex items-center justify-center gap-2 border-2 border-[#22C55E] text-[#15803D] hover:bg-green-50 font-bold py-3.5 px-5 rounded-xl text-sm text-center transition-all active:scale-95"
           >
-            <MessageCircle size={16} className="text-[#6B7F62]" />
+            <MessageCircle size={16} className="text-[#22C55E]" />
             <span>Falar pelo WhatsApp</span>
           </a>
         </div>
