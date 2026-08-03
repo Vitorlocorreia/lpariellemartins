@@ -2,10 +2,26 @@ import React, { useEffect, useRef } from 'react';
 import { GraduationCap, User, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
 import DottedPattern from './decorations/DottedPattern';
 import BackgroundCircle from './decorations/BackgroundCircle';
+import { useTilt } from '../hooks/useTilt';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+/* Wrapper que aplica tilt 3D individualmente a cada card */
+function TiltCard({ className, children }) {
+  const { ref, onMouseMove, onMouseLeave } = useTilt(10, 1.04);
+  return (
+    <div
+      ref={ref}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      className={className}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function OfferingsSection({ onOpenModal }) {
   const sectionRef = useRef(null);
@@ -124,9 +140,9 @@ export default function OfferingsSection({ onOpenModal }) {
           className="flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 pb-6 md:pb-0 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0"
         >
           {cards.map((c, i) => (
-            <div 
-              key={i} 
-              className="offering-card w-[86vw] max-w-[360px] md:w-auto md:max-w-none snap-center shrink-0 bg-white rounded-3xl p-6 sm:p-8 border border-blue-100/80 shadow-md flex flex-col justify-between hover:shadow-xl hover:border-blue-200 transition-all duration-300 relative z-10"
+            <TiltCard
+              key={i}
+              className="offering-card w-[86vw] max-w-[360px] md:w-auto md:max-w-none snap-center shrink-0 bg-white rounded-3xl p-6 sm:p-8 border border-blue-100/80 shadow-md flex flex-col justify-between hover:border-blue-200 transition-colors duration-300 relative z-10 cursor-default"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
@@ -161,7 +177,7 @@ export default function OfferingsSection({ onOpenModal }) {
                   className="w-full h-full object-cover"
                 />
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
 

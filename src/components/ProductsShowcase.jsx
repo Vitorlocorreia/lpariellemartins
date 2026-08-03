@@ -2,10 +2,20 @@ import React, { useEffect, useRef } from 'react';
 import { ShoppingBag, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import DottedPattern from './decorations/DottedPattern';
 import BackgroundCircle from './decorations/BackgroundCircle';
+import { useTilt } from '../hooks/useTilt';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+function TiltCard({ className, children }) {
+  const { ref, onMouseMove, onMouseLeave } = useTilt(10, 1.04);
+  return (
+    <div ref={ref} onMouseMove={onMouseMove} onMouseLeave={onMouseLeave} className={className}>
+      {children}
+    </div>
+  );
+}
 
 export default function ProductsShowcase({ onOpenModal }) {
   const sectionRef = useRef(null);
@@ -122,9 +132,9 @@ export default function ProductsShowcase({ onOpenModal }) {
           className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory gap-6 pb-6 sm:pb-0 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0 relative z-10"
         >
           {products.map((p, i) => (
-            <div 
-              key={i} 
-              className="product-card w-[82vw] max-w-[300px] sm:w-auto sm:max-w-none snap-center shrink-0 bg-white rounded-3xl p-6 border border-blue-100/80 shadow-md flex flex-col justify-between hover:shadow-xl hover:border-blue-200 transition-all group"
+            <TiltCard
+              key={i}
+              className="product-card w-[82vw] max-w-[300px] sm:w-auto sm:max-w-none snap-center shrink-0 bg-white rounded-3xl p-6 border border-blue-100/80 shadow-md flex flex-col justify-between hover:border-blue-200 transition-colors cursor-default"
             >
               <div>
                 <div className="bg-blue-50/60 rounded-2xl h-44 mb-5 flex items-center justify-center p-4 group-hover:bg-blue-100/60 transition-colors relative overflow-hidden">
@@ -154,7 +164,7 @@ export default function ProductsShowcase({ onOpenModal }) {
                 <ShoppingBag size={15} />
                 <span>Garantir material</span>
               </button>
-            </div>
+            </TiltCard>
           ))}
         </div>
 

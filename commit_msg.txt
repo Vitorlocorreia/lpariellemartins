@@ -1,1 +1,1 @@
-v1.1 - bug fixes: Navbar e MobileDrawer com paleta Navy/Blue correta, overflow-x hidden no mobile, FloatingWhatsApp apenas desktop, StickyMobileBar oculta no Hero
+v1.2 - fix ScrollTrigger mobile: animacoes disparam antes da sticky bar encobrir os elementos
