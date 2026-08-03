@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { X, Calendar, Send } from 'lucide-react';
+import { fireConfetti } from '../utils/confetti';
 
 export default function BookingModal({ isOpen, onClose, whatsappNumber = "5511999999999" }) {
   const [formData, setFormData] = useState({
@@ -9,15 +10,22 @@ export default function BookingModal({ isOpen, onClose, whatsappNumber = "551199
     paraQuem: 'Para mim',
     mensagem: ''
   });
+  const submitBtnRef = useRef(null);
 
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // 🎉 Confetti do botão de envio
+    if (submitBtnRef.current) {
+      const rect = submitBtnRef.current.getBoundingClientRect();
+      fireConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    }
     const text = `Olá Arielle! Gostaria de agendar uma avaliação gratuita.%0A%0A*Nome:* ${encodeURIComponent(formData.nome)}%0A*WhatsApp:* ${encodeURIComponent(formData.whatsapp)}%0A*Bairro/Cidade:* ${encodeURIComponent(formData.bairro)}%0A*Perfil:* ${encodeURIComponent(formData.paraQuem)}%0A*Mensagem:* ${encodeURIComponent(formData.mensagem || 'Tenho interesse em iniciar treinos focados na saúde e mobilidade.')}`;
-    
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
-    onClose();
+    setTimeout(() => {
+      window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+      onClose();
+    }, 700);
   };
 
   return (
@@ -128,8 +136,9 @@ export default function BookingModal({ isOpen, onClose, whatsappNumber = "551199
           </div>
 
           <button 
+            ref={submitBtnRef}
             type="submit"
-            className="w-full flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-blue-500/25 transition-all text-base mt-2"
+            className="w-full flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-blue-500/25 transition-all text-base mt-2 active:scale-95"
           >
             <Send size={18} />
             <span>Enviar Solicitação via WhatsApp</span>

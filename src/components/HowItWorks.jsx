@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { MessageSquare, ClipboardCheck, Sliders, HeartPulse } from 'lucide-react';
 import DottedPattern from './decorations/DottedPattern';
-import WaveLine from './decorations/WaveLine';
 import BackgroundCircle from './decorations/BackgroundCircle';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -16,20 +15,16 @@ export default function HowItWorks() {
     if (!section) return;
 
     const ctx = gsap.context(() => {
-      gsap.fromTo(".step-card", 
+      // Cards entrance
+      gsap.fromTo('.step-card',
         { opacity: 0, x: -30 },
         {
-          opacity: 1,
-          x: 0,
-          stagger: 0.15,
-          duration: 0.8,
-          ease: "power2.out",
-          clearProps: "all",
-          scrollTrigger: {
-            trigger: section,
-          }
+          opacity: 1, x: 0, stagger: 0.15, duration: 0.8,
+          ease: 'power2.out', clearProps: 'all',
+          scrollTrigger: { trigger: section }
         }
       );
+
     }, section);
 
     return () => ctx.revert();
@@ -64,13 +59,11 @@ export default function HowItWorks() {
 
   return (
     <section ref={sectionRef} className="py-16 lg:py-24 bg-[#F4F7FC] relative overflow-hidden">
-      {/* Background Accents */}
       <BackgroundCircle size={350} color="#E0E7FF" opacity={0.4} className="-top-12 right-12 z-0" />
       <DottedPattern rows={6} cols={6} color="#2563EB" opacity={0.12} className="absolute bottom-8 left-8 z-0 hidden sm:block" />
-      <WaveLine variant={1} color="#2563EB" opacity={0.25} className="absolute top-10 left-10 z-0 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-        
+
         <div className="text-center mb-16">
           <span className="text-xs font-bold tracking-[0.15em] text-[#2563EB] uppercase mb-2 block">
             Metodologia Prática
@@ -78,17 +71,24 @@ export default function HowItWorks() {
           <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2B5E] font-medium">
             Como funciona
           </h2>
-          <div className="h-1 w-12 bg-[#2563EB] mx-auto mt-3 rounded-full"></div>
+          <div className="h-1 w-12 bg-[#2563EB] mx-auto mt-3 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-          {steps.map((step, idx) => (
-            <div key={idx} className="step-card bg-white rounded-3xl p-6 border border-blue-100/80 shadow-md relative flex flex-col justify-between hover:shadow-xl transition-all duration-300">
-              <div>
+        {/* Steps grid + animated connector */}
+        <div className="relative">
+
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+            {steps.map((step, idx) => (
+              <div
+                key={idx}
+                className="step-card bg-white rounded-3xl p-6 border border-blue-100/80 shadow-md relative flex flex-col hover:shadow-xl hover:border-blue-300 hover:-translate-y-1 transition-all duration-300"
+              >
+                {/* Número com círculo */}
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-sans font-bold text-[#2563EB]">
+                  <div className="w-10 h-10 rounded-full bg-[#2563EB] text-white font-bold text-sm flex items-center justify-center shadow-md shadow-blue-500/30">
                     {step.num}
-                  </span>
+                  </div>
                   <div className="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center">
                     {step.icon}
                   </div>
@@ -101,10 +101,9 @@ export default function HowItWorks() {
                   {step.desc}
                 </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-
       </div>
     </section>
   );

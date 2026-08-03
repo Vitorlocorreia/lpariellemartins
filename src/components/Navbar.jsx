@@ -5,7 +5,9 @@ import Logo from './Logo';
 export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState('inicio');
 
+  // Scroll progress + scroll state
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -17,14 +19,31 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll Spy: detecta seção ativa
+  useEffect(() => {
+    const sectionIds = ['inicio', 'sobre', 'programas', 'produtos', 'depoimentos', 'contato'];
+    const observers = [];
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        { threshold: 0.35 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach(o => o.disconnect());
+  }, []);
+
   const navLinks = [
-    { name: 'Início', href: '#inicio' },
-    { name: 'Sobre', href: '#sobre' },
-    { name: 'Mentoria', href: '#programas' },
-    { name: 'Consultoria', href: '#programas' },
-    { name: 'Produtos', href: '#produtos' },
-    { name: 'Depoimentos', href: '#depoimentos' },
-    { name: 'Contato', href: '#contato' },
+    { name: 'Início', href: '#inicio', section: 'inicio' },
+    { name: 'Sobre', href: '#sobre', section: 'sobre' },
+    { name: 'Mentoria', href: '#programas', section: 'programas' },
+    { name: 'Consultoria', href: '#programas', section: 'programas' },
+    { name: 'Produtos', href: '#produtos', section: 'produtos' },
+    { name: 'Depoimentos', href: '#depoimentos', section: 'depoimentos' },
+    { name: 'Contato', href: '#contato', section: 'contato' },
   ];
 
   return (
@@ -54,10 +73,10 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
               <a
                 key={idx}
                 href={link.href}
-                className="hover:text-[#2563EB] transition-colors py-1 relative group"
+                className={`hover:text-[#2563EB] transition-colors py-1 relative group ${activeSection === link.section ? 'text-[#2563EB]' : ''}`}
               >
                 {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#2563EB] rounded-full transition-all duration-200 group-hover:w-full" />
+                <span className={`absolute bottom-0 left-0 h-[2px] bg-[#2563EB] rounded-full transition-all duration-300 ${activeSection === link.section ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </a>
             ))}
           </nav>

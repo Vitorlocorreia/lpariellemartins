@@ -1,1 +1,1 @@
-v1.2 - fix ScrollTrigger mobile: animacoes disparam antes da sticky bar encobrir os elementos
+v1.3 - WOW effects: CountUp StatsBar, Tilt 3D cards Offerings e Products, Scroll Progress Bar Navbar
