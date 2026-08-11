@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 import { Heart, User, TrendingUp, Atom, Users, Globe } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -22,7 +22,7 @@ export default function WhyTrainSection() {
 
   const items = [
     { icon: Heart, label: 'Atendimento Humanizado', color: '#E05C2A' },
-    { icon: User, label: 'Exercícios Individualizados', color: '#C8951C' },
+    { icon: User, label: 'Exercícios Individualizados', color: '#EAB308' },
     { icon: TrendingUp, label: 'Evolução Constante', color: '#2A9D5C' },
     { icon: Atom, label: 'Método Baseado em Ciência', color: '#8B5CF6' },
     { icon: Users, label: 'Acompanhamento Próximo', color: '#D97706' },
@@ -30,20 +30,20 @@ export default function WhyTrainSection() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-16 bg-[#FAF6EF] relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 bg-[#FAF6E4] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <div className="text-center mb-10">
-          <span className="text-xs font-bold tracking-[0.15em] text-[#C8951C] uppercase mb-2 block">Diferenciais de Atendimento</span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#3B2000] font-medium">Por que treinar comigo?</h2>
-          <div className="h-1 w-12 bg-[#C8951C] mx-auto mt-3 rounded-full" />
+          <span className="text-xs font-bold tracking-[0.15em] text-[#EAB308] uppercase mb-2 block">Diferenciais de Atendimento</span>
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1400] font-medium">Por que treinar comigo?</h2>
+          <div className="h-1 w-12 bg-[#EAB308] mx-auto mt-3 rounded-full" />
         </div>
-        <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-[#E8D4A0] shadow-md grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
+        <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-[#FDE68A] shadow-md grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
           {items.map((item, idx) => {
             const IconComp = item.icon;
             return (
               <div
                 key={idx}
-                className="pillar-item group flex flex-col items-center text-center space-y-3 p-3 rounded-2xl cursor-default transition-all duration-300 hover:bg-[#FFF8E6] hover:scale-105 hover:shadow-sm"
+                className="pillar-item group flex flex-col items-center text-center space-y-3 p-3 rounded-2xl cursor-default transition-all duration-300 hover:bg-[#FEFCE8] hover:scale-105 hover:shadow-sm"
               >
                 <div
                   className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
@@ -53,7 +53,7 @@ export default function WhyTrainSection() {
                 >
                   <IconComp size={20} style={{ color: item.color }} />
                 </div>
-                <span className="text-xs font-bold text-[#3B2000] leading-tight group-hover:text-[#C8951C] transition-colors">
+                <span className="text-xs font-bold text-[#1C1400] leading-tight group-hover:text-[#EAB308] transition-colors">
                   {item.label}
                 </span>
               </div>
@@ -64,3 +64,5 @@ export default function WhyTrainSection() {
     </section>
   );
 }
+
+

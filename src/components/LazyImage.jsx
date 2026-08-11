@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 
 /**
  * LazyImage — carrega com efeito blur-up:
@@ -47,3 +47,5 @@ export default function LazyImage({ src, alt, className, style, onError }) {
     />
   );
 }
+
+

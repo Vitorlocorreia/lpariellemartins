@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function BackgroundCircle({ 
   size = 320, 
@@ -21,3 +21,5 @@ export default function BackgroundCircle({
     />
   );
 }
+
+

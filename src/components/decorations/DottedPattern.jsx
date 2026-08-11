@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function DottedPattern({ 
   rows = 6, 
@@ -42,3 +42,5 @@ export default function DottedPattern({
     </svg>
   );
 }
+
+

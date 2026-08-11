@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import MobileDrawer from './components/MobileDrawer';
 import Hero from './components/Hero';
@@ -24,7 +24,7 @@ export default function App() {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF6EF] text-[#3B2000] selection:bg-[#C8951C] selection:text-white pb-16 md:pb-0 overflow-x-hidden w-full">
+    <div className="min-h-screen flex flex-col bg-[#FAF6E4] text-[#1C1400] selection:bg-[#EAB308] selection:text-[#1C1400] pb-16 md:pb-0 overflow-x-hidden w-full">
       {/* Navbar */}
       <Navbar 
         onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
@@ -102,3 +102,5 @@ export default function App() {
     </div>
   );
 }
+
+

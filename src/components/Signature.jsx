@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -81,3 +81,5 @@ export default function Signature({ className = "", width = 310, height = 80, co
     </div>
   );
 }
+
+

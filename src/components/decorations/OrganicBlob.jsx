@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function OrganicBlob({ 
   variant = 1, 
@@ -47,3 +47,5 @@ export default function OrganicBlob({
     </svg>
   );
 }
+
+

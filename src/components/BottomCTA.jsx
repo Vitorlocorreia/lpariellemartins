@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 import { Calendar, MessageCircle, Award } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -112,3 +112,5 @@ export default function BottomCTA({ onOpenModal, whatsappUrl }) {
     </section>
   );
 }
+
+

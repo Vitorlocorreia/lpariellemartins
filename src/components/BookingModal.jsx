@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+﻿import React, { useState, useRef } from 'react';
 import { X, Calendar, Send } from 'lucide-react';
 import { fireConfetti } from '../utils/confetti';
 
@@ -149,3 +149,5 @@ export default function BookingModal({ isOpen, onClose, whatsappNumber = "551199
     </div>
   );
 }
+
+

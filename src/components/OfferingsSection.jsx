@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 import { GraduationCap, User, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
 import DottedPattern from './decorations/DottedPattern';
 import BackgroundCircle from './decorations/BackgroundCircle';
@@ -64,69 +64,69 @@ export default function OfferingsSection({ onOpenModal }) {
 
   const cards = [
     {
-      icon: <User size={22} className="text-[#C8951C]" />,
-      iconBg: 'bg-amber-50',
+      icon: <User size={22} className="text-[#EAB308]" />,
+      iconBg: 'bg-yellow-50',
       badge: 'Treinamento Individualizado',
       title: 'Consultoria Online para Idosos',
       desc: 'Treinos personalizados e acompanhamento próximo para mais saúde, força, equilíbrio, autonomia e qualidade de vida.',
       btnText: 'Agendar avaliação',
-      btnBg: 'bg-[#C8951C] hover:bg-[#A87A12] text-white shadow-md shadow-amber-500/20',
+      btnBg: 'bg-[#EAB308] hover:bg-[#CA8A04] text-[#1C1400] font-bold shadow-md shadow-yellow-500/20',
       img: '/images/consultancy-card.jpg'
     },
     {
-      icon: <GraduationCap size={22} className="text-[#C8951C]" />,
-      iconBg: 'bg-amber-50',
+      icon: <GraduationCap size={22} className="text-[#EAB308]" />,
+      iconBg: 'bg-yellow-50',
       badge: 'Formação & Carreira',
       title: 'Mentoria para Personal Trainers',
       desc: 'Acompanhamento estratégico para profissionais que desejam se posicionar, atrair clientes e se destacar na longevidade.',
       btnText: 'Conhecer a mentoria',
-      btnBg: 'bg-[#3B2000] hover:bg-[#111C40] text-white shadow-md shadow-amber-900/20',
+      btnBg: 'bg-[#1C1400] hover:bg-[#111C40] text-white shadow-md shadow-yellow-900/20',
       img: '/images/mentorship-card.jpg'
     },
     {
-      icon: <BookOpen size={22} className="text-[#C8951C]" />,
-      iconBg: 'bg-amber-50',
+      icon: <BookOpen size={22} className="text-[#EAB308]" />,
+      iconBg: 'bg-yellow-50',
       badge: 'Materiais Exclusivos',
       title: 'E-books e Infoprodutos',
       desc: 'Guias práticos, manuais de exercícios e materiais baseados em evidências científicas para sua evolução contínua.',
       btnText: 'Ver materiais',
-      btnBg: 'bg-white border-2 border-[#C8951C]/40 text-[#3B2000] hover:bg-amber-50',
+      btnBg: 'bg-white border-2 border-[#EAB308]/40 text-[#1C1400] hover:bg-yellow-50',
       img: '/images/ebooks-card.jpg'
     }
   ];
 
   return (
-    <section ref={sectionRef} id="programas" className="py-16 lg:py-24 bg-[#FAF6EF] relative overflow-hidden">
+    <section ref={sectionRef} id="programas" className="py-16 lg:py-24 bg-[#FAF6E4] relative overflow-hidden">
       {/* Background Accents */}
-      <BackgroundCircle size={400} color="#F5E6C0" opacity={0.4} className="top-10 -left-20 z-0" />
-      <DottedPattern rows={6} cols={8} color="#C8951C" opacity={0.12} className="absolute top-12 right-8 z-0 hidden sm:block" />
+      <BackgroundCircle size={400} color="#FEF9C3" opacity={0.4} className="top-10 -left-20 z-0" />
+      <DottedPattern rows={6} cols={8} color="#EAB308" opacity={0.12} className="absolute top-12 right-8 z-0 hidden sm:block" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* Header with Navigation Arrows on Mobile/Tablet */}
         <div className="flex flex-col sm:flex-row items-center justify-between mb-12 text-center sm:text-left gap-4">
           <div>
-            <span className="text-xs font-bold tracking-[0.15em] text-[#C8951C] uppercase mb-2 block">
+            <span className="text-xs font-bold tracking-[0.15em] text-[#EAB308] uppercase mb-2 block">
               Serviços & Soluções
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#3B2000] font-medium">
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1400] font-medium">
               Escolha como posso te ajudar
             </h2>
-            <div className="h-1 w-12 bg-[#C8951C] mt-3 rounded-full mx-auto sm:mx-0"></div>
+            <div className="h-1 w-12 bg-[#EAB308] mt-3 rounded-full mx-auto sm:mx-0"></div>
           </div>
 
           {/* Carousel Navigation Arrows for Mobile/Tablet */}
           <div className="flex md:hidden items-center gap-2">
             <button 
               onClick={() => scroll('left')}
-              className="w-10 h-10 rounded-full bg-white border border-[#E8D4A0] text-[#3B2000] hover:bg-amber-50 flex items-center justify-center shadow-xs active:scale-95 transition-all"
+              className="w-10 h-10 rounded-full bg-white border border-[#FDE68A] text-[#1C1400] hover:bg-yellow-50 flex items-center justify-center shadow-xs active:scale-95 transition-all"
               aria-label="Anterior"
             >
               <ChevronLeft size={20} />
             </button>
             <button 
               onClick={() => scroll('right')}
-              className="w-10 h-10 rounded-full bg-[#C8951C] text-white flex items-center justify-center shadow-md shadow-amber-500/20 active:scale-95 transition-all"
+              className="w-10 h-10 rounded-full bg-[#EAB308] text-[#1C1400] flex items-center justify-center shadow-md shadow-yellow-500/20 active:scale-95 transition-all"
               aria-label="Próximo"
             >
               <ChevronRight size={20} />
@@ -142,23 +142,23 @@ export default function OfferingsSection({ onOpenModal }) {
           {cards.map((c, i) => (
             <TiltCard
               key={i}
-              className="offering-card w-[86vw] max-w-[360px] md:w-auto md:max-w-none snap-center shrink-0 bg-white rounded-3xl p-6 sm:p-8 border border-[#E8D4A0]/80 shadow-md flex flex-col justify-between hover:border-[#C8951C]/40 transition-colors duration-300 relative z-10 cursor-default"
+              className="offering-card w-[86vw] max-w-[360px] md:w-auto md:max-w-none snap-center shrink-0 bg-white rounded-3xl p-6 sm:p-8 border border-[#FDE68A]/80 shadow-md flex flex-col justify-between hover:border-[#EAB308]/40 transition-colors duration-300 relative z-10 cursor-default"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <div className={`w-12 h-12 rounded-2xl ${c.iconBg} flex items-center justify-center`}>
                     {c.icon}
                   </div>
-                  <span className="text-[10px] font-bold tracking-wider text-[#C8951C] uppercase bg-amber-50 px-3 py-1 rounded-full">
+                  <span className="text-[10px] font-bold tracking-wider text-[#EAB308] uppercase bg-yellow-50 px-3 py-1 rounded-full">
                     {c.badge}
                   </span>
                 </div>
 
-                <h3 className="font-serif text-xl font-semibold text-[#3B2000] mb-3">
+                <h3 className="font-serif text-xl font-semibold text-[#1C1400] mb-3">
                   {c.title}
                 </h3>
 
-                <p className="text-[#7C5C1E] text-xs sm:text-sm leading-relaxed mb-6">
+                <p className="text-[#44330A] text-xs sm:text-sm leading-relaxed mb-6">
                   {c.desc}
                 </p>
 
@@ -185,3 +185,5 @@ export default function OfferingsSection({ onOpenModal }) {
     </section>
   );
 }
+
+

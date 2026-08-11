@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Activity, Shield, Smile, Heart, CheckCircle2 } from 'lucide-react';
 
 export default function Benefits() {
@@ -73,3 +73,5 @@ export default function Benefits() {
     </section>
   );
 }
+
+

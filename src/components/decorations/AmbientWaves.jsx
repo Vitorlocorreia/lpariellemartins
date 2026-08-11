@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 export default function AmbientWaves({ className = "", color = "#84A07D" }) {
@@ -58,3 +58,5 @@ export default function AmbientWaves({ className = "", color = "#84A07D" }) {
     </div>
   );
 }
+
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { X, MessageCircle, Calendar } from 'lucide-react';
 import Logo from './Logo';
 
@@ -18,11 +18,11 @@ export default function MobileDrawer({ isOpen, onClose, onOpenModal, whatsappUrl
   return (
     <div className="fixed inset-0 z-50 lg:hidden">
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-[#FDF9F2] shadow-2xl p-6 flex flex-col justify-between animate-slide-in-right border-l border-[#E8D4A0]">
+      <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-[#FDFBF0] shadow-2xl p-6 flex flex-col justify-between animate-slide-in-right border-l border-[#FDE68A]">
         <div>
-          <div className="flex items-center justify-between pb-4 border-b border-[#E8D4A0]">
+          <div className="flex items-center justify-between pb-4 border-b border-[#FDE68A]">
             <Logo />
-            <button onClick={onClose} className="p-2 text-[#3B2000] hover:bg-[#F5E6C0] rounded-full transition-colors">
+            <button onClick={onClose} className="p-2 text-[#1C1400] hover:bg-[#FEF9C3] rounded-full transition-colors">
               <X size={22} />
             </button>
           </div>
@@ -32,17 +32,17 @@ export default function MobileDrawer({ isOpen, onClose, onOpenModal, whatsappUrl
                 key={idx}
                 href={link.href}
                 onClick={onClose}
-                className="text-sm font-semibold text-[#3B2000] hover:text-[#C8951C] hover:bg-[#FFF8E6] px-3 py-3 rounded-xl transition-all border-b border-[#F5E6C0] last:border-b-0"
+                className="text-sm font-semibold text-[#1C1400] hover:text-[#EAB308] hover:bg-[#FEFCE8] px-3 py-3 rounded-xl transition-all border-b border-[#FEF9C3] last:border-b-0"
               >
                 {link.name}
               </a>
             ))}
           </nav>
         </div>
-        <div className="flex flex-col gap-3 pt-6 border-t border-[#E8D4A0]">
+        <div className="flex flex-col gap-3 pt-6 border-t border-[#FDE68A]">
           <button
             onClick={() => { onClose(); onOpenModal(); }}
-            className="w-full flex items-center justify-center gap-2 bg-[#C8951C] hover:bg-[#A87A12] text-white font-bold py-3.5 px-5 rounded-xl shadow-md shadow-amber-500/25 text-sm transition-all active:scale-95"
+            className="w-full flex items-center justify-center gap-2 bg-[#EAB308] hover:bg-[#CA8A04] text-[#1C1400] font-bold font-bold py-3.5 px-5 rounded-xl shadow-md shadow-yellow-500/25 text-sm transition-all active:scale-95"
           >
             <Calendar size={16} />
             <span>Agendar Avaliação</span>
@@ -61,3 +61,5 @@ export default function MobileDrawer({ isOpen, onClose, onOpenModal, whatsappUrl
     </div>
   );
 }
+
+

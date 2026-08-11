@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function Logo({ className = "" }) {
   return (
@@ -15,3 +15,5 @@ export default function Logo({ className = "" }) {
     </a>
   );
 }
+
+

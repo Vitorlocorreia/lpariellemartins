@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 import { Users, Award, Star, Globe } from 'lucide-react';
 
 function CountUp({ target, suffix = '', duration = 2000 }) {
@@ -39,26 +39,26 @@ function CountUp({ target, suffix = '', duration = 2000 }) {
 
 export default function StatsBar() {
   const stats = [
-    { icon: <Users className="w-5 h-5 text-[#C8951C]" />, val: '+300', suffix: '', label: 'Alunos atendidos' },
-    { icon: <Award className="w-5 h-5 text-[#C8951C]" />, val: '5', suffix: ' Anos', label: 'De experiência' },
-    { icon: <Star className="w-5 h-5 text-[#C8951C]" />, val: '5.0', suffix: '★', label: 'Avaliação dos alunos' },
-    { icon: <Globe className="w-5 h-5 text-[#C8951C]" />, val: '100', suffix: '%', label: 'Online e presencial' },
+    { icon: <Users className="w-5 h-5 text-[#EAB308]" />, val: '+300', suffix: '', label: 'Alunos atendidos' },
+    { icon: <Award className="w-5 h-5 text-[#EAB308]" />, val: '5', suffix: ' Anos', label: 'De experiência' },
+    { icon: <Star className="w-5 h-5 text-[#EAB308]" />, val: '5.0', suffix: '★', label: 'Avaliação dos alunos' },
+    { icon: <Globe className="w-5 h-5 text-[#EAB308]" />, val: '100', suffix: '%', label: 'Online e presencial' },
   ];
 
   return (
     <section className="relative z-20 -mt-6 sm:-mt-10 mb-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 relative">
-        <div className="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-full p-4 sm:py-5 sm:px-8 border border-[#E8D4A0] shadow-xl shadow-amber-900/5 grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
+        <div className="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-full p-4 sm:py-5 sm:px-8 border border-[#FDE68A] shadow-xl shadow-yellow-900/5 grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
           {stats.map((st, i) => (
-            <div key={i} className="flex items-center gap-3 justify-start sm:justify-center border-r last:border-r-0 border-[#F5E6C0] pr-2">
-              <div className="p-2.5 rounded-full bg-[#FFF8E6] shrink-0">
+            <div key={i} className="flex items-center gap-3 justify-start sm:justify-center border-r last:border-r-0 border-[#FEF9C3] pr-2">
+              <div className="p-2.5 rounded-full bg-[#FEFCE8] shrink-0">
                 {st.icon}
               </div>
               <div className="flex flex-col text-xs sm:text-sm">
-                <span className="font-bold text-[#3B2000] leading-tight text-base sm:text-lg tabular-nums">
+                <span className="font-bold text-[#1C1400] leading-tight text-base sm:text-lg tabular-nums">
                   <CountUp target={st.val} suffix={st.suffix} duration={1800} />
                 </span>
-                <span className="text-[#7C5C1E] text-[11px] sm:text-xs mt-0.5">{st.label}</span>
+                <span className="text-[#44330A] text-[11px] sm:text-xs mt-0.5">{st.label}</span>
               </div>
             </div>
           ))}
@@ -67,3 +67,5 @@ export default function StatsBar() {
     </section>
   );
 }
+
+

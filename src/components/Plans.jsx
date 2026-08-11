@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Check, Calendar, Star } from 'lucide-react';
 
 export default function Plans({ onOpenModal }) {
@@ -125,3 +125,5 @@ export default function Plans({ onOpenModal }) {
     </section>
   );
 }
+
+

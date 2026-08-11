@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 import Logo from './Logo';
 import { Phone, Instagram, Mail } from 'lucide-react';
 import AmbientWaves from './decorations/AmbientWaves';
@@ -29,7 +29,7 @@ export default function Footer() {
       }}
     >
       {/* Ambient Waves with Royal Blue Tint */}
-      <AmbientWaves className="w-full -mt-12 mb-4 opacity-40" color="#C8951C" />
+      <AmbientWaves className="w-full -mt-12 mb-4 opacity-40" color="#EAB308" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-8 pb-10 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-blue-900/50 items-start">
@@ -92,3 +92,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+

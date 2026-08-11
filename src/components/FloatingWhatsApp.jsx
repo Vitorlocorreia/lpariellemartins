@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { MessageCircle } from 'lucide-react';
 
 export default function FloatingWhatsApp({ whatsappUrl }) {
@@ -42,3 +42,5 @@ export default function FloatingWhatsApp({ whatsappUrl }) {
     </a>
   );
 }
+
+

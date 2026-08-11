@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function WaveLine({ 
   variant = 1, 
@@ -78,3 +78,5 @@ export default function WaveLine({
     </svg>
   );
 }
+
+
