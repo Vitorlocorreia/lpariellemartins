@@ -7,7 +7,6 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
   const [progress, setProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('inicio');
 
-  // Scroll progress + scroll state
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -19,7 +18,6 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll Spy: detecta seção ativa
   useEffect(() => {
     const sectionIds = ['inicio', 'sobre', 'programas', 'produtos', 'depoimentos', 'contato'];
     const observers = [];
@@ -49,11 +47,12 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
   return (
     <div className="fixed top-0 left-0 right-0 z-40 flex justify-center pointer-events-none transition-all duration-500">
 
-      {/* ── Scroll Progress Bar ── */}
+      {/* Scroll Progress Bar — gold */}
       <div
-        className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-[#1D4ED8] via-[#60A5FA] to-[#2563EB] z-50 pointer-events-none rounded-r-full transition-all duration-75"
+        className="fixed top-0 left-0 h-[3px] z-50 pointer-events-none rounded-r-full transition-all duration-75"
         style={{
           width: `${progress}%`,
+          background: 'linear-gradient(to right, #A87A12, #E8B84B, #C8951C)',
           opacity: progress > 1 ? 1 : 0,
         }}
       />
@@ -61,22 +60,22 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
       <header
         className={`pointer-events-auto transition-all duration-500 ease-in-out ${
           scrolled
-            ? 'w-full top-0 py-3.5 px-6 sm:px-10 lg:px-12 bg-white/95 backdrop-blur-md border-b border-blue-100 shadow-md rounded-none'
-            : 'w-[94%] max-w-7xl mt-3 sm:mt-4 py-3 px-5 sm:px-6 bg-white/80 backdrop-blur-md border border-blue-100/80 shadow-sm rounded-full'
+            ? 'w-full top-0 py-3.5 px-6 sm:px-10 lg:px-12 bg-[#FAF6EF]/95 backdrop-blur-md border-b border-[#E8D4A0] shadow-md rounded-none'
+            : 'w-[94%] max-w-7xl mt-3 sm:mt-4 py-3 px-5 sm:px-6 bg-[#FAF6EF]/85 backdrop-blur-md border border-[#E8D4A0]/80 shadow-sm rounded-full'
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Logo />
 
-          <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold text-[#1B2B5E]/70">
+          <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold text-[#3B2000]/70">
             {navLinks.map((link, idx) => (
               <a
                 key={idx}
                 href={link.href}
-                className={`hover:text-[#2563EB] transition-colors py-1 relative group ${activeSection === link.section ? 'text-[#2563EB]' : ''}`}
+                className={`hover:text-[#C8951C] transition-colors py-1 relative group ${activeSection === link.section ? 'text-[#C8951C]' : ''}`}
               >
                 {link.name}
-                <span className={`absolute bottom-0 left-0 h-[2px] bg-[#2563EB] rounded-full transition-all duration-300 ${activeSection === link.section ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                <span className={`absolute bottom-0 left-0 h-[2px] bg-[#C8951C] rounded-full transition-all duration-300 ${activeSection === link.section ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </a>
             ))}
           </nav>
@@ -86,7 +85,7 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#2563EB] text-white text-xs font-semibold hover:bg-[#1D4ED8] transition-all shadow-md shadow-blue-500/20"
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#C8951C] text-white text-xs font-semibold hover:bg-[#A87A12] transition-all shadow-md shadow-amber-500/20"
             >
               <MessageCircle size={15} />
               <span>Falar pelo WhatsApp</span>
@@ -95,7 +94,7 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
 
           <button
             onClick={onOpenMobileMenu}
-            className="lg:hidden p-2 text-[#1B2B5E] hover:text-[#2563EB] focus:outline-none transition-colors"
+            className="lg:hidden p-2 text-[#3B2000] hover:text-[#C8951C] focus:outline-none transition-colors"
             aria-label="Abrir menu"
           >
             <Menu size={26} />

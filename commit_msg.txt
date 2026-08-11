@@ -1,1 +1,1 @@
-v1.4 - WOW effects: ScrollSpy Navbar, Magnetic Buttons, Parallax Hero, Typing H1, HowItWorks sem linha, WhyTrain hover glow, Testimonials glassmorphism+avatars+dots, LazyImage blur-up, Confetti agendamento
+v1.5 - logo real da Arielle Martins substituindo SVG gerado

@@ -7,22 +7,17 @@ export default function StickyMobileBar({ onOpenModal, whatsappUrl }) {
   useEffect(() => {
     const hero = document.getElementById('inicio') || document.querySelector('section');
     if (!hero) return;
-
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Mostra a barra quando o Hero SAI da tela (igual ao FloatingWhatsApp)
-        setVisible(!entry.isIntersecting);
-      },
+      ([entry]) => { setVisible(!entry.isIntersecting); },
       { threshold: 0.1 }
     );
-
     observer.observe(hero);
     return () => observer.disconnect();
   }, []);
 
   return (
     <div
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-blue-100 p-3 flex items-center gap-2.5 shadow-2xl transition-all duration-500"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FDF9F2]/95 backdrop-blur-md border-t border-[#E8D4A0] p-3 flex items-center gap-2.5 shadow-2xl transition-all duration-500"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(100%)',
@@ -31,12 +26,11 @@ export default function StickyMobileBar({ onOpenModal, whatsappUrl }) {
     >
       <button
         onClick={onOpenModal}
-        className="flex-1 h-12 flex items-center justify-center gap-2 bg-[#2563EB] active:bg-[#1D4ED8] text-white rounded-xl font-bold text-xs shadow-md shadow-blue-500/25 active:scale-95 transition-all cursor-pointer"
+        className="flex-1 h-12 flex items-center justify-center gap-2 bg-[#C8951C] active:bg-[#A87A12] text-white rounded-xl font-bold text-xs shadow-md shadow-amber-500/25 active:scale-95 transition-all cursor-pointer"
       >
         <Calendar size={17} />
         <span>Agendar Avaliação</span>
       </button>
-
       <a
         href={whatsappUrl || "https://wa.me/5511999999999"}
         target="_blank"

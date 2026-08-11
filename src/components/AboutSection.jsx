@@ -51,11 +51,11 @@ export default function AboutSection({ onOpenModal }) {
   }, []);
 
   return (
-    <section ref={sectionRef} id="sobre" className="py-16 lg:py-24 bg-[#F4F7FC] relative overflow-hidden">
+    <section ref={sectionRef} id="sobre" className="py-16 lg:py-24 bg-[#FAF6EF] relative overflow-hidden">
       {/* Background Glow & Geometric Accent Patterns */}
       <BackgroundCircle size={450} color="#E0E7FF" opacity={0.5} className="-top-20 -left-20" />
-      <DottedPattern rows={6} cols={6} color="#2563EB" opacity={0.15} className="absolute top-10 right-8 z-0 hidden sm:block" />
-      <WaveLine variant={2} color="#2563EB" opacity={0.25} className="absolute bottom-6 right-12 z-0 hidden lg:block" />
+      <DottedPattern rows={6} cols={6} color="#C8951C" opacity={0.15} className="absolute top-10 right-8 z-0 hidden sm:block" />
+      <WaveLine variant={2} color="#C8951C" opacity={0.25} className="absolute bottom-6 right-12 z-0 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
@@ -69,9 +69,9 @@ export default function AboutSection({ onOpenModal }) {
                 alt="Arielle Martins auxiliando aluna idosa nos exercícios" 
                 className="w-full h-[360px] sm:h-[440px] object-cover"
               />
-              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-md border border-blue-100/50">
-                <span className="text-[11px] font-bold text-[#2563EB] uppercase tracking-wider block">Especialista</span>
-                <span className="text-xs font-semibold text-[#1B2B5E]">Longevidade & Terceira Idade</span>
+              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-md border border-[#E8D4A0]/50">
+                <span className="text-[11px] font-bold text-[#C8951C] uppercase tracking-wider block">Especialista</span>
+                <span className="text-xs font-semibold text-[#3B2000]">Longevidade & Terceira Idade</span>
               </div>
             </div>
           </div>
@@ -79,25 +79,25 @@ export default function AboutSection({ onOpenModal }) {
           {/* Right Column: Bio & Text & Signature */}
           <div className="lg:col-span-6 space-y-6">
             <div className="relative about-animate-content">
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2B5E] font-medium">
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#3B2000] font-medium">
                 Quem é Arielle Martins
               </h2>
-              <WaveLine variant={3} color="#2563EB" opacity={0.5} className="mt-2" />
+              <WaveLine variant={3} color="#C8951C" opacity={0.5} className="mt-2" />
             </div>
 
-            <p className="text-[#334155] text-sm sm:text-base leading-relaxed about-animate-content">
+            <p className="text-[#7C5C1E] text-sm sm:text-base leading-relaxed about-animate-content">
               Personal Trainer especialista em idosos e apaixonada pelo poder do movimento para transformar vidas. Minha missão é promover saúde, autonomia e bem-estar para meus alunos e, ao mesmo tempo, capacitar personal trainers a se tornarem referência no mercado da longevidade.
             </p>
 
             {/* Cursive SVG Signature Animated via GSAP */}
             <div className="pt-2 about-animate-content">
-              <Signature width={240} height={75} color="#1B2B5E" />
+              <Signature width={240} height={75} color="#3B2000" />
             </div>
 
             <div className="pt-1 about-animate-content">
               <button
                 onClick={onOpenModal}
-                className="inline-flex items-center gap-2 border-2 border-[#2563EB] text-[#1B2B5E] hover:bg-[#2563EB] hover:text-white px-6 py-3 rounded-xl text-xs font-bold transition-all bg-white shadow-xs"
+                className="inline-flex items-center gap-2 border-2 border-[#C8951C] text-[#3B2000] hover:bg-[#C8951C] hover:text-white px-6 py-3 rounded-xl text-xs font-bold transition-all bg-white shadow-xs"
               >
                 <User size={16} />
                 <span>Conheça minha trajetória</span>

@@ -305,24 +305,24 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
   const toggleFaq = (idx) => setOpenIdx(openIdx === idx ? -1 : idx);
 
   return (
-    <section ref={sectionRef} id="faq" className="py-16 lg:py-24 bg-[#F4F7FC] relative overflow-hidden">
+    <section ref={sectionRef} id="faq" className="py-16 lg:py-24 bg-[#FAF6EF] relative overflow-hidden">
       <BackgroundCircle size={380} color="#E0E7FF" opacity={0.35} className="top-1/4 -right-20 z-0" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* ── Header ── */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.15em] text-[#2563EB] uppercase mb-2 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold tracking-[0.15em] text-[#C8951C] uppercase mb-2 bg-amber-50 px-3 py-1 rounded-full border border-[#E8D4A0]">
             <HelpCircle size={14} />
             <span>Dúvidas Frequentes</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2B5E] font-medium mt-2">
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#3B2000] font-medium mt-2">
             Perguntas Frequentes
           </h2>
-          <p className="text-xs sm:text-sm text-[#334155] mt-2 max-w-lg mx-auto">
+          <p className="text-xs sm:text-sm text-[#7C5C1E] mt-2 max-w-lg mx-auto">
             Tire suas principais dúvidas sobre o treinamento para idosos e a mentoria para profissionais.
           </p>
-          <div className="h-1 w-12 bg-[#2563EB] mx-auto mt-4 rounded-full" />
+          <div className="h-1 w-12 bg-[#C8951C] mx-auto mt-4 rounded-full" />
         </div>
 
         {/* ── Accordion ── */}
@@ -330,19 +330,19 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
-              <div key={idx} className="faq-item-anim bg-white rounded-2xl border border-blue-100/80 shadow-xs overflow-hidden transition-all duration-200">
+              <div key={idx} className="faq-item-anim bg-white rounded-2xl border border-[#E8D4A0]/80 shadow-xs overflow-hidden transition-all duration-200">
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-[#1B2B5E] text-sm sm:text-base hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-[#3B2000] text-sm sm:text-base hover:text-[#C8951C] transition-colors cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <span className="leading-snug">{faq.q}</span>
-                  <div className={`w-8 h-8 rounded-full bg-blue-50 text-[#2563EB] flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-[#2563EB] text-white' : ''}`}>
+                  <div className={`w-8 h-8 rounded-full bg-amber-50 text-[#C8951C] flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-[#C8951C] text-white' : ''}`}>
                     <ChevronDown size={18} />
                   </div>
                 </button>
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-[#334155] leading-relaxed border-t border-slate-100">
+                  <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-[#7C5C1E] leading-relaxed border-t border-slate-100">
                     <p>{faq.a}</p>
                   </div>
                 )}

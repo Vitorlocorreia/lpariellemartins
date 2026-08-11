@@ -151,37 +151,37 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
         <div className="hidden lg:flex flex-col max-w-[650px] text-left pt-12">
 
           <div className="hero-animate-text mb-6">
-            <span className="text-[11px] font-bold tracking-[0.15em] text-[#2563EB] uppercase">
+            <span className="text-[11px] font-bold tracking-[0.15em] text-[#C8951C] uppercase">
               Treinamento, Educação e Propósito
             </span>
-            <div className="h-[2px] w-12 bg-[#2563EB] mt-3" />
+            <div className="h-[2px] w-12 bg-[#C8951C] mt-3" />
           </div>
 
           {/* H1 com Typing Effect */}
           <h1 className="hero-animate-text font-serif text-[48px] leading-[1.1] font-normal tracking-tight mb-6 min-h-[120px]">
-            <span className="text-[#1B2B5E] block mb-2">
+            <span className="text-[#3B2000] block mb-2">
               {displayedLines[0]}
               {displayedLines[0].length < 'Saúde que transforma vidas.'.length && (
-                <span className="inline-block w-0.5 h-[1em] bg-[#2563EB] ml-0.5 animate-pulse align-middle" />
+                <span className="inline-block w-0.5 h-[1em] bg-[#C8951C] ml-0.5 animate-pulse align-middle" />
               )}
             </span>
-            <span className="text-[#2563EB] font-semibold block">
+            <span className="text-[#C8951C] font-semibold block">
               {displayedLines[1]}
               {displayedLines[0] === 'Saúde que transforma vidas.' &&
                 displayedLines[1].length < 'Conhecimento que forma profissionais.'.length && (
-                <span className="inline-block w-0.5 h-[0.85em] bg-[#2563EB] ml-0.5 animate-pulse align-middle" />
+                <span className="inline-block w-0.5 h-[0.85em] bg-[#C8951C] ml-0.5 animate-pulse align-middle" />
               )}
             </span>
           </h1>
 
-          <p className="hero-animate-text text-base text-[#1B2B5E] leading-relaxed max-w-lg mb-10 opacity-90">
+          <p className="hero-animate-text text-base text-[#3B2000] leading-relaxed max-w-lg mb-10 opacity-90">
             Ajudo idosos a conquistarem mais autonomia, força e qualidade de vida. E capacito personal trainers para se destacarem no mercado da longevidade.
           </p>
 
           <div className="flex items-center gap-4 mb-14">
             <MagneticButton
               onClick={onOpenModal}
-              className="hero-animate-cta flex items-center justify-center gap-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-7 py-3.5 rounded-lg font-medium text-sm shadow-md shadow-blue-500/20 transition-colors"
+              className="hero-animate-cta flex items-center justify-center gap-2 bg-[#C8951C] hover:bg-[#A87A12] text-white px-7 py-3.5 rounded-lg font-medium text-sm shadow-md shadow-blue-500/20 transition-colors"
             >
               <Calendar size={18} />
               <span>Agendar avaliação para idosos</span>
@@ -189,9 +189,9 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
 
             <MagneticButton
               href="#programas"
-              className="hero-animate-cta flex items-center justify-center gap-2 border border-[#2563EB] text-[#1B2B5E] hover:bg-[#F0F4FF] px-7 py-3.5 rounded-lg font-medium text-sm transition-all bg-white"
+              className="hero-animate-cta flex items-center justify-center gap-2 border border-[#C8951C] text-[#3B2000] hover:bg-[#FFF8E6] px-7 py-3.5 rounded-lg font-medium text-sm transition-all bg-white"
             >
-              <GraduationCap size={18} className="text-[#2563EB]" />
+              <GraduationCap size={18} className="text-[#C8951C]" />
               <span>Conhecer a mentoria</span>
             </MagneticButton>
           </div>
@@ -200,15 +200,15 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
         {/* MOBILE CONTENT */}
         <div className="lg:hidden w-full flex flex-col pt-[106vw] sm:pt-[450px] pb-8 px-3.5 z-10 relative mt-0">
           <div className="hero-animate-text mb-3 text-left">
-            <span className="text-[11px] font-bold tracking-[0.14em] text-[#2563EB] uppercase">
+            <span className="text-[11px] font-bold tracking-[0.14em] text-[#C8951C] uppercase">
               Treinamento, Educação e Propósito
             </span>
-            <div className="h-[2px] w-10 bg-[#2563EB] mt-1.5" />
+            <div className="h-[2px] w-10 bg-[#C8951C] mt-1.5" />
           </div>
 
           <h1 className="hero-animate-text font-serif text-[26px] sm:text-[30px] leading-[1.2] font-normal tracking-tight mb-3 text-left">
-            <span className="text-[#1B2B5E] block mb-0.5">Saúde que transforma vidas.</span>
-            <span className="text-[#2563EB] font-semibold block">Conhecimento que forma profissionais.</span>
+            <span className="text-[#3B2000] block mb-0.5">Saúde que transforma vidas.</span>
+            <span className="text-[#C8951C] font-semibold block">Conhecimento que forma profissionais.</span>
           </h1>
 
           <p className="hero-animate-text text-[13.5px] text-[#2C3B5E] leading-relaxed mb-6 opacity-90 text-left">
@@ -218,7 +218,7 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
           <div className="flex flex-col gap-3 mb-2 w-full">
             <button
               onClick={onOpenModal}
-              className="hero-animate-cta w-full h-[52px] flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-5 rounded-xl font-semibold text-[15px] shadow-md shadow-blue-500/20 transition-all active:scale-[0.98]"
+              className="hero-animate-cta w-full h-[52px] flex items-center justify-center gap-2.5 bg-[#C8951C] hover:bg-[#A87A12] text-white px-5 rounded-xl font-semibold text-[15px] shadow-md shadow-blue-500/20 transition-all active:scale-[0.98]"
             >
               <Calendar size={19} />
               <span>Agendar avaliação para idosos</span>
@@ -226,9 +226,9 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
 
             <a
               href="#programas"
-              className="hero-animate-cta w-full h-[52px] flex items-center justify-center gap-2.5 border border-[#2563EB]/40 text-[#1B2B5E] hover:bg-[#F0F4FF] px-5 rounded-xl font-semibold text-[15px] transition-all bg-white active:scale-[0.98]"
+              className="hero-animate-cta w-full h-[52px] flex items-center justify-center gap-2.5 border border-[#C8951C]/40 text-[#3B2000] hover:bg-[#FFF8E6] px-5 rounded-xl font-semibold text-[15px] transition-all bg-white active:scale-[0.98]"
             >
-              <GraduationCap size={19} className="text-[#2563EB]" />
+              <GraduationCap size={19} className="text-[#C8951C]" />
               <span>Conhecer a mentoria</span>
             </a>
           </div>

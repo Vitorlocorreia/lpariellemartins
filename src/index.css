@@ -8,20 +8,18 @@
   }
 
   body {
-    background-color: #F4F7FC;
-    color: #1B2B5E;
+    background-color: #FAF6EF;
+    color: #3B2000;
     font-family: 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
-    /* Garante que nenhum elemento absolute/fixed vaze para o lado em mobile */
     max-width: 100vw;
   }
-  
+
   h1, h2, h3, h4, .font-serif {
     font-family: 'Lora', Georgia, serif;
   }
 }
 
-/* Custom Utilities & Keyframes */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -40,17 +38,17 @@
   animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Custom Scrollbar — Navy/Blue theme */
+/* Custom Scrollbar — Amber/Gold theme */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F4F7FC;
+  background: #FAF6EF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #BFDBFE;
+  background: #E8D4A0;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2563EB;
+  background: #C8951C;
 }
