@@ -83,7 +83,6 @@ export default function AboutSection({ onOpenModal }) {
               <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2B5E] font-medium">
                 Quem é Arielle Martins
               </h2>
-              <WaveLine variant={3} color="#2563EB" opacity={0.5} className="mt-2" />
             </div>
 
             <p className="text-[#334155] text-sm sm:text-base leading-relaxed about-animate-content">
