@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import MobileDrawer from './components/MobileDrawer';
 import Hero from './components/Hero';
@@ -8,7 +8,8 @@ import OfferingsSection from './components/OfferingsSection';
 import WhyTrainSection from './components/WhyTrainSection';
 import HowItWorks from './components/HowItWorks';
 import ProductsShowcase from './components/ProductsShowcase';
-import Testimonials from './components/Testimonials';
+import ProofGallery from './components/ProofGallery';
+
 import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
@@ -71,8 +72,8 @@ export default function App() {
           onOpenModal={() => setIsBookingModalOpen(true)}
         />
 
-        {/* Section 7: O que meus alunos dizem */}
-        <Testimonials />
+        {/* Section 7: Prova Real — galeria de fotos de autonomia funcional */}
+        <ProofGallery />
 
         {/* Section 8: Perguntas Frequentes & Banner WhatsApp (FAQ Accordion + High-converting WhatsApp Banner) */}
         <FAQSection 

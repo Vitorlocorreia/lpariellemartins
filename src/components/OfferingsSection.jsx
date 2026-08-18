@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { GraduationCap, User, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
 import DottedPattern from './decorations/DottedPattern';
 import BackgroundCircle from './decorations/BackgroundCircle';
@@ -80,7 +80,7 @@ export default function OfferingsSection({ onOpenModal }) {
       title: 'Mentoria para Personal Trainers',
       desc: 'Acompanhamento estratégico para profissionais que desejam se posicionar, atrair clientes e se destacar na longevidade.',
       btnText: 'Conhecer a mentoria',
-      btnBg: 'bg-[#1C1400] hover:bg-[#111C40] text-white shadow-md shadow-yellow-900/20',
+      btnBg: 'bg-[#1C1400] hover:bg-[#2D1E00] text-white shadow-md shadow-yellow-900/20',
       img: '/images/mentorship-card.jpg'
     },
     {

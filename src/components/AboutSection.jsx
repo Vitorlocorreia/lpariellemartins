@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { User } from 'lucide-react';
 import DottedPattern from './decorations/DottedPattern';
 import BackgroundCircle from './decorations/BackgroundCircle';
@@ -65,9 +65,10 @@ export default function AboutSection({ onOpenModal }) {
             <BackgroundCircle size={320} color="#DBEAFE" opacity={0.6} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
             <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white z-10">
               <img 
-                src="/images/about-arielle.jpg" 
+                src="/images/arielle-com-aluna.jpg" 
                 alt="Arielle Martins auxiliando aluna idosa nos exercícios" 
-                className="w-full h-[360px] sm:h-[440px] object-cover"
+                className="w-full h-[420px] sm:h-[520px] object-cover"
+                style={{ objectPosition: 'center 8%' }}
               />
               <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-md border border-[#FDE68A]/50">
                 <span className="text-[11px] font-bold text-[#EAB308] uppercase tracking-wider block">Especialista</span>

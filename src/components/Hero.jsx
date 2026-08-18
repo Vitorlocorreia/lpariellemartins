@@ -1,45 +1,7 @@
-﻿import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Calendar, GraduationCap } from 'lucide-react';
 import gsap from 'gsap';
 
-/* ── Magnetic Button ── */
-function MagneticButton({ children, className, onClick, href, target, rel }) {
-  const ref = useRef(null);
-
-  const onMouseMove = (e) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.35;
-    const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.35;
-    el.style.transform = `translate(${dx}px, ${dy}px)`;
-    el.style.transition = 'transform 0.15s ease-out';
-  };
-
-  const onMouseLeave = () => {
-    const el = ref.current;
-    if (!el) return;
-    el.style.transform = 'translate(0,0)';
-    el.style.transition = 'transform 0.45s cubic-bezier(0.23,1,0.32,1)';
-  };
-
-  if (href) {
-    return (
-      <a ref={ref} href={href} target={target} rel={rel}
-        className={className}
-        onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
-        {children}
-      </a>
-    );
-  }
-
-  return (
-    <button ref={ref} onClick={onClick} className={className}
-      onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
-      {children}
-    </button>
-  );
-}
 
 /* ── Typing effect hook ── */
 function useTypingEffect(lines, speed = 55, delayBetween = 600) {
@@ -132,7 +94,7 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
       {/* Desktop BG — com parallax */}
       <img
         ref={bgImgRef}
-        src="/images/new-hero-desktop.jpg"
+        src="/images/hero-desktop.png"
         alt="Arielle Martins Personal Trainer"
         className="hero-bg-img hidden lg:block absolute inset-0 w-full h-full object-cover object-[80%_top] z-0 will-change-transform contrast-[1.02] brightness-[1.01]"
         style={{ transformOrigin: 'top center' }}
@@ -140,7 +102,7 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
 
       {/* Mobile BG */}
       <img
-        src="/images/new-hero-mobile.jpg"
+        src="/images/hero-mobile.png"
         alt="Arielle Martins Personal Trainer"
         className="hero-bg-img lg:hidden absolute top-0 left-0 w-full h-auto object-cover object-top z-0 contrast-[1.02] brightness-[1.01]"
       />
@@ -179,21 +141,21 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
           </p>
 
           <div className="flex items-center gap-4 mb-14">
-            <MagneticButton
+            <button
               onClick={onOpenModal}
-              className="hero-animate-cta flex items-center justify-center gap-2 bg-[#EAB308] hover:bg-[#CA8A04] text-[#1C1400] font-bold px-7 py-3.5 rounded-lg font-medium text-sm shadow-md shadow-blue-500/20 transition-colors"
+              className="hero-animate-cta flex items-center justify-center gap-2 bg-[#EAB308] hover:bg-[#CA8A04] text-[#1C1400] font-bold px-7 py-3.5 rounded-lg text-sm shadow-md transition-colors active:scale-95"
             >
               <Calendar size={18} />
               <span>Agendar avaliação para idosos</span>
-            </MagneticButton>
+            </button>
 
-            <MagneticButton
+            <a
               href="#programas"
-              className="hero-animate-cta flex items-center justify-center gap-2 border border-[#EAB308] text-[#1C1400] hover:bg-[#FEFCE8] px-7 py-3.5 rounded-lg font-medium text-sm transition-all bg-white"
+              className="hero-animate-cta flex items-center justify-center gap-2 border border-[#EAB308] text-[#1C1400] hover:bg-[#FEFCE8] px-7 py-3.5 rounded-lg text-sm transition-all bg-white active:scale-95"
             >
               <GraduationCap size={18} className="text-[#EAB308]" />
               <span>Conhecer a mentoria</span>
-            </MagneticButton>
+            </a>
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Quote, Star, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
 import BackgroundCircle from './decorations/BackgroundCircle';
 import DottedPattern from './decorations/DottedPattern';
@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 /* ── Gradient avatar por nome ── */
 function GradientAvatar({ name }) {
   const gradients = [
-    ['#EAB308', '#60A5FA'],
+    ['#EAB308', '#FDE68A'],
     ['#7C3AED', '#A78BFA'],
     ['#059669', '#34D399'],
     ['#DC2626', '#F87171'],
