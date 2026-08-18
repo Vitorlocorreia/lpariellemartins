@@ -161,22 +161,14 @@ export default function OfferingsSection({ onOpenModal }) {
                 <p className="text-[#334155] text-xs sm:text-sm leading-relaxed mb-6">
                   {c.desc}
                 </p>
-
-                <button
-                  onClick={onOpenModal}
-                  className={`w-full py-3.5 px-5 rounded-xl font-bold text-xs transition-all mb-6 ${c.btnBg}`}
-                >
-                  {c.btnText}
-                </button>
               </div>
 
-              <div className="rounded-2xl overflow-hidden h-40 border border-gray-100">
-                <img 
-                  src={c.img} 
-                  alt={c.title} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <button
+                onClick={onOpenModal}
+                className={`w-full py-3.5 px-5 rounded-xl font-bold text-xs transition-all ${c.btnBg} cursor-pointer`}
+              >
+                {c.btnText}
+              </button>
             </TiltCard>
           ))}
         </div>
