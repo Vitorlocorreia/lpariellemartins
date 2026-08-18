@@ -100,17 +100,18 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
         style={{ transformOrigin: 'top center' }}
       />
 
-      {/* Mobile BG */}
+      {/* Mobile BG — posicionado abaixo da navbar flutuante */}
       <img
         src="/images/hero-mobile.png"
         alt="Arielle Martins Personal Trainer"
-        className="hero-bg-img lg:hidden absolute top-0 left-0 w-full h-auto object-cover object-top z-0 contrast-[1.02] brightness-[1.01]"
+        className="hero-bg-img lg:hidden absolute top-14 sm:top-16 left-0 w-full h-auto object-cover object-top z-0"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full z-10 relative h-full flex flex-col lg:justify-center">
 
         {/* DESKTOP CONTENT */}
         <div className="hidden lg:flex flex-col max-w-[650px] text-left pt-12">
+
 
           <div className="hero-animate-text mb-6">
             <span className="text-[11px] font-bold tracking-[0.15em] text-[#EAB308] uppercase">
@@ -160,7 +161,7 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
         </div>
 
         {/* MOBILE CONTENT */}
-        <div className="lg:hidden w-full flex flex-col pt-[106vw] sm:pt-[450px] pb-8 px-3.5 z-10 relative mt-0">
+        <div className="lg:hidden w-full flex flex-col pt-[calc(106vw+3.75rem)] sm:pt-[500px] pb-8 px-3.5 z-10 relative mt-0">
           <div className="hero-animate-text mb-3 text-left">
             <span className="text-[11px] font-bold tracking-[0.14em] text-[#EAB308] uppercase">
               Treinamento, Educação e Propósito
