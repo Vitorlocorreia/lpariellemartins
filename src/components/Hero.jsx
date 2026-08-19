@@ -49,7 +49,7 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
       const img = bgImgRef.current;
       if (!img) return;
       const scrollY = window.scrollY;
-      img.style.transform = `translateY(${scrollY * 0.18}px)`;
+      img.style.transform = `translateY(${scrollY * 0.15}px)`;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -61,7 +61,7 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
     if (!hero) return;
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-      tl.fromTo(".hero-real-img", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 1 });
+      tl.fromTo(".hero-real-img", { opacity: 0, scale: 1.03 }, { opacity: 1, scale: 1, duration: 0.9 });
       tl.fromTo(".hero-animate-text",
         { opacity: 0, y: 25 },
         { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, clearProps: "all" },
@@ -85,8 +85,8 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
   return (
     <section ref={heroRef} id="inicio" className="relative lg:min-h-[92vh] flex flex-col justify-start lg:justify-center pt-0 lg:pt-20 pb-10 lg:pb-12 overflow-hidden bg-white">
 
-      {/* ── DESKTOP: FOTO REAL COM FUSÃO GRADIENTE EM CSS PURO ── */}
-      <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[58%] xl:w-[54%] overflow-hidden z-0 pointer-events-none select-none">
+      {/* ── DESKTOP: FOTO REAL COM FUSÃO SUAVE APENAS NA BORDA ESQUERDA ── */}
+      <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[54%] xl:w-[50%] overflow-hidden z-0 pointer-events-none select-none">
         <img
           ref={bgImgRef}
           src="/images/arielle-hero-original.png"
@@ -94,24 +94,32 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
           className="hero-real-img w-full h-full object-cover object-[center_top] will-change-transform"
         />
 
-        {/* Gradiente de fusão lateral (do branco para a foto) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 via-20% to-transparent to-60%" />
+        {/* Gradiente suave apenas no canto esquerdo da foto */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white from-0% via-white/30 via-8% to-transparent to-20%" />
         
-        {/* Gradiente suave no topo e na base */}
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/90 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
+        {/* Leve fade no rodapé */}
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent" />
       </div>
 
-      {/* ── MOBILE: FOTO REAL COM FADE SUAVE ── */}
+      {/* ── MOBILE: FOTO REAL COM CORTE CURVADO ORGÂNICO ── */}
       <div className="lg:hidden relative w-full overflow-hidden mt-14 sm:mt-16 z-0">
-        <div className="relative w-full h-[390px] sm:h-[460px] overflow-hidden">
+        <div className="relative w-full h-[400px] sm:h-[480px] overflow-hidden">
           <img
             src="/images/arielle-hero-original.png"
             alt="Arielle Martins Personal Trainer"
-            className="hero-real-img w-full h-full object-cover object-[center_12%]"
+            className="hero-real-img w-full h-full object-cover object-[center_top]"
           />
-          {/* Fade suave na base da foto integrando com o texto */}
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/70 to-transparent" />
+          
+          {/* Curva convexa elegante na base da foto */}
+          <div className="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-10">
+            <svg
+              viewBox="0 0 500 55"
+              preserveAspectRatio="none"
+              className="w-full h-10 sm:h-14 text-white fill-current"
+            >
+              <path d="M0,45 C150,5 350,5 500,45 L500,55 L0,55 Z" />
+            </svg>
+          </div>
         </div>
       </div>
 
@@ -168,7 +176,7 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
         </div>
 
         {/* ── MOBILE CONTENT ── */}
-        <div className="lg:hidden w-full flex flex-col pt-0 pb-8 px-2 z-10 relative -mt-4">
+        <div className="lg:hidden w-full flex flex-col pt-0 pb-8 px-2 z-10 relative -mt-3">
           <div className="hero-animate-text mb-2.5 text-left">
             <span className="text-[11px] font-bold tracking-[0.14em] text-[#2563EB] uppercase">
               Treinamento, Educação e Propósito
