@@ -176,8 +176,8 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
         </div>
 
         {/* ── MOBILE CONTENT ── */}
-        <div className="lg:hidden w-full flex flex-col pt-0 pb-8 px-2 z-10 relative -mt-3">
-          <div className="hero-animate-text mb-2.5 text-left">
+        <div className="lg:hidden w-full flex flex-col pt-5 pb-8 px-3 z-10 relative">
+          <div className="hero-animate-text mb-3.5 text-left">
             <span className="text-[11px] font-bold tracking-[0.14em] text-[#2563EB] uppercase">
               Treinamento, Educação e Propósito
             </span>
