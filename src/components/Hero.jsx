@@ -117,7 +117,7 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
               preserveAspectRatio="none"
               className="w-full h-10 sm:h-14 text-white fill-current"
             >
-              <path d="M0,45 C150,5 350,5 500,45 L500,55 L0,55 Z" />
+              <path d="M0,0 C150,45 350,45 500,0 L500,55 L0,55 Z" />
             </svg>
           </div>
         </div>
