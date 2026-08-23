@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Heart, User, TrendingUp, Atom, Users, Globe } from 'lucide-react';
+import { Sparkles, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
 import BackgroundCircle from './decorations/BackgroundCircle';
 import DottedPattern from './decorations/DottedPattern';
 import gsap from 'gsap';
@@ -15,12 +15,12 @@ export default function WhyTrainSection() {
     if (!section) return;
 
     const ctx = gsap.context(() => {
-      gsap.fromTo('.pillar-item',
-        { opacity: 0, y: 25 },
+      gsap.fromTo('.proposta-card-anim',
+        { opacity: 0, y: 30 },
         {
-          opacity: 1, y: 0, stagger: 0.08, duration: 0.6,
+          opacity: 1, y: 0, stagger: 0.15, duration: 0.8,
           ease: 'power2.out', clearProps: 'all',
-          scrollTrigger: { trigger: section }
+          scrollTrigger: { trigger: section, start: 'top 80%' }
         }
       );
     }, section);
@@ -28,60 +28,96 @@ export default function WhyTrainSection() {
     return () => ctx.revert();
   }, []);
 
-  const items = [
-    { icon: Heart, label: 'Preparar para a Vida', color: '#EF4444' },
-    { icon: User, label: 'Força & Equilíbrio', color: '#2563EB' },
-    { icon: TrendingUp, label: 'Mobilidade no Cotidiano', color: '#10B981' },
-    { icon: Atom, label: 'Envelhecimento Ativo', color: '#8B5CF6' },
-    { icon: Users, label: 'Acompanhamento Próximo', color: '#F59E0B' },
-    { icon: Globe, label: 'Presencial e On-line', color: '#06B6D4' },
-  ];
-
   return (
-    <section ref={sectionRef} className="py-16 bg-[#F4F7FC] relative overflow-hidden">
-      <BackgroundCircle size={350} color="#E0E7FF" opacity={0.4} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
-      <DottedPattern rows={4} cols={10} color="#2563EB" opacity={0.12} className="absolute -bottom-4 right-12 z-0 hidden sm:block" />
+    <section ref={sectionRef} id="proposta" className="py-20 lg:py-28 bg-[#F4F7FC] relative overflow-hidden">
+      <BackgroundCircle size={400} color="#E0E7FF" opacity={0.45} className="top-10 -left-20 z-0" />
+      <BackgroundCircle size={350} color="#DBEAFE" opacity={0.35} className="bottom-10 -right-20 z-0" />
+      <DottedPattern rows={5} cols={8} color="#2563EB" opacity={0.1} className="absolute top-12 right-12 z-0 hidden sm:block" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 space-y-16">
 
-        <div className="text-center mb-10 max-w-3xl mx-auto">
-          <span className="text-xs font-bold tracking-[0.15em] text-[#2563EB] uppercase mb-2 block">
+        {/* ── 2. SUA PROPOSTA ── */}
+        <div className="max-w-4xl mx-auto text-center proposta-card-anim">
+          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/80 text-[#2563EB] text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
+            <Sparkles size={14} className="text-[#2563EB]" />
             Sua Proposta
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2B5E] font-medium leading-tight">
+          </div>
+
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2B5E] font-medium leading-tight mb-5">
             Treinar hoje é cuidar de como você quer viver amanhã.
           </h2>
-          <p className="text-xs sm:text-sm text-[#4B5E8A] mt-3 leading-relaxed">
-            Preservar força, equilíbrio e capacidade de movimento para preparar o corpo não apenas para o treino, mas para a vida.
+
+          <p className="text-[#4B5E8A] text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-8">
+            Com o passar dos anos, preservar força, equilíbrio e capacidade de movimento torna-se essencial para continuar realizando com segurança aquilo que faz parte da sua rotina.
           </p>
-          <div className="h-1 w-12 bg-[#2563EB] mx-auto mt-3 rounded-full" />
+
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-blue-100/90 shadow-sm max-w-3xl mx-auto text-left relative overflow-hidden">
+            <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#2563EB]" />
+            <p className="text-base sm:text-lg font-medium text-[#1B2B5E] leading-relaxed">
+              "Meu trabalho é transformar o exercício em uma ferramenta para preparar o corpo não apenas para o treino, <strong className="text-[#2563EB] font-bold">mas para a vida.</strong>"
+            </p>
+          </div>
         </div>
 
-        <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 border border-blue-100/80 shadow-md grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
-          {items.map((item, idx) => {
-            const IconComp = item.icon;
-            return (
-              <div
-                key={idx}
-                className="pillar-item group flex flex-col items-center text-center space-y-3 p-3 rounded-2xl cursor-default transition-all duration-300 hover:bg-blue-50/80 hover:scale-105 hover:shadow-sm"
-              >
-                <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-md"
-                  style={{
-                    background: `${item.color}14`,
-                    boxShadow: `0 0 0 0 ${item.color}30`,
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 0 0 6px ${item.color}20`; }}
-                  onMouseLeave={e => { e.currentTarget.style.boxShadow = `0 0 0 0 ${item.color}30`; }}
-                >
-                  <IconComp size={20} style={{ color: item.color }} />
+        {/* ── 3. PARA QUEM É ── */}
+        <div className="proposta-card-anim pt-4">
+          <div className="text-center mb-10 max-w-3xl mx-auto">
+            <span className="text-xs font-bold tracking-[0.15em] text-[#2563EB] uppercase mb-2 block">
+              Para Quem É
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1B2B5E] font-medium">
+              Um acompanhamento pensado para diferentes momentos do envelhecimento
+            </h3>
+            <div className="h-1 w-12 bg-[#2563EB] mx-auto mt-4 rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Card 1: Preparar para envelhecer bem */}
+            <div className="bg-white rounded-3xl p-8 border border-blue-100/80 shadow-md flex flex-col justify-between hover:border-blue-200 hover:shadow-lg transition-all duration-300">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#2563EB] flex items-center justify-center mb-6">
+                  <Sparkles size={24} />
                 </div>
-                <span className="text-xs font-bold text-[#1B2B5E] leading-tight group-hover:text-[#2563EB] transition-colors">
-                  {item.label}
-                </span>
+                <h4 className="font-serif text-2xl font-semibold text-[#1B2B5E] mb-3">
+                  Para quem deseja se preparar para envelhecer bem
+                </h4>
+                <p className="text-[#4B5E8A] text-sm sm:text-base leading-relaxed mb-6">
+                  Focado em construir reserva funcional, força muscular e saúde articular antes que os sinais do envelhecimento comprometam a sua rotina.
+                </p>
               </div>
-            );
-          })}
+
+              <div className="flex items-center gap-2 text-xs font-bold text-[#2563EB] pt-4 border-t border-blue-50">
+                <CheckCircle2 size={16} />
+                <span>Prevenção, Longevidade & Vitalidade</span>
+              </div>
+            </div>
+
+            {/* Card 2: Mudanças na rotina */}
+            <div className="bg-white rounded-3xl p-8 border border-blue-100/80 shadow-md flex flex-col justify-between hover:border-blue-200 hover:shadow-lg transition-all duration-300">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#2563EB] flex items-center justify-center mb-6">
+                  <ShieldCheck size={24} />
+                </div>
+                <h4 className="font-serif text-2xl font-semibold text-[#1B2B5E] mb-3">
+                  Para quem já percebe mudanças no corpo
+                </h4>
+                <p className="text-[#4B5E8A] text-sm sm:text-base leading-relaxed mb-6">
+                  Para quem já sente alterações na força, equilíbrio, mobilidade ou busca recuperar a segurança e a autonomia para realizar atividades do cotidiano.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs font-bold text-[#2563EB] pt-4 border-t border-blue-50">
+                <CheckCircle2 size={16} />
+                <span>Recuperação de Confiança & Segurança</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-10">
+            <p className="inline-block bg-white px-6 py-3 rounded-full border border-blue-100 shadow-xs text-sm font-semibold text-[#1B2B5E]">
+              Cada pessoa parte de um ponto diferente. <span className="text-[#2563EB]">E é a partir dele que o trabalho começa.</span>
+            </p>
+          </div>
         </div>
 
       </div>
