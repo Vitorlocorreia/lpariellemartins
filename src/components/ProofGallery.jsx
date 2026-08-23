@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Play } from "lucide-react";
+import { X, Play, ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ── Modal ao clicar em foto ── */
 function ImageModal({ item, onClose }) {
@@ -40,7 +40,7 @@ function ImageModal({ item, onClose }) {
   );
 }
 
-/* ── Componente de Vídeo Depoimento ── */
+/* ── Componente de Card de Vídeo ── */
 function VideoTestimonialCard({ src, title, subtitle, badge }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -57,8 +57,8 @@ function VideoTestimonialCard({ src, title, subtitle, badge }) {
   };
 
   return (
-    <div className="relative group bg-white rounded-3xl overflow-hidden border border-blue-100/90 shadow-md flex flex-col justify-between hover:shadow-xl hover:border-blue-300 transition-all duration-300">
-      <div className="relative aspect-[9/14] sm:aspect-[9/13] max-h-[480px] w-full bg-slate-900 overflow-hidden">
+    <div className="relative group bg-white rounded-3xl overflow-hidden border border-blue-100/90 shadow-md flex flex-col justify-between hover:shadow-xl hover:border-blue-300 transition-all duration-300 h-full">
+      <div className="relative aspect-[9/13] max-h-[460px] w-full bg-slate-900 overflow-hidden">
         <video
           ref={videoRef}
           src={src}
@@ -90,16 +90,99 @@ function VideoTestimonialCard({ src, title, subtitle, badge }) {
         )}
       </div>
 
-      <div className="p-6 bg-white">
-        <span className="text-[11px] font-mono font-bold tracking-wider text-[#2563EB] uppercase bg-blue-50 px-2.5 py-1 rounded-md mb-2 inline-block">
-          {badge}
-        </span>
-        <h4 className="font-serif text-xl font-semibold text-[#1B2B5E] leading-snug">
-          {title}
-        </h4>
-        <p className="text-xs sm:text-sm text-[#4B5E8A] mt-1.5 leading-relaxed">
+      <div className="p-6 bg-white flex flex-col justify-between flex-grow">
+        <div>
+          <span className="text-[11px] font-mono font-bold tracking-wider text-[#2563EB] uppercase bg-blue-50 px-2.5 py-1 rounded-md mb-2 inline-block">
+            {badge}
+          </span>
+          <h4 className="font-serif text-xl font-semibold text-[#1B2B5E] leading-snug">
+            {title}
+          </h4>
+        </div>
+        <p className="text-xs sm:text-sm text-[#4B5E8A] mt-2 leading-relaxed">
           {subtitle}
         </p>
+      </div>
+    </div>
+  );
+}
+
+/* ── Carrossel de Vídeos ── */
+function VideoCarousel() {
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = direction === "left" ? -340 : 340;
+      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  const videoList = [
+    {
+      src: "/videos/depoimento-1.mov",
+      badge: "Relato Real • Autonomia",
+      title: "Superação, firmeza e mais qualidade de vida",
+      subtitle: "Veja como o treinamento especializado transformou a rotina e devolveu a segurança no dia a dia."
+    },
+    {
+      src: "/videos/depoimento-2.mov",
+      badge: "Relato Real • Independência",
+      title: "Força e confiança para viver o melhor da longevidade",
+      subtitle: "Depoimento sincero sobre a evolução dos movimentos, equilíbrio e bem-estar físico."
+    }
+  ];
+
+  return (
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 relative">
+      {/* Header com botões de navegação */}
+      <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4 text-center sm:text-left">
+        <div>
+          <span className="text-[11px] font-bold text-[#2563EB] uppercase tracking-[0.2em] block mb-1">
+            Depoimentos em Vídeo
+          </span>
+          <h3 className="font-serif text-2xl sm:text-3xl text-[#1B2B5E] font-medium">
+            Histórias reais de transformação
+          </h3>
+        </div>
+
+        {/* Setas de navegação */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => scroll("left")}
+            className="w-10 h-10 rounded-full bg-white border border-blue-100 text-[#1B2B5E] hover:bg-blue-50 flex items-center justify-center shadow-xs active:scale-95 transition-all cursor-pointer"
+            aria-label="Vídeo anterior"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="w-10 h-10 rounded-full bg-[#2563EB] text-white flex items-center justify-center shadow-md shadow-blue-500/20 active:scale-95 transition-all cursor-pointer hover:bg-[#1D4ED8]"
+            aria-label="Próximo vídeo"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
+      </div>
+
+      {/* Carrossel Horizontal Snap — Zero empilhamento vertical */}
+      <div
+        ref={scrollRef}
+        className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0"
+      >
+        {videoList.map((item, idx) => (
+          <div
+            key={idx}
+            className="w-[84vw] max-w-[380px] sm:w-[380px] shrink-0 snap-center"
+          >
+            <VideoTestimonialCard
+              src={item.src}
+              badge={item.badge}
+              title={item.title}
+              subtitle={item.subtitle}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -275,33 +358,8 @@ export default function ProofGallery() {
         </div>
       </motion.div>
 
-      {/* ── 2 VÍDEOS DE DEPOIMENTOS / RESULTADOS REAIS ── */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="text-center mb-8">
-          <span className="text-xs font-bold text-[#1B2B5E] uppercase tracking-wider block mb-1">
-            Depoimentos em Vídeo
-          </span>
-          <p className="text-xs sm:text-sm text-[#4B5E8A]">
-            Histórias reais de quem recuperou força, segurança e liberdade de movimento.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <VideoTestimonialCard
-            src="/videos/depoimento-1.mov"
-            badge="Relato Real • Autonomia"
-            title="Superação, firmeza e mais qualidade de vida"
-            subtitle="Veja como o treinamento especializado transformou a rotina e devolveu a segurança no dia a dia."
-          />
-
-          <VideoTestimonialCard
-            src="/videos/depoimento-2.mov"
-            badge="Relato Real • Independência"
-            title="Força e confiança para viver o melhor da longevidade"
-            subtitle="Depoimento sincero sobre a evolução dos movimentos, equilíbrio e bem-estar físico."
-          />
-        </div>
-      </div>
+      {/* ── CARROSSEL DE VÍDEOS DE DEPOIMENTOS ── */}
+      <VideoCarousel />
 
       {/* ── Bento Carrossel Infinito com Fotos ── */}
       <div className="relative">
