@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Calendar } from 'lucide-react';
-import DottedPattern from './decorations/DottedPattern';
 import BackgroundCircle from './decorations/BackgroundCircle';
+import DottedPattern from './decorations/DottedPattern';
 import WaveLine from './decorations/WaveLine';
 import Signature from './Signature';
 import gsap from 'gsap';
@@ -37,7 +37,7 @@ export default function AboutSection({ onOpenModal }) {
           opacity: 1,
           y: 0,
           duration: 0.9,
-          stagger: 0.15,
+          stagger: 0.12,
           ease: "power2.out",
           clearProps: "all",
           scrollTrigger: {
@@ -54,7 +54,7 @@ export default function AboutSection({ onOpenModal }) {
     <section ref={sectionRef} id="sobre" className="py-20 lg:py-28 bg-white relative overflow-hidden">
       {/* Background Glow & Geometric Accent Patterns */}
       <BackgroundCircle size={450} color="#E0E7FF" opacity={0.5} className="-top-20 -left-20" />
-      <DottedPattern rows={6} cols={6} color="#2563EB" opacity={0.15} className="absolute top-10 right-8 z-0 hidden sm:block" />
+      <DottedPattern rows={6} cols={6} color="#2563EB" opacity={0.12} className="absolute top-10 right-8 z-0 hidden sm:block" />
       <WaveLine variant={2} color="#2563EB" opacity={0.25} className="absolute bottom-6 right-12 z-0 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
@@ -67,45 +67,54 @@ export default function AboutSection({ onOpenModal }) {
               <img 
                 src="/images/arielle-com-aluna.jpg" 
                 alt="Arielle Martins auxiliando aluna idosa nos exercícios" 
-                className="w-full h-[420px] sm:h-[520px] object-cover"
+                className="w-full h-[440px] sm:h-[540px] object-cover"
                 style={{ objectPosition: 'center 8%' }}
               />
               <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-xl shadow-md border border-blue-100/50">
                 <span className="text-[11px] font-bold text-[#2563EB] uppercase tracking-wider block">Especialista</span>
-                <span className="text-xs font-semibold text-[#1B2B5E]">Gerontologia & Exercício para Idosos</span>
+                <span className="text-xs font-semibold text-[#1B2B5E]">Gerontologia & Exercício para Adultos e Idosos</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Bio & Text & Signature */}
-          <div className="lg:col-span-6 space-y-6">
+          {/* Right Column: Bio + Proposta Integrada + Assinatura */}
+          <div className="lg:col-span-6 space-y-5">
             <div className="relative about-animate-content">
-              <span className="text-xs font-bold tracking-[0.15em] text-[#2563EB] uppercase mb-2 block">
-                Sobre Mim
+              <span className="text-[11px] font-bold tracking-[0.2em] text-[#2563EB] uppercase mb-2 block">
+                Sobre Mim & Proposta
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2B5E] font-medium">
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2B5E] font-medium leading-tight">
                 Arielle Martins
               </h2>
             </div>
 
-            <p className="text-base font-semibold text-[#2563EB] leading-relaxed about-animate-content">
+            <p className="text-sm sm:text-base font-semibold text-[#2563EB] leading-snug about-animate-content">
               Profissional de Educação Física e pós-graduanda em Gerontologia, com atuação voltada ao exercício físico para adultos e idosos.
             </p>
 
-            <p className="text-[#4B5E8A] text-sm sm:text-base leading-relaxed about-animate-content">
-              Meu trabalho parte de uma ideia simples: <strong className="text-[#1B2B5E]">não basta acrescentar anos à vida. É preciso preservar a capacidade de vivê-los bem.</strong>
-            </p>
+            <div className="space-y-3.5 text-[#4B5E8A] text-sm sm:text-base leading-relaxed about-animate-content">
+              <p>
+                Meu trabalho parte de uma ideia simples: <strong className="text-[#1B2B5E]">não basta acrescentar anos à vida. É preciso preservar a capacidade de vivê-los bem.</strong>
+              </p>
+              
+              <p>
+                Treinar hoje é cuidar de como você quer viver amanhã. Com o passar dos anos, preservar força, equilíbrio e capacidade de movimento torna-se essencial para continuar realizando com segurança aquilo que faz parte da sua rotina.
+              </p>
 
-            <p className="text-[#4B5E8A] text-sm sm:text-base leading-relaxed about-animate-content">
-              Por isso, estudo o envelhecimento para transformar conhecimento em um treinamento que tenha sentido na vida real.
-            </p>
-
-            {/* Cursive SVG Signature */}
-            <div className="pt-2 about-animate-content">
-              <Signature width={240} height={75} color="#1B2B5E" />
+              {/* Destaque da Proposta */}
+              <div className="pl-4 border-l-2 border-[#2563EB] py-1 my-3 bg-blue-50/40 rounded-r-xl pr-3">
+                <p className="font-medium text-[#1B2B5E] text-sm sm:text-base italic">
+                  "Estudo o envelhecimento para transformar o exercício em uma ferramenta que prepara o corpo não apenas para o treino, <span className="text-[#2563EB] font-bold not-italic">mas para a vida real.</span>"
+                </p>
+              </div>
             </div>
 
-            <div className="pt-2 about-animate-content">
+            {/* Cursive SVG Signature */}
+            <div className="pt-1 about-animate-content">
+              <Signature width={220} height={70} color="#1B2B5E" />
+            </div>
+
+            <div className="pt-1 about-animate-content">
               <button
                 onClick={onOpenModal}
                 className="inline-flex items-center gap-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-7 py-3.5 rounded-xl text-xs font-bold transition-all shadow-md shadow-blue-500/20 active:scale-95 cursor-pointer"
