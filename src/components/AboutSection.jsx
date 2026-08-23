@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { User } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import DottedPattern from './decorations/DottedPattern';
 import BackgroundCircle from './decorations/BackgroundCircle';
 import WaveLine from './decorations/WaveLine';
@@ -51,7 +51,7 @@ export default function AboutSection({ onOpenModal }) {
   }, []);
 
   return (
-    <section ref={sectionRef} id="sobre" className="py-16 lg:py-24 bg-[#F4F7FC] relative overflow-hidden">
+    <section ref={sectionRef} id="sobre" className="py-20 lg:py-28 bg-white relative overflow-hidden">
       {/* Background Glow & Geometric Accent Patterns */}
       <BackgroundCircle size={450} color="#E0E7FF" opacity={0.5} className="-top-20 -left-20" />
       <DottedPattern rows={6} cols={6} color="#2563EB" opacity={0.15} className="absolute top-10 right-8 z-0 hidden sm:block" />
@@ -70,9 +70,9 @@ export default function AboutSection({ onOpenModal }) {
                 className="w-full h-[420px] sm:h-[520px] object-cover"
                 style={{ objectPosition: 'center 8%' }}
               />
-              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-md border border-blue-100/50">
+              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-xl shadow-md border border-blue-100/50">
                 <span className="text-[11px] font-bold text-[#2563EB] uppercase tracking-wider block">Especialista</span>
-                <span className="text-xs font-semibold text-[#1B2B5E]">Longevidade & Terceira Idade</span>
+                <span className="text-xs font-semibold text-[#1B2B5E]">Gerontologia & Exercício para Idosos</span>
               </div>
             </div>
           </div>
@@ -80,27 +80,38 @@ export default function AboutSection({ onOpenModal }) {
           {/* Right Column: Bio & Text & Signature */}
           <div className="lg:col-span-6 space-y-6">
             <div className="relative about-animate-content">
+              <span className="text-xs font-bold tracking-[0.15em] text-[#2563EB] uppercase mb-2 block">
+                Sobre Mim
+              </span>
               <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2B5E] font-medium">
-                Quem é Arielle Martins
+                Arielle Martins
               </h2>
             </div>
 
-            <p className="text-[#334155] text-sm sm:text-base leading-relaxed about-animate-content">
-              Personal Trainer especialista em idosos e apaixonada pelo poder do movimento para transformar vidas. Minha missão é promover saúde, autonomia e bem-estar para meus alunos e, ao mesmo tempo, capacitar personal trainers a se tornarem referência no mercado da longevidade.
+            <p className="text-base font-semibold text-[#2563EB] leading-relaxed about-animate-content">
+              Profissional de Educação Física e pós-graduanda em Gerontologia, com atuação voltada ao exercício físico para adultos e idosos.
             </p>
 
-            {/* Cursive SVG Signature Animated via GSAP */}
+            <p className="text-[#4B5E8A] text-sm sm:text-base leading-relaxed about-animate-content">
+              Meu trabalho parte de uma ideia simples: <strong className="text-[#1B2B5E]">não basta acrescentar anos à vida. É preciso preservar a capacidade de vivê-los bem.</strong>
+            </p>
+
+            <p className="text-[#4B5E8A] text-sm sm:text-base leading-relaxed about-animate-content">
+              Por isso, estudo o envelhecimento para transformar conhecimento em um treinamento que tenha sentido na vida real.
+            </p>
+
+            {/* Cursive SVG Signature */}
             <div className="pt-2 about-animate-content">
               <Signature width={240} height={75} color="#1B2B5E" />
             </div>
 
-            <div className="pt-1 about-animate-content">
+            <div className="pt-2 about-animate-content">
               <button
                 onClick={onOpenModal}
-                className="inline-flex items-center gap-2 border-2 border-[#2563EB] text-[#1B2B5E] hover:bg-[#2563EB] hover:text-white px-6 py-3 rounded-xl text-xs font-bold transition-all bg-white shadow-xs"
+                className="inline-flex items-center gap-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-7 py-3.5 rounded-xl text-xs font-bold transition-all shadow-md shadow-blue-500/20 active:scale-95 cursor-pointer"
               >
-                <User size={16} />
-                <span>Conheça minha trajetória</span>
+                <Calendar size={16} />
+                <span>Agendar consulta inicial</span>
               </button>
             </div>
           </div>

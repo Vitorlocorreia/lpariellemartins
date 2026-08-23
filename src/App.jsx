@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import MobileDrawer from './components/MobileDrawer';
 import Hero from './components/Hero';
-import StatsBar from './components/StatsBar';
-import AboutSection from './components/AboutSection';
-import OfferingsSection from './components/OfferingsSection';
 import WhyTrainSection from './components/WhyTrainSection';
 import HowItWorks from './components/HowItWorks';
-import ProductsShowcase from './components/ProductsShowcase';
+import OfferingsSection from './components/OfferingsSection';
 import ProofGallery from './components/ProofGallery';
+import AboutSection from './components/AboutSection';
+import BottomCTA from './components/BottomCTA';
 import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
@@ -20,7 +19,7 @@ export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const whatsappNumber = "5511999999999";
-  const whatsappMessage = encodeURIComponent("Olá Arielle! Gostaria de agendar uma conversa e saber mais sobre seus treinos e mentorias.");
+  const whatsappMessage = encodeURIComponent("Olá Arielle! Gostaria de agendar minha consulta inicial e saber mais sobre seus acompanhamentos.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
@@ -39,42 +38,40 @@ export default function App() {
         whatsappUrl={whatsappUrl}
       />
 
-      {/* Main Page Sections */}
+      {/* Main Page Sections — Estrutura 1 a 10 aprovada */}
       <main className="flex-grow">
-        {/* Hero Section */}
+        {/* 1. ABERTURA: Hero Section */}
         <Hero 
           onOpenModal={() => setIsBookingModalOpen(true)}
           whatsappUrl={whatsappUrl}
         />
 
-        {/* Floating Stats Credibility Bar between Hero and About */}
-        <StatsBar />
+        {/* 2. SUA PROPOSTA & 3. PARA QUEM É */}
+        <WhyTrainSection />
 
-        {/* Section 2: Quem é Arielle Martins */}
-        <AboutSection 
-          onOpenModal={() => setIsBookingModalOpen(true)}
-        />
+        {/* 4. MEU MÉTODO: Conhecer -> Planejar -> Treinar -> Acompanhar */}
+        <HowItWorks />
 
-        {/* Section 3: Escolha como posso te ajudar */}
+        {/* 5. CONSULTA INICIAL, 7. PRESENCIAL, 8. ON-LINE: Modalidades de Atendimento */}
         <OfferingsSection 
           onOpenModal={() => setIsBookingModalOpen(true)}
         />
 
-        {/* Section 4: Por que treinar comigo? */}
-        <WhyTrainSection />
+        {/* 6. RESULTADOS: "O resultado mais importante acontece fora do treino" + Galeria Bento */}
+        <ProofGallery />
 
-        {/* Section 5: Como funciona */}
-        <HowItWorks />
-
-        {/* Section 6: Conheça meus e-books e infoprodutos */}
-        <ProductsShowcase 
+        {/* 9. SOBRE MIM: Arielle Martins - Especialista em Gerontologia */}
+        <AboutSection 
           onOpenModal={() => setIsBookingModalOpen(true)}
         />
 
-        {/* Section 7: Prova Real — galeria de fotos de autonomia funcional */}
-        <ProofGallery />
+        {/* 10. ENCERRAMENTO: "Como você deseja viver os seus próximos anos?" */}
+        <BottomCTA 
+          onOpenModal={() => setIsBookingModalOpen(true)}
+          whatsappUrl={whatsappUrl}
+        />
 
-        {/* Section 8: Perguntas Frequentes & Banner WhatsApp (FAQ Accordion + High-converting WhatsApp Banner) */}
+        {/* Perguntas Frequentes & Banner WhatsApp */}
         <FAQSection 
           onOpenModal={() => setIsBookingModalOpen(true)}
           whatsappUrl={whatsappUrl}
@@ -84,7 +81,7 @@ export default function App() {
       {/* Footer */}
       <Footer />
 
-      {/* Booking Form Modal */}
+      {/* Booking Form Modal — Consulta Inicial */}
       <BookingModal 
         isOpen={isBookingModalOpen}
         onClose={() => setIsBookingModalOpen(false)}

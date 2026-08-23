@@ -34,7 +34,7 @@ export default function StickyMobileBar({ onOpenModal, whatsappUrl }) {
         className="flex-1 h-12 flex items-center justify-center gap-2 bg-[#2563EB] active:bg-[#1D4ED8] text-white rounded-xl font-bold text-xs shadow-md shadow-blue-500/25 active:scale-95 transition-all cursor-pointer"
       >
         <Calendar size={17} />
-        <span>Agendar Avaliação</span>
+        <span>Agendar Consulta Inicial</span>
       </button>
 
       <a

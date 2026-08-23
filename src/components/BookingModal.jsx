@@ -54,9 +54,9 @@ export default function BookingModal({ isOpen, onClose, whatsappNumber = "551199
           </div>
           <div>
             <h3 className="font-serif text-2xl font-bold text-[#1B2B5E]">
-              Agendar Avaliação Gratuita
+              Agendar Consulta Inicial
             </h3>
-            <p className="text-xs text-[#334155]">Preencha os dados para combinar o melhor dia e horário</p>
+            <p className="text-xs text-[#4B5E8A]">Preencha os dados para conversarmos sobre você e seus objetivos</p>
           </div>
         </div>
 

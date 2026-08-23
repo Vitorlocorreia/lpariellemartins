@@ -281,24 +281,24 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
 
   const faqs = [
     {
-      q: 'Os treinos são seguros para idosos com dores, artrose ou próteses?',
-      a: 'Com certeza! Cada treino é 100% individualizado. Antes de iniciar, realizamos uma anamnese detalhada do histórico de saúde, exames e limitações para montar exercícios funcionais seguros que fortalecem sem causar dor ou sobrecarga.'
+      q: 'Como funciona a Consulta Inicial?',
+      a: 'A Consulta Inicial é o momento dedicado a compreender seu histórico de saúde, sua rotina, suas necessidades e seus objetivos. É a partir dessa conversa detalhada que definimos o melhor caminho para o seu acompanhamento.'
     },
     {
-      q: 'Como funciona a Consultoria Online vs Atendimento Presencial?',
-      a: 'No atendimento presencial, Arielle acompanha a aula ao vivo. Na consultoria online, o aluno recebe o planejamento personalizado no aplicativo com vídeos explicativos gravados e acompanhamento próximo via WhatsApp para correção de postura e dúvidas.'
+      q: 'Os treinos são seguros para quem tem dores, artrose ou limitações de movimento?',
+      a: 'Sim, totalmente. Não trabalho com treinos prontos ou genéricos. Cada movimento é planejado respeitando suas capacidades e limites articulares, fortalecendo a musculatura sem sobrecarga ou risco.'
     },
     {
-      q: 'Como funciona a Mentoria para Personal Trainers?',
-      a: 'A mentoria é voltada para profissionais de Educação Física que querem se posicionar no mercado da longevidade, aprender metodologias práticas de atendimento na terceira idade, precificação e captação de alunos.'
+      q: 'Qual a diferença entre o acompanhamento Presencial e o On-line?',
+      a: 'No presencial, o atendimento é próximo e direto durante as sessões. No on-line, você recebe um planejamento personalizado desenvolvido para sua rotina, com orientação e acompanhamento contínuo da sua evolução à distância.'
     },
     {
-      q: 'Preciso de equipamentos de academia para começar?',
-      a: 'Não é necessário ter academia! Os treinos podem ser adaptados para o ambiente da sua casa utilizando o peso do próprio corpo, elásticos, cadeiras e halteres leves, ou desenvolvidos na academia do seu prédio ou condomínio.'
+      q: 'Para quem é indicado o acompanhamento?',
+      a: 'Para adultos que desejam se preparar para envelhecer bem com força e autonomia, e também para quem já percebe mudanças na força, equilíbrio, mobilidade ou segurança para realizar as atividades do cotidiano.'
     },
     {
-      q: 'Como faço para agendar a primeira avaliação?',
-      a: 'Basta clicar nos botões "Agendar Avaliação" ou chamar diretamente no WhatsApp. Alinharemos o melhor dia e horário para conversar e entender os seus objetivos ou de seu familiar.'
+      q: 'Como faço para agendar a minha Consulta Inicial?',
+      a: 'Basta clicar no botão "Agendar consulta inicial" aqui no site ou entrar em contato direto pelo WhatsApp. Alinharemos o melhor dia e horário para nossa conversa.'
     }
   ];
 

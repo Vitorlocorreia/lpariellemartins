@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Calendar, MessageCircle, Award } from 'lucide-react';
+import { Calendar, MessageCircle, ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -38,8 +38,8 @@ export default function BottomCTA({ onOpenModal, whatsappUrl }) {
     <section ref={sectionRef} className="py-16 lg:py-24 bg-[#F4F7FC] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
-        {/* Luxury CTA Card Container */}
-        <div className="bg-gradient-to-br from-[#1B2B5E] via-[#111C40] to-[#1B2B5E] rounded-3xl p-8 sm:p-12 lg:p-14 shadow-2xl border border-blue-900/40 relative overflow-hidden text-white">
+        {/* ── 10. ENCERRAMENTO: Luxury Card ── */}
+        <div className="bg-gradient-to-br from-[#1B2B5E] via-[#111C40] to-[#1B2B5E] rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl border border-blue-900/40 relative overflow-hidden text-white">
           
           {/* Ambient Lighting Glow */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#2563EB]/25 rounded-full blur-3xl pointer-events-none" />
@@ -48,26 +48,26 @@ export default function BottomCTA({ onOpenModal, whatsappUrl }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
             
             {/* Left Column: Text & Buttons */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div className="lg:col-span-8 space-y-6 text-center lg:text-left">
               <span className="text-xs font-bold tracking-[0.18em] text-[#60A5FA] uppercase bg-blue-950/70 px-4 py-1.5 rounded-full border border-blue-500/30 inline-block">
-                Atendimento Individualizado & Mentoria
+                Dê o Primeiro Passo
               </span>
 
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight text-white">
-                Pronto para transformar sua saúde e qualidade de vida?
+                Como você deseja viver os seus próximos anos?
               </h2>
 
-              <p className="text-blue-100/90 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
-                Agende uma avaliação inicial gratuita com a Arielle. Vamos alinhar seus objetivos e criar um programa personalizado para mais força, autonomia e disposição.
+              <p className="text-blue-100/90 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                Cuidar do corpo hoje é investir na força, na segurança e na liberdade de movimento que você deseja preservar no futuro. <strong className="text-white">O primeiro passo começa com uma conversa sobre você.</strong>
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
                 <button
                   onClick={onOpenModal}
-                  className="cta-button-anim w-full sm:w-auto flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-7 py-4 rounded-xl font-bold text-sm shadow-xl shadow-blue-500/30 transition-all active:scale-95 cursor-pointer"
+                  className="cta-button-anim w-full sm:w-auto flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-8 py-4 rounded-xl font-bold text-sm shadow-xl shadow-blue-500/30 transition-all active:scale-95 cursor-pointer"
                 >
                   <Calendar size={19} />
-                  <span>Agendar avaliação gratuita</span>
+                  <span>Agendar consulta inicial</span>
                 </button>
 
                 <a
@@ -82,25 +82,20 @@ export default function BottomCTA({ onOpenModal, whatsappUrl }) {
               </div>
             </div>
 
-            {/* Right Column: Arielle's Real Photo Banner */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-sm rounded-3xl overflow-hidden shadow-2xl border-2 border-white/15 bg-blue-950 group">
+            {/* Right Column: Photo */}
+            <div className="lg:col-span-4 flex justify-center">
+              <div className="relative w-full max-w-xs rounded-3xl overflow-hidden shadow-2xl border-2 border-white/15 bg-blue-950">
                 <img 
-                  src="/images/about-arielle.jpg" 
-                  alt="Arielle Martins Personal Trainer" 
-                  className="w-full h-80 sm:h-96 object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  src="/images/arielle-com-aluna.jpg" 
+                  alt="Arielle Martins com aluna" 
+                  className="w-full h-80 object-cover object-center contrast-105"
+                  style={{ objectPosition: 'center 10%' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1B2B5E] via-transparent to-transparent opacity-85" />
-                
-                {/* Floating Personal Badge */}
-                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#2563EB] text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/30">
-                    <Award size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-serif font-bold text-sm text-white">Arielle Martins</h3>
-                    <span className="text-[11px] text-[#60A5FA] font-semibold">Especialista em Terceira Idade & Longevidade</span>
-                  </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111C40]/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-4 right-4 text-center">
+                  <span className="text-xs font-semibold text-white/90">
+                    Preservar a capacidade de viver bem.
+                  </span>
                 </div>
               </div>
             </div>

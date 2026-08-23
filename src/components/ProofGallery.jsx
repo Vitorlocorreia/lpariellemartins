@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Heart, ShoppingCart, Car } from "lucide-react";
+import { X, Sparkles, Shield, Footprints, ArrowUpFromLine, ShoppingBag } from "lucide-react";
 
 /* ── Modal ao clicar ── */
 function ImageModal({ item, onClose }) {
@@ -146,13 +146,19 @@ function BentoCard({ item, onOpen }) {
 export default function ProofGallery() {
   const [selected, setSelected] = useState(null);
 
-  // Duplica para loop contínuo perfeito
   const track = [...photos, ...photos];
+
+  const outcomes = [
+    { icon: Shield, title: "Sentir-se mais forte." },
+    { icon: Footprints, title: "Caminhar com segurança." },
+    { icon: ArrowUpFromLine, title: "Levantar-se com facilidade." },
+    { icon: ShoppingBag, title: "Ter confiança para realizar as próprias atividades." },
+  ];
 
   return (
     <section
-      id="depoimentos"
-      className="relative bg-[#F4F7FC] py-16 sm:py-24 overflow-hidden"
+      id="resultados"
+      className="relative bg-[#F4F7FC] py-20 lg:py-28 overflow-hidden"
     >
       {/* CSS keyframe */}
       <style>{`
@@ -169,7 +175,7 @@ export default function ProofGallery() {
         }
       `}</style>
 
-      {/* ── Header ── */}
+      {/* ── Header: 6. RESULTADOS ── */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -177,43 +183,37 @@ export default function ProofGallery() {
         transition={{ duration: 0.6 }}
         className="max-w-4xl mx-auto px-4 sm:px-6 text-center mb-14"
       >
-        <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/80 text-[#1B2B5E] text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6">
-          <Heart size={13} className="text-[#2563EB]" />
-          Prova Real de Resultado
+        <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/80 text-[#2563EB] text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6">
+          <Sparkles size={14} className="text-[#2563EB]" />
+          Resultados na Vida Real
         </div>
 
+        {/* Big Highlighted Headline */}
         <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2B5E] font-medium leading-tight mb-6">
-          Você tem o direito de{" "}
-          <span className="relative inline-block">
-            viver a sua vida.
+          O resultado mais importante{" "}
+          <span className="relative inline-block text-[#2563EB]">
+            acontece fora do treino.
             <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#2563EB] rounded-full" />
           </span>
         </h2>
 
         <p className="text-[#4B5E8A] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-          Fazer compras, entrar no carro sozinha, carregar as sacolas —{" "}
-          <strong className="text-[#1B2B5E]">
-            esses não são privilégios de jovem. São direitos seus.
-          </strong>
-        </p>
-        <p className="text-[#4B5E8A] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto mt-4">
-          O treino funcional existe para garantir que você nunca perca esses momentos.
-          Que você acorde todo dia capaz de viver a vida que quer.
+          O exercício ganha significado quando aquilo que é desenvolvido no treino melhora a maneira como você vive.
         </p>
 
-        {/* Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
-          {[
-            { icon: ShoppingCart, text: "Compras sem cansaço" },
-            { icon: Car, text: "Entrar e sair do carro" },
-            { icon: Heart, text: "Independência de verdade" },
-          ].map(({ icon: Icon, text }, i) => (
+        {/* 4 Outcome Pillars */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-10 text-left">
+          {outcomes.map(({ icon: Icon, title }, i) => (
             <div
               key={i}
-              className="flex items-center gap-2 text-sm text-[#1B2B5E] font-semibold bg-white px-4 py-2 rounded-full border border-blue-100 shadow-sm"
+              className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-blue-100 shadow-sm hover:border-blue-200 hover:shadow-md transition-all duration-300"
             >
-              <Icon size={15} className="text-[#2563EB]" />
-              {text}
+              <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#2563EB] flex items-center justify-center shrink-0">
+                <Icon size={18} />
+              </div>
+              <span className="text-sm font-semibold text-[#1B2B5E] leading-snug">
+                {title}
+              </span>
             </div>
           ))}
         </div>
@@ -221,18 +221,14 @@ export default function ProofGallery() {
 
       {/* ── Bento Carrossel Infinito ── */}
       <div className="relative">
-        {/* Fade lateral esquerda */}
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-28 z-10 bg-gradient-to-r from-[#F4F7FC] to-transparent" />
-        {/* Fade lateral direita */}
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-28 z-10 bg-gradient-to-l from-[#F4F7FC] to-transparent" />
 
         <div className="overflow-hidden">
-          {/* Trilho animado */}
           <div
             className="bento-track"
             style={{ width: "max-content" }}
           >
-            {/* Grid bento de 2 linhas, fluxo em colunas */}
             <div
               className="grid gap-3 px-4"
               style={{
@@ -253,7 +249,7 @@ export default function ProofGallery() {
         </div>
       </div>
 
-      {/* CTA */}
+      {/* Footnote */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -263,7 +259,7 @@ export default function ProofGallery() {
       >
         <p className="text-[#4B5E8A] text-sm sm:text-base max-w-xl mx-auto">
           Essa é a aluna da Arielle. Ela faz isso toda semana — com força,
-          equilíbrio e um sorriso no rosto.{" "}
+          equilíbrio e segurança.{" "}
           <strong className="text-[#1B2B5E]">Você também pode.</strong>
         </p>
       </motion.div>

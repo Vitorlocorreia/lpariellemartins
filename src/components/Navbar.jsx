@@ -21,14 +21,14 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
 
   // Scroll Spy: detecta seção ativa
   useEffect(() => {
-    const sectionIds = ['inicio', 'sobre', 'programas', 'produtos', 'depoimentos', 'contato'];
+    const sectionIds = ['inicio', 'proposta', 'metodo', 'modalidades', 'resultados', 'sobre', 'faq'];
     const observers = [];
     sectionIds.forEach(id => {
       const el = document.getElementById(id);
       if (!el) return;
       const obs = new IntersectionObserver(
         ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
-        { threshold: 0.35 }
+        { threshold: 0.3 }
       );
       obs.observe(el);
       observers.push(obs);
@@ -38,12 +38,12 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
 
   const navLinks = [
     { name: 'Início', href: '#inicio', section: 'inicio' },
+    { name: 'Proposta', href: '#proposta', section: 'proposta' },
+    { name: 'Método', href: '#metodo', section: 'metodo' },
+    { name: 'Modalidades', href: '#modalidades', section: 'modalidades' },
+    { name: 'Resultados', href: '#resultados', section: 'resultados' },
     { name: 'Sobre', href: '#sobre', section: 'sobre' },
-    { name: 'Mentoria', href: '#programas', section: 'programas' },
-    { name: 'Consultoria', href: '#programas', section: 'programas' },
-    { name: 'Produtos', href: '#produtos', section: 'produtos' },
-    { name: 'Depoimentos', href: '#depoimentos', section: 'depoimentos' },
-    { name: 'Contato', href: '#contato', section: 'contato' },
+    { name: 'Dúvidas', href: '#faq', section: 'faq' },
   ];
 
   return (

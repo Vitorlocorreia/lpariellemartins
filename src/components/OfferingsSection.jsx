@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { GraduationCap, User, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+import { CalendarCheck, MapPin, Laptop, ChevronLeft, ChevronRight } from 'lucide-react';
 import DottedPattern from './decorations/DottedPattern';
 import BackgroundCircle from './decorations/BackgroundCircle';
 import { useTilt } from '../hooks/useTilt';
@@ -64,53 +64,52 @@ export default function OfferingsSection({ onOpenModal }) {
 
   const cards = [
     {
-      icon: <User size={22} className="text-[#2563EB]" />,
+      icon: <CalendarCheck size={22} className="text-[#2563EB]" />,
       iconBg: 'bg-blue-50',
-      badge: 'Treinamento Individualizado',
-      title: 'Consultoria Online para Idosos',
-      desc: 'Treinos personalizados e acompanhamento próximo para mais saúde, força, equilíbrio, autonomia e qualidade de vida.',
-      btnText: 'Agendar avaliação',
+      badge: 'Ponto de Partida',
+      title: 'Consulta Inicial',
+      desc: 'Antes de começar, eu preciso conhecer você. Um momento dedicado a compreender seu histórico, sua rotina, seus objetivos e as necessidades para definirmos o melhor caminho.',
+      btnText: 'Agendar minha consulta inicial',
       btnBg: 'bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-md shadow-blue-500/20',
-      img: '/images/consultancy-card.jpg'
+      isPrimary: true
     },
     {
-      icon: <GraduationCap size={22} className="text-[#2563EB]" />,
+      icon: <MapPin size={22} className="text-[#2563EB]" />,
       iconBg: 'bg-blue-50',
-      badge: 'Formação & Carreira',
-      title: 'Mentoria para Personal Trainers',
-      desc: 'Acompanhamento estratégico para profissionais que desejam se posicionar, atrair clientes e se destacar na longevidade.',
-      btnText: 'Conhecer a mentoria',
+      badge: 'Treinamento Próximo',
+      title: 'Acompanhamento Presencial',
+      desc: 'Treinamento próximo e personalizado, com sessões planejadas de acordo com suas capacidades, necessidades e evolução. Você entende o que está sendo trabalhado e por que é importante para sua rotina.',
+      btnText: 'Conhecer o presencial',
       btnBg: 'bg-[#1B2B5E] hover:bg-[#111C40] text-white shadow-md shadow-blue-900/20',
-      img: '/images/mentorship-card.jpg'
+      isPrimary: false
     },
     {
-      icon: <BookOpen size={22} className="text-[#2563EB]" />,
+      icon: <Laptop size={22} className="text-[#2563EB]" />,
       iconBg: 'bg-blue-50',
-      badge: 'Materiais Exclusivos',
-      title: 'E-books e Infoprodutos',
-      desc: 'Guias práticos, manuais de exercícios e materiais baseados em evidências científicas para sua evolução contínua.',
-      btnText: 'Ver materiais',
+      badge: 'Orientação à Distância',
+      title: 'Acompanhamento On-line',
+      desc: 'Um acompanhamento estruturado para quem deseja treinar com orientação profissional, mesmo à distância. Seu planejamento é desenvolvido para sua realidade e evolui junto com você.',
+      btnText: 'Conhecer o on-line',
       btnBg: 'bg-white border-2 border-[#2563EB]/40 text-[#1B2B5E] hover:bg-blue-50',
-      img: '/images/ebooks-card.jpg'
+      isPrimary: false
     }
   ];
 
   return (
-    <section ref={sectionRef} id="programas" className="py-16 lg:py-24 bg-[#F4F7FC] relative overflow-hidden">
-      {/* Background Accents */}
+    <section ref={sectionRef} id="modalidades" className="py-20 lg:py-28 bg-[#F4F7FC] relative overflow-hidden">
       <BackgroundCircle size={400} color="#E0E7FF" opacity={0.4} className="top-10 -left-20 z-0" />
       <DottedPattern rows={6} cols={8} color="#2563EB" opacity={0.12} className="absolute top-12 right-8 z-0 hidden sm:block" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
-        {/* Header with Navigation Arrows on Mobile/Tablet */}
-        <div className="flex flex-col sm:flex-row items-center justify-between mb-12 text-center sm:text-left gap-4">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row items-center justify-between mb-14 text-center sm:text-left gap-4">
           <div>
             <span className="text-xs font-bold tracking-[0.15em] text-[#2563EB] uppercase mb-2 block">
-              Serviços & Soluções
+              Formatos de Acompanhamento
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#1B2B5E] font-medium">
-              Escolha como posso te ajudar
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2B5E] font-medium">
+              Como podemos começar
             </h2>
             <div className="h-1 w-12 bg-[#2563EB] mt-3 rounded-full mx-auto sm:mx-0"></div>
           </div>
@@ -142,30 +141,34 @@ export default function OfferingsSection({ onOpenModal }) {
           {cards.map((c, i) => (
             <TiltCard
               key={i}
-              className="offering-card w-[86vw] max-w-[360px] md:w-auto md:max-w-none snap-center shrink-0 bg-white rounded-3xl p-6 sm:p-8 border border-blue-100/80 shadow-md flex flex-col justify-between hover:border-blue-200 transition-colors duration-300 relative z-10 cursor-default"
+              className={`offering-card w-[86vw] max-w-[360px] md:w-auto md:max-w-none snap-center shrink-0 bg-white rounded-3xl p-7 sm:p-8 border ${
+                c.isPrimary ? 'border-[#2563EB]/40 shadow-lg ring-2 ring-[#2563EB]/10' : 'border-blue-100/80 shadow-md'
+              } flex flex-col justify-between hover:border-blue-300 transition-all duration-300 relative z-10 cursor-default`}
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <div className={`w-12 h-12 rounded-2xl ${c.iconBg} flex items-center justify-center`}>
                     {c.icon}
                   </div>
-                  <span className="text-[10px] font-bold tracking-wider text-[#2563EB] uppercase bg-blue-50 px-3 py-1 rounded-full">
+                  <span className={`text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded-full ${
+                    c.isPrimary ? 'bg-blue-600 text-white' : 'bg-blue-50 text-[#2563EB]'
+                  }`}>
                     {c.badge}
                   </span>
                 </div>
 
-                <h3 className="font-serif text-xl font-semibold text-[#1B2B5E] mb-3">
+                <h3 className="font-serif text-2xl font-semibold text-[#1B2B5E] mb-4">
                   {c.title}
                 </h3>
 
-                <p className="text-[#334155] text-xs sm:text-sm leading-relaxed mb-6">
+                <p className="text-[#4B5E8A] text-sm leading-relaxed mb-8">
                   {c.desc}
                 </p>
               </div>
 
               <button
                 onClick={onOpenModal}
-                className={`w-full py-3.5 px-5 rounded-xl font-bold text-xs transition-all ${c.btnBg} cursor-pointer`}
+                className={`w-full py-3.5 px-5 rounded-xl font-bold text-xs transition-all ${c.btnBg} cursor-pointer active:scale-95`}
               >
                 {c.btnText}
               </button>

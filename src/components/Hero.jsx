@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { Calendar, GraduationCap } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 
 /* ── Typing effect hook ── */
-function useTypingEffect(lines, speed = 55, delayBetween = 600) {
+function useTypingEffect(lines, speed = 50, delayBetween = 500) {
   const [displayedLines, setDisplayedLines] = React.useState(['', '']);
   const [done, setDone] = React.useState(false);
 
@@ -30,15 +30,14 @@ function useTypingEffect(lines, speed = 55, delayBetween = 600) {
       }
     };
 
-    // Start after initial GSAP fade-in (~0.8s)
-    timeout = setTimeout(type, 900);
+    timeout = setTimeout(type, 800);
     return () => clearTimeout(timeout);
   }, []);
 
   return { displayedLines, done };
 }
 
-export default function Hero({ onOpenModal, whatsappUrl }) {
+export default function Hero({ onOpenModal }) {
   const heroRef = useRef(null);
   const bgImgRef = useRef(null);
 
@@ -78,19 +77,19 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
 
   // Typing lines (desktop)
   const { displayedLines } = useTypingEffect(
-    ['Saúde que transforma vidas.', 'Conhecimento que forma profissionais.'],
-    48, 500
+    ['Movimento para viver bem', 'em todas as fases da vida.'],
+    45, 450
   );
 
   return (
     <section ref={heroRef} id="inicio" className="relative lg:min-h-[92vh] flex flex-col justify-start lg:justify-center pt-0 lg:pt-20 pb-10 lg:pb-12 overflow-hidden bg-white">
 
-      {/* ── DESKTOP: FOTO REAL COM FUSÃO SUAVE APENAS NA BORDA ESQUERDA ── */}
+      {/* ── DESKTOP: FOTO REAL COM FUSÃO SUAVE ── */}
       <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[54%] xl:w-[50%] overflow-hidden z-0 pointer-events-none select-none">
         <img
           ref={bgImgRef}
           src="/images/arielle-hero-original.png"
-          alt="Arielle Martins Personal Trainer"
+          alt="Arielle Martins com aluna"
           className="hero-real-img w-full h-full object-cover object-[center_top] will-change-transform"
         />
 
@@ -106,11 +105,11 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
         <div className="relative w-full h-[400px] sm:h-[480px] overflow-hidden">
           <img
             src="/images/arielle-hero-original.png"
-            alt="Arielle Martins Personal Trainer"
+            alt="Arielle Martins com aluna"
             className="hero-real-img w-full h-full object-cover object-[center_top]"
           />
           
-          {/* Curva convexa elegante na base da foto */}
+          {/* Curva elegante na base da foto */}
           <div className="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-10">
             <svg
               viewBox="0 0 500 55"
@@ -130,30 +129,30 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
 
           <div className="hero-animate-text mb-5">
             <span className="text-[11px] font-bold tracking-[0.15em] text-[#2563EB] uppercase">
-              Treinamento, Educação e Propósito
+              Especialista em Envelhecimento & Longevidade
             </span>
             <div className="h-[2px] w-12 bg-[#2563EB] mt-2.5" />
           </div>
 
           {/* H1 com Typing Effect */}
-          <h1 className="hero-animate-text font-serif text-[46px] leading-[1.12] font-normal tracking-tight mb-5 min-h-[115px]">
+          <h1 className="hero-animate-text font-serif text-[46px] leading-[1.14] font-normal tracking-tight mb-5 min-h-[115px]">
             <span className="text-[#1B2B5E] block mb-2">
               {displayedLines[0]}
-              {displayedLines[0].length < 'Saúde que transforma vidas.'.length && (
+              {displayedLines[0].length < 'Movimento para viver bem'.length && (
                 <span className="inline-block w-0.5 h-[1em] bg-[#2563EB] ml-0.5 animate-pulse align-middle" />
               )}
             </span>
             <span className="text-[#2563EB] font-semibold block">
               {displayedLines[1]}
-              {displayedLines[0] === 'Saúde que transforma vidas.' &&
-                displayedLines[1].length < 'Conhecimento que forma profissionais.'.length && (
+              {displayedLines[0] === 'Movimento para viver bem' &&
+                displayedLines[1].length < 'em todas as fases da vida.'.length && (
                 <span className="inline-block w-0.5 h-[0.85em] bg-[#2563EB] ml-0.5 animate-pulse align-middle" />
               )}
             </span>
           </h1>
 
           <p className="hero-animate-text text-base text-[#1B2B5E]/90 leading-relaxed max-w-lg mb-8">
-            Ajudo idosos a conquistarem mais autonomia, força e qualidade de vida. E capacito personal trainers para se destacarem no mercado da longevidade.
+            Treinamento especializado para adultos e idosos, desenvolvido para preservar força, funcionalidade e qualidade de vida ao longo dos anos.
           </p>
 
           <div className="flex items-center gap-4 mb-6">
@@ -162,15 +161,15 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
               className="hero-animate-cta flex items-center justify-center gap-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold px-7 py-3.5 rounded-xl text-sm shadow-md shadow-blue-500/20 transition-all active:scale-95 cursor-pointer"
             >
               <Calendar size={18} />
-              <span>Agendar avaliação para idosos</span>
+              <span>Agendar consulta inicial</span>
             </button>
 
             <a
-              href="#programas"
+              href="#proposta"
               className="hero-animate-cta flex items-center justify-center gap-2 border border-[#2563EB] text-[#1B2B5E] hover:bg-[#F0F4FF] px-7 py-3.5 rounded-xl text-sm font-semibold transition-all bg-white active:scale-95 cursor-pointer"
             >
-              <GraduationCap size={18} className="text-[#2563EB]" />
-              <span>Conhecer a mentoria</span>
+              <span>Conhecer o método</span>
+              <ArrowRight size={16} className="text-[#2563EB]" />
             </a>
           </div>
         </div>
@@ -179,18 +178,18 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
         <div className="lg:hidden w-full flex flex-col pt-5 pb-8 px-3 z-10 relative">
           <div className="hero-animate-text mb-3.5 text-left">
             <span className="text-[11px] font-bold tracking-[0.14em] text-[#2563EB] uppercase">
-              Treinamento, Educação e Propósito
+              Especialista em Envelhecimento & Longevidade
             </span>
             <div className="h-[2px] w-10 bg-[#2563EB] mt-1.5" />
           </div>
 
-          <h1 className="hero-animate-text font-serif text-[27px] sm:text-[32px] leading-[1.2] font-normal tracking-tight mb-3 text-left">
-            <span className="text-[#1B2B5E] block mb-0.5">Saúde que transforma vidas.</span>
-            <span className="text-[#2563EB] font-semibold block">Conhecimento que forma profissionais.</span>
+          <h1 className="hero-animate-text font-serif text-[28px] sm:text-[32px] leading-[1.2] font-normal tracking-tight mb-3 text-left">
+            <span className="text-[#1B2B5E] block mb-0.5">Movimento para viver bem</span>
+            <span className="text-[#2563EB] font-semibold block">em todas as fases da vida.</span>
           </h1>
 
           <p className="hero-animate-text text-[14px] text-[#2C3B5E] leading-relaxed mb-6 text-left">
-            Ajudo idosos a conquistarem mais autonomia, força e qualidade de vida. E capacito personal trainers para se destacarem no mercado da longevidade.
+            Treinamento especializado para adultos e idosos, desenvolvido para preservar força, funcionalidade e qualidade de vida ao longo dos anos.
           </p>
 
           <div className="flex flex-col gap-3 mb-2 w-full">
@@ -199,15 +198,15 @@ export default function Hero({ onOpenModal, whatsappUrl }) {
               className="hero-animate-cta w-full h-[52px] flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold px-5 rounded-xl text-[15px] shadow-md shadow-blue-500/20 transition-all active:scale-[0.98] cursor-pointer"
             >
               <Calendar size={19} />
-              <span>Agendar avaliação para idosos</span>
+              <span>Agendar consulta inicial</span>
             </button>
 
             <a
-              href="#programas"
+              href="#proposta"
               className="hero-animate-cta w-full h-[52px] flex items-center justify-center gap-2.5 border border-[#2563EB]/40 text-[#1B2B5E] hover:bg-[#F0F4FF] px-5 rounded-xl font-semibold text-[15px] transition-all bg-white active:scale-[0.98] cursor-pointer"
             >
-              <GraduationCap size={19} className="text-[#2563EB]" />
-              <span>Conhecer a mentoria</span>
+              <span>Conhecer o método</span>
+              <ArrowRight size={18} className="text-[#2563EB]" />
             </a>
           </div>
         </div>
