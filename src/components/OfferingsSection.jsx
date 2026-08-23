@@ -96,7 +96,7 @@ export default function OfferingsSection({ onOpenModal }) {
   ];
 
   return (
-    <section ref={sectionRef} id="modalidades" className="py-20 lg:py-28 bg-[#F4F7FC] relative overflow-hidden">
+    <section ref={sectionRef} id="programas" className="py-16 lg:py-24 bg-[#F4F7FC] relative overflow-hidden">
       <BackgroundCircle size={400} color="#E0E7FF" opacity={0.4} className="top-10 -left-20 z-0" />
       <DottedPattern rows={6} cols={8} color="#2563EB" opacity={0.12} className="absolute top-12 right-8 z-0 hidden sm:block" />
 

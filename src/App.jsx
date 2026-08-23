@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import MobileDrawer from './components/MobileDrawer';
 import Hero from './components/Hero';
+import StatsBar from './components/StatsBar';
+import AboutSection from './components/AboutSection';
+import OfferingsSection from './components/OfferingsSection';
 import WhyTrainSection from './components/WhyTrainSection';
 import HowItWorks from './components/HowItWorks';
-import OfferingsSection from './components/OfferingsSection';
+import ProductsShowcase from './components/ProductsShowcase';
 import ProofGallery from './components/ProofGallery';
-import AboutSection from './components/AboutSection';
-import BottomCTA from './components/BottomCTA';
 import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
@@ -38,40 +39,42 @@ export default function App() {
         whatsappUrl={whatsappUrl}
       />
 
-      {/* Main Page Sections — Estrutura 1 a 10 aprovada */}
+      {/* Main Page Sections — Estrutura original com a nova copy encaixada */}
       <main className="flex-grow">
-        {/* 1. ABERTURA: Hero Section */}
+        {/* Section 1: Hero Section */}
         <Hero 
           onOpenModal={() => setIsBookingModalOpen(true)}
           whatsappUrl={whatsappUrl}
         />
 
-        {/* 2. SUA PROPOSTA & 3. PARA QUEM É */}
-        <WhyTrainSection />
+        {/* Floating Stats Credibility Bar */}
+        <StatsBar />
 
-        {/* 4. MEU MÉTODO: Conhecer -> Planejar -> Treinar -> Acompanhar */}
-        <HowItWorks />
-
-        {/* 5. CONSULTA INICIAL, 7. PRESENCIAL, 8. ON-LINE: Modalidades de Atendimento */}
-        <OfferingsSection 
-          onOpenModal={() => setIsBookingModalOpen(true)}
-        />
-
-        {/* 6. RESULTADOS: "O resultado mais importante acontece fora do treino" + Galeria Bento */}
-        <ProofGallery />
-
-        {/* 9. SOBRE MIM: Arielle Martins - Especialista em Gerontologia */}
+        {/* Section 2: Quem é Arielle Martins */}
         <AboutSection 
           onOpenModal={() => setIsBookingModalOpen(true)}
         />
 
-        {/* 10. ENCERRAMENTO: "Como você deseja viver os seus próximos anos?" */}
-        <BottomCTA 
+        {/* Section 3: Escolha como posso te ajudar */}
+        <OfferingsSection 
           onOpenModal={() => setIsBookingModalOpen(true)}
-          whatsappUrl={whatsappUrl}
         />
 
-        {/* Perguntas Frequentes & Banner WhatsApp */}
+        {/* Section 4: Por que treinar comigo? */}
+        <WhyTrainSection />
+
+        {/* Section 5: Como funciona */}
+        <HowItWorks />
+
+        {/* Section 6: Conheça meus e-books e infoprodutos */}
+        <ProductsShowcase 
+          onOpenModal={() => setIsBookingModalOpen(true)}
+        />
+
+        {/* Section 7: Prova Real — galeria de fotos de autonomia funcional */}
+        <ProofGallery />
+
+        {/* Section 8: Perguntas Frequentes & Banner WhatsApp */}
         <FAQSection 
           onOpenModal={() => setIsBookingModalOpen(true)}
           whatsappUrl={whatsappUrl}
@@ -81,7 +84,7 @@ export default function App() {
       {/* Footer */}
       <Footer />
 
-      {/* Booking Form Modal — Consulta Inicial */}
+      {/* Booking Form Modal */}
       <BookingModal 
         isOpen={isBookingModalOpen}
         onClose={() => setIsBookingModalOpen(false)}
