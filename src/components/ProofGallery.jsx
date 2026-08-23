@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Sparkles, Shield, Footprints, ArrowUpFromLine, ShoppingBag } from "lucide-react";
+import { X, Play } from "lucide-react";
 
-/* ── Modal ao clicar ── */
+/* ── Modal ao clicar em foto ── */
 function ImageModal({ item, onClose }) {
   return (
     <motion.div
@@ -40,7 +40,72 @@ function ImageModal({ item, onClose }) {
   );
 }
 
-/* ── Dados — spans bento variados ── */
+/* ── Componente de Vídeo Depoimento ── */
+function VideoTestimonialCard({ src, title, subtitle, badge }) {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  return (
+    <div className="relative group bg-white rounded-3xl overflow-hidden border border-blue-100/90 shadow-md flex flex-col justify-between hover:shadow-xl hover:border-blue-300 transition-all duration-300">
+      <div className="relative aspect-[9/14] sm:aspect-[9/13] max-h-[480px] w-full bg-slate-900 overflow-hidden">
+        <video
+          ref={videoRef}
+          src={src}
+          playsInline
+          controls={isPlaying}
+          className="w-full h-full object-cover"
+          onEnded={() => setIsPlaying(false)}
+          onPause={() => setIsPlaying(false)}
+          onPlay={() => setIsPlaying(true)}
+        />
+        
+        {/* Play Button Overlay */}
+        {!isPlaying && (
+          <div
+            onClick={togglePlay}
+            className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent flex flex-col items-center justify-center cursor-pointer transition-all group-hover:bg-black/40"
+          >
+            <button
+              type="button"
+              className="w-16 h-16 rounded-full bg-[#2563EB] text-white flex items-center justify-center shadow-xl shadow-blue-500/40 group-hover:scale-110 active:scale-95 transition-all cursor-pointer"
+              aria-label="Assistir relato"
+            >
+              <Play size={28} className="translate-x-0.5 fill-white" />
+            </button>
+            <span className="text-xs font-bold text-white uppercase tracking-wider mt-3.5 bg-black/50 px-3.5 py-1.5 rounded-full backdrop-blur-xs">
+              Assistir depoimento
+            </span>
+          </div>
+        )}
+      </div>
+
+      <div className="p-6 bg-white">
+        <span className="text-[11px] font-mono font-bold tracking-wider text-[#2563EB] uppercase bg-blue-50 px-2.5 py-1 rounded-md mb-2 inline-block">
+          {badge}
+        </span>
+        <h4 className="font-serif text-xl font-semibold text-[#1B2B5E] leading-snug">
+          {title}
+        </h4>
+        <p className="text-xs sm:text-sm text-[#4B5E8A] mt-1.5 leading-relaxed">
+          {subtitle}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ── Dados de Fotos ── */
 const photos = [
   {
     id: 1,
@@ -114,7 +179,7 @@ const photos = [
   },
 ];
 
-/* ── Card bento ── */
+/* ── Card bento foto ── */
 function BentoCard({ item, onOpen }) {
   return (
     <div
@@ -129,14 +194,11 @@ function BentoCard({ item, onOpen }) {
         alt={item.title}
         className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
       />
-      {/* Overlay */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1B2B5E]/85 via-[#1B2B5E]/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-      {/* Texto */}
       <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 z-10">
         <h3 className="text-base font-bold text-white leading-tight">{item.title}</h3>
         <p className="mt-1 text-sm text-white/80">{item.desc}</p>
       </div>
-      {/* Dot azul */}
       <div className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-[#2563EB] shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </div>
   );
@@ -148,19 +210,11 @@ export default function ProofGallery() {
 
   const track = [...photos, ...photos];
 
-  const outcomes = [
-    { icon: Shield, title: "Sentir-se mais forte." },
-    { icon: Footprints, title: "Caminhar com segurança." },
-    { icon: ArrowUpFromLine, title: "Levantar-se com facilidade." },
-    { icon: ShoppingBag, title: "Ter confiança para realizar as próprias atividades." },
-  ];
-
   return (
     <section
-      id="resultados"
+      id="depoimentos"
       className="relative bg-[#F4F7FC] py-20 lg:py-28 overflow-hidden"
     >
-      {/* CSS keyframe */}
       <style>{`
         @keyframes bento-scroll {
           0%   { transform: translateX(0); }
@@ -200,7 +254,7 @@ export default function ProofGallery() {
           O exercício ganha significado quando aquilo que é desenvolvido no treino melhora a maneira como você vive.
         </p>
 
-        {/* 4 Outcome Pillars — Estilo Editorial Limpo */}
+        {/* 4 Outcome Pillars — Estilo Editorial */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 text-left">
           {[
             "Sentir-se mais forte.",
@@ -210,7 +264,7 @@ export default function ProofGallery() {
           ].map((title, i) => (
             <div
               key={i}
-              className="bg-white p-5 rounded-2xl border border-blue-100/90 shadow-sm hover:border-blue-300 transition-all duration-300 relative"
+              className="bg-white p-5 rounded-2xl border border-blue-100/90 shadow-xs hover:border-blue-300 transition-all duration-300 relative"
             >
               <div className="w-5 h-1 bg-[#2563EB] mb-3 rounded-full" />
               <span className="text-sm font-semibold text-[#1B2B5E] leading-snug block">
@@ -221,7 +275,35 @@ export default function ProofGallery() {
         </div>
       </motion.div>
 
-      {/* ── Bento Carrossel Infinito ── */}
+      {/* ── 2 VÍDEOS DE DEPOIMENTOS / RESULTADOS REAIS ── */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="text-center mb-8">
+          <span className="text-xs font-bold text-[#1B2B5E] uppercase tracking-wider block mb-1">
+            Depoimentos em Vídeo
+          </span>
+          <p className="text-xs sm:text-sm text-[#4B5E8A]">
+            Histórias reais de quem recuperou força, segurança e liberdade de movimento.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <VideoTestimonialCard
+            src="/videos/depoimento-1.mov"
+            badge="Relato Real • Autonomia"
+            title="Superação, firmeza e mais qualidade de vida"
+            subtitle="Veja como o treinamento especializado transformou a rotina e devolveu a segurança no dia a dia."
+          />
+
+          <VideoTestimonialCard
+            src="/videos/depoimento-2.mov"
+            badge="Relato Real • Independência"
+            title="Força e confiança para viver o melhor da longevidade"
+            subtitle="Depoimento sincero sobre a evolução dos movimentos, equilíbrio e bem-estar físico."
+          />
+        </div>
+      </div>
+
+      {/* ── Bento Carrossel Infinito com Fotos ── */}
       <div className="relative">
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-28 z-10 bg-gradient-to-r from-[#F4F7FC] to-transparent" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-28 z-10 bg-gradient-to-l from-[#F4F7FC] to-transparent" />
@@ -266,7 +348,7 @@ export default function ProofGallery() {
         </p>
       </motion.div>
 
-      {/* Modal */}
+      {/* Modal Foto */}
       <AnimatePresence>
         {selected && (
           <ImageModal item={selected} onClose={() => setSelected(null)} />
