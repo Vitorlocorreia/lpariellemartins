@@ -139,13 +139,13 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
 
             </div>
 
-            {/* Coluna Direita: Mockup Fotorrealista 3D do iPhone */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-[290px] sm:max-w-[320px] flex justify-center">
+            {/* Coluna Direita: Mockup Oficial do WhatsApp com Arielle */}
+            <div className="lg:col-span-5 flex justify-center items-center">
+              <div className="relative w-full max-w-[340px] sm:max-w-[380px] flex justify-center">
                 <img
-                  src="/images/iphone-whatsapp-render.jpg"
-                  alt="Mockup do iPhone com conversa no WhatsApp com Arielle Martins"
-                  className="w-full h-auto object-contain transition-transform duration-500 hover:scale-105 drop-shadow-xl"
+                  src="/images/whatsapp-mockup-client.png"
+                  alt="Conversa no WhatsApp com Arielle Martins"
+                  className="w-full h-auto object-contain transition-transform duration-500 hover:scale-[1.03] drop-shadow-lg"
                 />
               </div>
             </div>
