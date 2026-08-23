@@ -1,10 +1,136 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown, MessageCircle, ArrowRight } from 'lucide-react';
+import { ChevronDown, MessageCircle, ArrowRight, CheckCheck, Video, Phone, MoreVertical } from 'lucide-react';
 import BackgroundCircle from './decorations/BackgroundCircle';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+/* ── MOCKUP DE IPHONE 100% TRANSPARENTE, FOTO REAL E BALÕES CORRETOS ── */
+function TransparentPhoneChatMockup() {
+  return (
+    <div className="relative mx-auto w-full max-w-[310px] sm:max-w-[330px] select-none">
+      
+      {/* Moldura Externa do iPhone Titanium (PNG-like sem fundo, apenas sombra natural) */}
+      <div className="relative rounded-[44px] bg-[#1E293B] p-[10px] shadow-[0_25px_60px_-15px_rgba(37,99,235,0.2),0_12px_24px_-8px_rgba(15,23,42,0.3)] border-2 border-slate-300/80">
+        
+        {/* Dynamic Island / Pílula superior */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-30 flex items-center justify-between px-2.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-slate-900 border border-slate-700" />
+          <div className="w-2 h-2 rounded-full bg-blue-950/80" />
+        </div>
+
+        {/* Tela Interna do iPhone */}
+        <div className="relative rounded-[36px] overflow-hidden bg-[#EFEAE2] flex flex-col border border-slate-900/10">
+          
+          {/* Wallpaper com sutil padrão de textura WhatsApp */}
+          <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(#1B2B5E_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+
+          {/* Status Bar */}
+          <div className="relative z-20 bg-[#F0F2F5] px-6 pt-3 pb-1 flex justify-between items-center text-[11px] font-semibold text-slate-800">
+            <span>10:42</span>
+            <div className="flex items-center gap-1.5 text-[10px]">
+              <span className="font-mono">5G</span>
+              <div className="w-5 h-2.5 border border-slate-700 rounded-xs p-0.5 flex items-center">
+                <div className="h-full w-full bg-slate-800 rounded-2xs" />
+              </div>
+            </div>
+          </div>
+
+          {/* Header do WhatsApp com FOTO REAL da Arielle */}
+          <div className="relative z-20 bg-[#F0F2F5] px-3.5 py-2.5 border-b border-slate-200/80 flex items-center justify-between shadow-xs">
+            <div className="flex items-center gap-2.5">
+              
+              {/* Foto Real de Arielle com indicador online */}
+              <div className="relative">
+                <img
+                  src="/images/arielle-hero-original.png"
+                  alt="Arielle Martins Personal Trainer"
+                  className="w-10 h-10 rounded-full object-cover object-top border-2 border-white shadow-xs bg-blue-100"
+                />
+                <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#22C55E] border-2 border-white" />
+              </div>
+
+              {/* Informações da Profissional */}
+              <div className="text-left">
+                <div className="flex items-center gap-1">
+                  <span className="text-xs font-bold text-slate-900 leading-tight">Arielle Martins</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]" />
+                </div>
+                <span className="text-[10px] text-[#2563EB] font-medium block">
+                  Online • Gerontologia
+                </span>
+              </div>
+
+            </div>
+
+            {/* Ícones de Ação do Header */}
+            <div className="flex items-center gap-2.5 text-slate-600">
+              <Video size={16} />
+              <Phone size={15} />
+              <MoreVertical size={16} />
+            </div>
+          </div>
+
+          {/* Área de Mensagens — FLUXO CORRETO DE RESPOSTA */}
+          <div className="relative z-10 p-3.5 space-y-3 min-h-[250px] flex flex-col justify-end">
+            
+            {/* Tag de Data */}
+            <div className="text-center my-1">
+              <span className="bg-white/80 backdrop-blur-xs px-3 py-1 rounded-full text-[10px] font-semibold text-slate-500 shadow-xs border border-slate-200/50">
+                Hoje
+              </span>
+            </div>
+
+            {/* 1. MENSAGEM DO ALUNO (DIREITA / ENVIADO) */}
+            <div className="flex justify-end">
+              <div className="bg-[#DCF8C6] text-slate-800 rounded-2xl rounded-tr-xs px-3.5 py-2 max-w-[84%] shadow-xs border border-green-200/50">
+                <p className="text-[11.5px] leading-relaxed">
+                  Oi Arielle! Quero agendar minha consulta inicial para começar meus treinos.
+                </p>
+                <div className="flex items-center justify-end gap-1 mt-1 text-[9px] text-slate-500 font-mono">
+                  <span>10:42</span>
+                  <CheckCheck size={13} className="text-[#34B7F1]" />
+                </div>
+              </div>
+            </div>
+
+            {/* 2. RESPOSTA DA ARIELLE (ESQUERDA / RECEBIDO) */}
+            <div className="flex justify-start">
+              <div className="bg-white text-slate-800 rounded-2xl rounded-tl-xs px-3.5 py-2.5 max-w-[88%] shadow-xs border border-slate-200/80">
+                <p className="text-[11.5px] leading-relaxed text-[#1B2B5E]">
+                  Olá! Que ótimo falar com você. Na consulta inicial, conversamos sobre seu histórico e rotina para traçar um plano seguro e focado na sua autonomia. Vamos agendar seu horário? 😊
+                </p>
+                <div className="flex items-center justify-end gap-1 mt-1 text-[9px] text-slate-400 font-mono">
+                  <span>10:43</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Barra de Input Simulada */}
+          <div className="relative z-20 bg-[#F0F2F5] px-3 py-2 border-t border-slate-200 flex items-center gap-2">
+            <div className="bg-white rounded-full px-3 py-1.5 text-[10.5px] text-slate-400 flex-grow text-left shadow-xs border border-slate-200">
+              Digite uma mensagem...
+            </div>
+            <div className="w-7 h-7 rounded-full bg-[#25D366] flex items-center justify-center text-white shrink-0 shadow-xs">
+              <ArrowRight size={13} />
+            </div>
+          </div>
+
+          {/* Home Indicator */}
+          <div className="bg-[#F0F2F5] pb-2 pt-1 flex justify-center">
+            <div className="w-28 h-1 bg-slate-400 rounded-full" />
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  );
+}
 
 export default function FAQSection({ onOpenModal, whatsappUrl }) {
   const sectionRef = useRef(null);
@@ -98,7 +224,7 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
         </div>
 
         {/* ─────────────────────────────────────────────
-            CLEAN WHATSAPP CHAT SHOWCASE CARD COM MOCKUP 3D
+            CLEAN WHATSAPP CHAT SHOWCASE CARD
             Design 100% Harmônico com a Landing Page
             ───────────────────────────────────────────── */}
         <div className="relative max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-blue-100/90 shadow-xl shadow-blue-500/5">
@@ -139,15 +265,9 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
 
             </div>
 
-            {/* Coluna Direita: Mockup Realista 3D de Celular */}
+            {/* Coluna Direita: Mockup do iPhone Transparente com Foto Real e Chat Realista */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-[280px] sm:max-w-[310px] rounded-3xl overflow-hidden shadow-2xl border border-slate-100 bg-white transition-transform duration-500 hover:scale-105">
-                <img
-                  src="/images/whatsapp-mockup-arielle.jpg"
-                  alt="Mockup do WhatsApp com Arielle Martins"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
+              <TransparentPhoneChatMockup />
             </div>
 
           </div>
