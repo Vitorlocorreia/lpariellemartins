@@ -1,95 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown, MessageCircle, ArrowRight, CheckCheck } from 'lucide-react';
+import { ChevronDown, MessageCircle, ArrowRight } from 'lucide-react';
 import BackgroundCircle from './decorations/BackgroundCircle';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
-
-/* ── MOCKUP DE CELULAR SUPER CLEAN COM CHAT DA ARIELLE ── */
-function CleanPhoneChatMockup() {
-  return (
-    <div className="relative mx-auto w-full max-w-[320px] sm:max-w-[340px]">
-      
-      {/* Corpo externo do celular (Estilo iPhone Clean Minimalista) */}
-      <div className="relative rounded-[36px] bg-slate-900 p-2.5 shadow-2xl shadow-blue-900/15 border-4 border-slate-200">
-        
-        {/* Dynamic Island / Notch */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-slate-900 rounded-full z-30" />
-
-        {/* Tela do Celular */}
-        <div className="relative rounded-[28px] overflow-hidden bg-[#F4F7FB] flex flex-col">
-          
-          {/* Header do WhatsApp Clean */}
-          <div className="bg-white border-b border-blue-50 px-4 pt-6 pb-3 flex items-center justify-between shadow-xs">
-            <div className="flex items-center gap-2.5">
-              <div className="relative">
-                <img
-                  src="/images/arielle-com-aluna.jpg"
-                  alt="Arielle Martins"
-                  className="w-10 h-10 rounded-full object-cover object-top border-2 border-white shadow-xs"
-                />
-                <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#22C55E] border-2 border-white" />
-              </div>
-              <div className="text-left">
-                <div className="flex items-center gap-1">
-                  <span className="text-xs font-bold text-[#1B2B5E] leading-tight">Arielle Martins</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]" />
-                </div>
-                <span className="text-[10px] text-[#2563EB] font-medium block">
-                  Especialista em Longevidade
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Área de Conversa */}
-          <div className="p-3.5 space-y-3 text-left min-h-[220px] flex flex-col justify-end bg-gradient-to-b from-[#F4F7FB] to-[#EAEFF8]">
-            
-            {/* Mensagem Enviada (Usuário) */}
-            <div className="flex justify-end">
-              <div className="bg-[#2563EB] text-white rounded-2xl rounded-tr-xs px-3.5 py-2 max-w-[84%] shadow-xs">
-                <p className="text-[11px] leading-relaxed">
-                  Olá Arielle! Gostaria de saber como funciona a consulta inicial para mim.
-                </p>
-                <div className="flex items-center justify-end gap-1 mt-0.5 text-[9px] text-blue-100">
-                  <span>10:24</span>
-                  <CheckCheck size={12} className="text-blue-200" />
-                </div>
-              </div>
-            </div>
-
-            {/* Mensagem Recebida (Arielle) */}
-            <div className="flex justify-start">
-              <div className="bg-white text-[#1B2B5E] rounded-2xl rounded-tl-xs px-3.5 py-2.5 max-w-[88%] shadow-xs border border-blue-50">
-                <p className="text-[11px] leading-relaxed">
-                  Olá! Que ótimo falar com você. Na consulta inicial, conversamos sobre seu histórico e rotina para traçar um plano seguro e focado na sua autonomia. Vamos agendar seu horário? 😊
-                </p>
-                <div className="flex items-center justify-end gap-1 mt-0.5 text-[9px] text-slate-400">
-                  <span>10:25</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Barra de Input Simulada */}
-          <div className="bg-white px-3 py-2.5 border-t border-blue-50 flex items-center justify-between gap-2">
-            <div className="bg-[#F4F7FB] rounded-full px-3 py-1.5 text-[10px] text-[#4B5E8A] flex-grow text-left">
-              Mensagem...
-            </div>
-            <div className="w-7 h-7 rounded-full bg-[#2563EB] flex items-center justify-center text-white shrink-0 shadow-xs">
-              <ArrowRight size={13} />
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-  );
-}
 
 export default function FAQSection({ onOpenModal, whatsappUrl }) {
   const sectionRef = useRef(null);
@@ -183,10 +98,10 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
         </div>
 
         {/* ─────────────────────────────────────────────
-            CLEAN WHATSAPP CHAT SHOWCASE CARD
+            CLEAN WHATSAPP CHAT SHOWCASE CARD COM MOCKUP 3D
             Design 100% Harmônico com a Landing Page
             ───────────────────────────────────────────── */}
-        <div className="relative max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-blue-100 shadow-lg shadow-blue-500/5">
+        <div className="relative max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-blue-100/90 shadow-xl shadow-blue-500/5">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Coluna Esquerda: Texto & CTA */}
@@ -202,7 +117,7 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
               </h3>
 
               <p className="text-[#4B5E8A] text-sm sm:text-base leading-relaxed">
-                Estou à disposição para entender o seu caso, tirar dúvidas sobre o acompanhamento e te orientar sobre o melhor caminho para sua saúde.
+                Estou à disposição no WhatsApp para entender o seu caso, tirar dúvidas sobre o acompanhamento e te orientar sobre o melhor caminho para sua saúde.
               </p>
 
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
@@ -210,10 +125,11 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
                   href={whatsappUrl || "https://wa.me/5511999999999"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20BD5A] text-white px-7 py-4 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-emerald-500/20 transition-all hover:shadow-lg active:scale-95 cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20BD5A] text-white px-8 py-4 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-emerald-500/20 transition-all hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer"
                 >
                   <MessageCircle size={20} className="fill-white" />
                   <span>Conversar no WhatsApp</span>
+                  <ArrowRight size={18} />
                 </a>
               </div>
 
@@ -223,9 +139,15 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
 
             </div>
 
-            {/* Coluna Direita: Mockup de Celular Clean com Chat */}
+            {/* Coluna Direita: Mockup Realista 3D de Celular */}
             <div className="lg:col-span-5 flex justify-center">
-              <CleanPhoneChatMockup />
+              <div className="relative w-full max-w-[280px] sm:max-w-[310px] rounded-3xl overflow-hidden shadow-2xl border border-slate-100 bg-white transition-transform duration-500 hover:scale-105">
+                <img
+                  src="/images/whatsapp-mockup-arielle.jpg"
+                  alt="Mockup do WhatsApp com Arielle Martins"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
 
           </div>
