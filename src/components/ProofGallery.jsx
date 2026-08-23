@@ -391,7 +391,7 @@ export default function ProofGallery() {
         </div>
       </div>
 
-      {/* Footnote */}
+      {/* Footnote — 1ª Pessoa */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -400,9 +400,9 @@ export default function ProofGallery() {
         className="text-center mt-12 px-4"
       >
         <p className="text-[#4B5E8A] text-sm sm:text-base max-w-xl mx-auto">
-          Essa é a aluna da Arielle. Ela faz isso toda semana — com força,
+          Essa é a minha aluna. Ela realiza isso toda semana — com força,
           equilíbrio e segurança.{" "}
-          <strong className="text-[#1B2B5E]">Você também pode.</strong>
+          <strong className="text-[#1B2B5E]">Você também pode conquistar essa autonomia comigo.</strong>
         </p>
       </motion.div>
 

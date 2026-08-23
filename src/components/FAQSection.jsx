@@ -320,7 +320,7 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
             Perguntas Frequentes
           </h2>
           <p className="text-xs sm:text-sm text-[#334155] mt-2 max-w-lg mx-auto">
-            Tire suas principais dúvidas sobre o treinamento para idosos e a mentoria para profissionais.
+            Tire suas principais dúvidas sobre como funciona o meu acompanhamento especializado para adultos e idosos.
           </p>
           <div className="h-1 w-12 bg-[#2563EB] mx-auto mt-4 rounded-full" />
         </div>
@@ -407,7 +407,7 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
                 </h3>
 
                 <p className="text-white/90 text-sm sm:text-base font-medium leading-relaxed max-w-sm">
-                  Fale diretamente com a Arielle pelo WhatsApp. Ela responde com rapidez e clareza!
+                  Fale diretamente comigo pelo WhatsApp. Respondo com rapidez e clareza para conversarmos!
                 </p>
 
                 <a
