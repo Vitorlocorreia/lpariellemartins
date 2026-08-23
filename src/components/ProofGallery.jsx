@@ -183,10 +183,9 @@ export default function ProofGallery() {
         transition={{ duration: 0.6 }}
         className="max-w-4xl mx-auto px-4 sm:px-6 text-center mb-14"
       >
-        <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/80 text-[#2563EB] text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6">
-          <Sparkles size={14} className="text-[#2563EB]" />
+        <span className="text-[11px] font-bold tracking-[0.2em] text-[#2563EB] uppercase block mb-4">
           Resultados na Vida Real
-        </div>
+        </span>
 
         {/* Big Highlighted Headline */}
         <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2B5E] font-medium leading-tight mb-6">
@@ -201,17 +200,20 @@ export default function ProofGallery() {
           O exercício ganha significado quando aquilo que é desenvolvido no treino melhora a maneira como você vive.
         </p>
 
-        {/* 4 Outcome Pillars */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-10 text-left">
-          {outcomes.map(({ icon: Icon, title }, i) => (
+        {/* 4 Outcome Pillars — Estilo Editorial Limpo */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 text-left">
+          {[
+            "Sentir-se mais forte.",
+            "Caminhar com segurança.",
+            "Levantar-se com facilidade.",
+            "Ter confiança para realizar as próprias atividades."
+          ].map((title, i) => (
             <div
               key={i}
-              className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-blue-100 shadow-sm hover:border-blue-200 hover:shadow-md transition-all duration-300"
+              className="bg-white p-5 rounded-2xl border border-blue-100/90 shadow-sm hover:border-blue-300 transition-all duration-300 relative"
             >
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#2563EB] flex items-center justify-center shrink-0">
-                <Icon size={18} />
-              </div>
-              <span className="text-sm font-semibold text-[#1B2B5E] leading-snug">
+              <div className="w-5 h-1 bg-[#2563EB] mb-3 rounded-full" />
+              <span className="text-sm font-semibold text-[#1B2B5E] leading-snug block">
                 {title}
               </span>
             </div>

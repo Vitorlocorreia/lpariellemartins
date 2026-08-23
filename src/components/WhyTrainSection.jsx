@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Sparkles, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import BackgroundCircle from './decorations/BackgroundCircle';
 import DottedPattern from './decorations/DottedPattern';
 import gsap from 'gsap';
@@ -38,10 +38,9 @@ export default function WhyTrainSection() {
 
         {/* ── 2. SUA PROPOSTA ── */}
         <div className="max-w-4xl mx-auto text-center proposta-card-anim">
-          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/80 text-[#2563EB] text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
-            <Sparkles size={14} className="text-[#2563EB]" />
-            Sua Proposta
-          </div>
+          <span className="text-[11px] font-bold tracking-[0.2em] text-[#2563EB] uppercase block mb-3">
+            Visão & Propósito
+          </span>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2B5E] font-medium leading-tight mb-5">
             Treinar hoje é cuidar de como você quer viver amanhã.
@@ -51,9 +50,9 @@ export default function WhyTrainSection() {
             Com o passar dos anos, preservar força, equilíbrio e capacidade de movimento torna-se essencial para continuar realizando com segurança aquilo que faz parte da sua rotina.
           </p>
 
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-blue-100/90 shadow-sm max-w-3xl mx-auto text-left relative overflow-hidden">
+          <div className="bg-white rounded-2xl p-7 sm:p-9 border border-blue-100 shadow-sm max-w-3xl mx-auto text-left relative overflow-hidden">
             <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#2563EB]" />
-            <p className="text-base sm:text-lg font-medium text-[#1B2B5E] leading-relaxed">
+            <p className="text-base sm:text-lg text-[#1B2B5E] leading-relaxed">
               "Meu trabalho é transformar o exercício em uma ferramenta para preparar o corpo não apenas para o treino, <strong className="text-[#2563EB] font-bold">mas para a vida.</strong>"
             </p>
           </div>
@@ -62,60 +61,64 @@ export default function WhyTrainSection() {
         {/* ── 3. PARA QUEM É ── */}
         <div className="proposta-card-anim pt-4">
           <div className="text-center mb-10 max-w-3xl mx-auto">
-            <span className="text-xs font-bold tracking-[0.15em] text-[#2563EB] uppercase mb-2 block">
+            <span className="text-[11px] font-bold tracking-[0.2em] text-[#2563EB] uppercase block mb-2">
               Para Quem É
             </span>
             <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1B2B5E] font-medium">
               Um acompanhamento pensado para diferentes momentos do envelhecimento
             </h3>
-            <div className="h-1 w-12 bg-[#2563EB] mx-auto mt-4 rounded-full" />
+            <div className="h-0.5 w-10 bg-[#2563EB] mx-auto mt-4 rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Card 1: Preparar para envelhecer bem */}
-            <div className="bg-white rounded-3xl p-8 border border-blue-100/80 shadow-md flex flex-col justify-between hover:border-blue-200 hover:shadow-lg transition-all duration-300">
+            <div className="bg-white rounded-3xl p-8 sm:p-9 border border-blue-100/90 shadow-sm flex flex-col justify-between hover:border-blue-300 hover:shadow-md transition-all duration-300">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#2563EB] flex items-center justify-center mb-6">
-                  <Sparkles size={24} />
-                </div>
-                <h4 className="font-serif text-2xl font-semibold text-[#1B2B5E] mb-3">
+                <span className="text-[11px] font-semibold tracking-wider text-[#2563EB] uppercase bg-blue-50 px-3 py-1 rounded-md mb-5 inline-block">
+                  Momento 01
+                </span>
+                
+                <h4 className="font-serif text-2xl font-semibold text-[#1B2B5E] mb-3 leading-snug">
                   Para quem deseja se preparar para envelhecer bem
                 </h4>
+                
                 <p className="text-[#4B5E8A] text-sm sm:text-base leading-relaxed mb-6">
-                  Focado em construir reserva funcional, força muscular e saúde articular antes que os sinais do envelhecimento comprometam a sua rotina.
+                  Para adultos que desejam construir reserva funcional de força, manter a independência e proteger as articulações antes que os primeiros declínios apareçam.
                 </p>
               </div>
 
-              <div className="flex items-center gap-2 text-xs font-bold text-[#2563EB] pt-4 border-t border-blue-50">
-                <CheckCircle2 size={16} />
-                <span>Prevenção, Longevidade & Vitalidade</span>
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-[#1B2B5E]">
+                <span>Foco: Reserva de força & prevenção</span>
+                <ArrowUpRight size={16} className="text-[#2563EB]" />
               </div>
             </div>
 
-            {/* Card 2: Mudanças na rotina */}
-            <div className="bg-white rounded-3xl p-8 border border-blue-100/80 shadow-md flex flex-col justify-between hover:border-blue-200 hover:shadow-lg transition-all duration-300">
+            {/* Card 2: Mudanças no corpo */}
+            <div className="bg-white rounded-3xl p-8 sm:p-9 border border-blue-100/90 shadow-sm flex flex-col justify-between hover:border-blue-300 hover:shadow-md transition-all duration-300">
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#2563EB] flex items-center justify-center mb-6">
-                  <ShieldCheck size={24} />
-                </div>
-                <h4 className="font-serif text-2xl font-semibold text-[#1B2B5E] mb-3">
+                <span className="text-[11px] font-semibold tracking-wider text-[#2563EB] uppercase bg-blue-50 px-3 py-1 rounded-md mb-5 inline-block">
+                  Momento 02
+                </span>
+                
+                <h4 className="font-serif text-2xl font-semibold text-[#1B2B5E] mb-3 leading-snug">
                   Para quem já percebe mudanças no corpo
                 </h4>
+                
                 <p className="text-[#4B5E8A] text-sm sm:text-base leading-relaxed mb-6">
-                  Para quem já sente alterações na força, equilíbrio, mobilidade ou busca recuperar a segurança e a autonomia para realizar atividades do cotidiano.
+                  Para quem já nota perda de força, insegurança no equilíbrio, redução de mobilidade ou receio de quedas nas atividades do dia a dia.
                 </p>
               </div>
 
-              <div className="flex items-center gap-2 text-xs font-bold text-[#2563EB] pt-4 border-t border-blue-50">
-                <CheckCircle2 size={16} />
-                <span>Recuperação de Confiança & Segurança</span>
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-[#1B2B5E]">
+                <span>Foco: Autonomia, firmeza & segurança</span>
+                <ArrowUpRight size={16} className="text-[#2563EB]" />
               </div>
             </div>
           </div>
 
           <div className="text-center mt-10">
-            <p className="inline-block bg-white px-6 py-3 rounded-full border border-blue-100 shadow-xs text-sm font-semibold text-[#1B2B5E]">
-              Cada pessoa parte de um ponto diferente. <span className="text-[#2563EB]">E é a partir dele que o trabalho começa.</span>
+            <p className="inline-block bg-white px-6 py-3 rounded-full border border-blue-100/80 shadow-xs text-sm text-[#1B2B5E]">
+              Cada pessoa parte de um ponto diferente. <strong className="text-[#2563EB] font-bold">E é a partir dele que o trabalho começa.</strong>
             </p>
           </div>
         </div>

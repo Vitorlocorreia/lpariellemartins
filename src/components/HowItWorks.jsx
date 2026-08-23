@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { UserCheck, Compass, Dumbbell, TrendingUp, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import DottedPattern from './decorations/DottedPattern';
 import BackgroundCircle from './decorations/BackgroundCircle';
 import gsap from 'gsap';
@@ -31,27 +31,23 @@ export default function HowItWorks() {
   const steps = [
     {
       num: '01',
-      icon: <UserCheck size={22} className="text-[#2563EB]" />,
       title: 'Conhecer',
-      desc: 'Compreensão do seu histórico, rotina, capacidades e necessidades específicas.'
+      desc: 'Compreensão detalhada do seu histórico, rotina, capacidades e necessidades específicas.'
     },
     {
       num: '02',
-      icon: <Compass size={22} className="text-[#2563EB]" />,
       title: 'Planejar',
-      desc: 'Construção de uma estratégia sob medida integrando força, mobilidade e equilíbrio.'
+      desc: 'Construção de uma estratégia individualizada integrando força, mobilidade e equilíbrio.'
     },
     {
       num: '03',
-      icon: <Dumbbell size={22} className="text-[#2563EB]" />,
       title: 'Treinar',
       desc: 'Exercícios guiados com foco na função e na segurança de cada movimento.'
     },
     {
       num: '04',
-      icon: <TrendingUp size={22} className="text-[#2563EB]" />,
       title: 'Acompanhar',
-      desc: 'Evolução contínua para que os ganhos do treino se traduzam em vida real.'
+      desc: 'Evolução contínua para que os ganhos do treino se traduzam em mais autonomia na vida real.'
     }
   ];
 
@@ -63,7 +59,7 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold tracking-[0.15em] text-[#2563EB] uppercase mb-2 block">
+          <span className="text-[11px] font-bold tracking-[0.2em] text-[#2563EB] uppercase block mb-3">
             Meu Método
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2B5E] font-medium mb-4">
@@ -75,7 +71,7 @@ export default function HowItWorks() {
           <p className="text-[#4B5E8A] text-sm sm:text-base leading-relaxed">
             O acompanhamento é construído a partir das necessidades de cada pessoa, integrando força, equilíbrio, coordenação, mobilidade e funcionalidade para que os resultados do treino sejam percebidos também na vida cotidiana.
           </p>
-          <div className="h-1 w-12 bg-[#2563EB] mx-auto mt-6 rounded-full" />
+          <div className="h-0.5 w-10 bg-[#2563EB] mx-auto mt-6 rounded-full" />
         </div>
 
         {/* Steps Grid */}
@@ -83,19 +79,17 @@ export default function HowItWorks() {
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="step-card bg-[#F4F7FC] rounded-3xl p-6 sm:p-7 border border-blue-100/80 shadow-sm relative flex flex-col justify-between hover:shadow-md hover:border-blue-200 transition-all duration-300"
+              className="step-card bg-[#F4F7FC] rounded-3xl p-7 border border-blue-100/80 shadow-xs relative flex flex-col justify-between hover:shadow-md hover:border-blue-300 transition-all duration-300"
             >
               <div>
-                <div className="flex items-center justify-between mb-5">
-                  <span className="w-10 h-10 rounded-full bg-[#2563EB] text-white font-bold text-sm flex items-center justify-center shadow-md shadow-blue-500/20">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="font-serif text-2xl font-bold text-[#2563EB]">
                     {step.num}
                   </span>
-                  <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center shadow-xs">
-                    {step.icon}
-                  </div>
+                  <div className="w-8 h-0.5 bg-[#2563EB]/30 rounded-full" />
                 </div>
 
-                <h3 className="font-serif text-xl font-semibold text-[#1B2B5E] mb-2 flex items-center gap-2">
+                <h3 className="font-serif text-xl font-semibold text-[#1B2B5E] mb-2.5 flex items-center gap-2">
                   {step.title}
                   {idx < steps.length - 1 && (
                     <ArrowRight size={14} className="text-blue-300 hidden lg:inline" />
