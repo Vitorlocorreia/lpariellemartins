@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Calendar, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import gsap from 'gsap';
 
@@ -42,32 +42,27 @@ function useTypingEffect(lines, speed = 50, delayBetween = 500) {
 const heroSlides = [
   {
     src: "/images/hero/hero-5.png",
-    alt: "Arielle Martins sorrindo com aluna idosa durante treino",
-    badge: "Cuidado & Conexão",
+    alt: "Arielle Martins sorrindo com aluna durante treino",
     position: "object-[center_10%]"
   },
   {
     src: "/images/hero/hero-3.jpg",
     alt: "Arielle caminhando com aluna na calçada ao ar livre",
-    badge: "Autonomia na Vida Real",
     position: "object-[center_18%]"
   },
   {
     src: "/images/hero/hero-1.jpg",
     alt: "Arielle Martins Personal Trainer de Longevidade",
-    badge: "Especialista em Gerontologia",
     position: "object-[center_15%]"
   },
   {
     src: "/images/hero/hero-4.jpg",
     alt: "Arielle acolhendo e orientando aluna",
-    badge: "Treino Personalizado",
     position: "object-[center_15%]"
   },
   {
     src: "/images/hero/hero-2.jpg",
     alt: "Arielle Martins sorrindo",
-    badge: "Saúde & Vitalidade",
     position: "object-[center_15%]"
   }
 ];
@@ -75,26 +70,14 @@ const heroSlides = [
 export default function Hero({ onOpenModal }) {
   const heroRef = useRef(null);
   const [current, setCurrent] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-slide a cada 4.5 segundos
+  // Transição 100% automática e contínua a cada 4 segundos
   useEffect(() => {
-    if (isPaused) return;
     const interval = setInterval(() => {
       setCurrent(prev => (prev + 1) % heroSlides.length);
-    }, 4500);
+    }, 4000);
     return () => clearInterval(interval);
-  }, [isPaused]);
-
-  const prevSlide = (e) => {
-    e?.stopPropagation();
-    setCurrent(prev => (prev === 0 ? heroSlides.length - 1 : prev - 1));
-  };
-
-  const nextSlide = (e) => {
-    e?.stopPropagation();
-    setCurrent(prev => (prev + 1) % heroSlides.length);
-  };
+  }, []);
 
   // GSAP entrance
   useEffect(() => {
@@ -130,85 +113,30 @@ export default function Hero({ onOpenModal }) {
       className="relative lg:min-h-[92vh] flex flex-col justify-start lg:justify-center pt-0 lg:pt-20 pb-10 lg:pb-12 overflow-hidden bg-white"
     >
 
-      {/* ── DESKTOP: CARROSSEL DE FOTOS COM FUSÃO SUAVE ── */}
-      <div 
-        className="hero-carousel-container hidden lg:block absolute right-0 top-0 bottom-0 w-[54%] xl:w-[50%] overflow-hidden z-0 select-none group"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
+      {/* ── DESKTOP: TRANSIÇÃO AUTOMÁTICA CLEAN COM FUSÃO SUAVE ── */}
+      <div className="hero-carousel-container hidden lg:block absolute right-0 top-0 bottom-0 w-[54%] xl:w-[50%] overflow-hidden z-0 select-none pointer-events-none">
         <AnimatePresence initial={false} mode="wait">
           <motion.img
             key={current}
             src={heroSlides[current].src}
             alt={heroSlides[current].alt}
-            initial={{ opacity: 0, scale: 1.05 }}
+            initial={{ opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            transition={{ duration: 1.1, ease: "easeInOut" }}
             className={`w-full h-full object-cover ${heroSlides[current].position}`}
           />
         </AnimatePresence>
 
         {/* Gradiente suave apenas no canto esquerdo da foto */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white from-0% via-white/30 via-8% to-transparent to-20% pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white from-0% via-white/30 via-8% to-transparent to-20%" />
         
         {/* Leve fade no rodapé */}
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent pointer-events-none" />
-
-        {/* Badge do Slide Ativo */}
-        <div className="absolute top-24 right-8 z-20 pointer-events-none">
-          <div className="bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-md border border-blue-100/60 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
-            <span className="text-[11px] font-bold text-[#1B2B5E] uppercase tracking-wider">
-              {heroSlides[current].badge}
-            </span>
-          </div>
-        </div>
-
-        {/* Controles de Navegação Desktop (Aparecem no Hover) */}
-        <div className="absolute bottom-8 right-8 z-20 flex items-center gap-3">
-          
-          {/* Indicadores de Pontos / Barra */}
-          <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
-            {heroSlides.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrent(idx)}
-                aria-label={`Ir para foto ${idx + 1}`}
-                className={`h-2 rounded-full transition-all cursor-pointer ${
-                  current === idx ? 'w-6 bg-white' : 'w-2 bg-white/40 hover:bg-white/70'
-                }`}
-              />
-            ))}
-          </div>
-
-          {/* Botões Anterior / Próximo */}
-          <div className="flex items-center gap-1.5">
-            <button
-              onClick={prevSlide}
-              aria-label="Foto anterior"
-              className="w-9 h-9 rounded-full bg-white/80 hover:bg-white text-[#1B2B5E] flex items-center justify-center shadow-md backdrop-blur-xs transition-all active:scale-95 cursor-pointer"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={nextSlide}
-              aria-label="Próxima foto"
-              className="w-9 h-9 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white flex items-center justify-center shadow-md shadow-blue-500/20 transition-all active:scale-95 cursor-pointer"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
-
-        </div>
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent" />
       </div>
 
-      {/* ── MOBILE: CARROSSEL COM CORTE CURVADO ORGÂNICO ── */}
-      <div 
-        className="hero-carousel-container lg:hidden relative w-full overflow-hidden mt-14 sm:mt-16 z-0"
-        onTouchStart={() => setIsPaused(true)}
-        onTouchEnd={() => setIsPaused(false)}
-      >
+      {/* ── MOBILE: TRANSIÇÃO AUTOMÁTICA COM CORTE CURVADO ORGÂNICO ── */}
+      <div className="hero-carousel-container lg:hidden relative w-full overflow-hidden mt-14 sm:mt-16 z-0 pointer-events-none">
         <div className="relative w-full h-[410px] sm:h-[490px] overflow-hidden">
           <AnimatePresence initial={false} mode="wait">
             <motion.img
@@ -218,54 +146,13 @@ export default function Hero({ onOpenModal }) {
               initial={{ opacity: 0, scale: 1.04 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              transition={{ duration: 1.0, ease: "easeInOut" }}
               className={`w-full h-full object-cover ${heroSlides[current].position}`}
             />
           </AnimatePresence>
-
-          {/* Badge Mobile */}
-          <div className="absolute top-4 left-4 z-20">
-            <div className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full shadow-xs border border-blue-100/60 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-              <span className="text-[10px] font-bold text-[#1B2B5E] uppercase tracking-wider">
-                {heroSlides[current].badge}
-              </span>
-            </div>
-          </div>
-
-          {/* Indicadores & Setas Mobile */}
-          <div className="absolute bottom-12 right-4 z-20 flex items-center gap-2">
-            <div className="flex items-center gap-1 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">
-              {heroSlides.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrent(idx)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    current === idx ? 'w-4 bg-white' : 'w-1.5 bg-white/40'
-                  }`}
-                  aria-label={`Slide ${idx + 1}`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={prevSlide}
-              aria-label="Anterior"
-              className="w-7 h-7 rounded-full bg-white/90 text-[#1B2B5E] flex items-center justify-center shadow-xs active:scale-95"
-            >
-              <ChevronLeft size={15} />
-            </button>
-            <button
-              onClick={nextSlide}
-              aria-label="Próximo"
-              className="w-7 h-7 rounded-full bg-[#2563EB] text-white flex items-center justify-center shadow-xs active:scale-95"
-            >
-              <ChevronRight size={15} />
-            </button>
-          </div>
           
           {/* Curva elegante na base da foto */}
-          <div className="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none pointer-events-none z-10">
+          <div className="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none z-10">
             <svg
               viewBox="0 0 500 55"
               preserveAspectRatio="none"
