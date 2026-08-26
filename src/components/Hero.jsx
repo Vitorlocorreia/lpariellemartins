@@ -40,27 +40,27 @@ function useTypingEffect(lines, speed = 50, delayBetween = 500) {
 /* ── Lista de Fotos Embaralhadas do Hero ── */
 const heroSlides = [
   {
-    src: "/images/hero/hero-5.png",
+    src: "/images/hero/hero-5.webp",
     alt: "Arielle Martins sorrindo com aluna durante treino",
     position: "object-[center_10%]"
   },
   {
-    src: "/images/hero/hero-3.jpg",
+    src: "/images/hero/hero-3.webp",
     alt: "Arielle caminhando com aluna na calçada ao ar livre",
     position: "object-[center_18%]"
   },
   {
-    src: "/images/hero/hero-1.jpg",
+    src: "/images/hero/hero-1.webp",
     alt: "Arielle Martins Personal Trainer de Longevidade",
     position: "object-[center_15%]"
   },
   {
-    src: "/images/hero/hero-4.jpg",
+    src: "/images/hero/hero-4.webp",
     alt: "Arielle acolhendo e orientando aluna",
     position: "object-[center_15%]"
   },
   {
-    src: "/images/hero/hero-2.jpg",
+    src: "/images/hero/hero-2.webp",
     alt: "Arielle Martins sorrindo",
     position: "object-[center_15%]"
   }

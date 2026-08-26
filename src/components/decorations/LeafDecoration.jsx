@@ -14,11 +14,11 @@ export default function LeafDecoration({
   const leafRef = useRef(null);
 
   const leafImages = {
-    1: '/images/leaves/leaf-1.png',
-    2: '/images/leaves/leaf-2.png',
-    3: '/images/leaves/leaf-3.png',
-    4: '/images/leaves/leaf-4.png',
-    5: '/images/leaves/leaf-5.png',
+    1: '/images/leaves/leaf-1.webp',
+    2: '/images/leaves/leaf-2.webp',
+    3: '/images/leaves/leaf-3.webp',
+    4: '/images/leaves/leaf-4.webp',
+    5: '/images/leaves/leaf-5.webp',
   };
 
   const imgUrl = leafImages[variant] || leafImages[1];

@@ -1,0 +1,5 @@
+# Robots.txt for Arielle Martins Personal Trainer
+User-agent: *
+Allow: /
+
+Sitemap: https://ariellemartins.com.br/sitemap.xml

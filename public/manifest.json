@@ -1,0 +1,21 @@
+{
+  "name": "Arielle Martins Personal Trainer",
+  "short_name": "Arielle Martins",
+  "description": "Treinamento especializado para adultos e idosos. Força, equilíbrio e qualidade de vida.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#2563EB",
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

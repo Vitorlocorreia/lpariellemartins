@@ -65,7 +65,7 @@ export default function AboutSection({ onOpenModal }) {
             <BackgroundCircle size={320} color="#DBEAFE" opacity={0.6} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
             <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white z-10">
               <img 
-                src="/images/arielle-com-aluna.jpg" 
+                src="/images/arielle-com-aluna.webp" 
                 alt="Arielle Martins auxiliando aluna idosa nos exercícios" 
                 className="w-full h-[440px] sm:h-[540px] object-cover"
                 style={{ objectPosition: 'center 8%' }}

@@ -86,7 +86,7 @@ export default function BottomCTA({ onOpenModal, whatsappUrl }) {
             <div className="lg:col-span-4 flex justify-center">
               <div className="relative w-full max-w-xs rounded-3xl overflow-hidden shadow-2xl border-2 border-white/15 bg-blue-950">
                 <img 
-                  src="/images/arielle-com-aluna.jpg" 
+                  src="/images/arielle-com-aluna.webp" 
                   alt="Arielle Martins com aluna" 
                   className="w-full h-80 object-cover object-center contrast-105"
                   style={{ objectPosition: 'center 10%' }}

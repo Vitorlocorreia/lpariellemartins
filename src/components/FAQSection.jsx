@@ -143,7 +143,7 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
             <div className="lg:col-span-5 flex justify-center items-center">
               <div className="relative w-full max-w-[340px] sm:max-w-[380px] flex justify-center">
                 <img
-                  src="/images/whatsapp-mockup-client.png"
+                  src="/images/whatsapp-mockup-client.webp"
                   alt="Conversa no WhatsApp com Arielle Martins"
                   className="w-full h-auto object-contain transition-transform duration-500 hover:scale-[1.03] drop-shadow-lg"
                 />
