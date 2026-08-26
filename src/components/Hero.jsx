@@ -37,7 +37,7 @@ function useTypingEffect(lines, speed = 50, delayBetween = 500) {
   return { displayedLines, done };
 }
 
-/* ── Lista de Fotos Embaralhadas do Hero ── */
+/* ── Lista de Fotos Embaralhadas do Hero (Ultra-HQ WebP) ── */
 const heroSlides = [
   {
     src: "/images/hero/hero-5.webp",
@@ -109,13 +109,18 @@ export default function Hero({ onOpenModal }) {
     <section 
       ref={heroRef} 
       id="inicio" 
-      className="relative lg:min-h-[92vh] flex flex-col justify-start lg:justify-center pt-0 lg:pt-20 pb-10 lg:pb-12 overflow-hidden bg-white"
+      className="relative lg:min-h-[92vh] flex flex-col justify-start lg:justify-center pt-0 lg:pt-16 pb-8 lg:pb-12 overflow-hidden bg-white"
     >
 
-      {/* ── DESKTOP: CROSSFADE CONTÍNUO (ZERO FLASH BRANCO) COM FUSÃO SUAVE ── */}
-      <div className="hero-carousel-container hidden lg:block absolute right-0 top-0 bottom-0 w-[54%] xl:w-[50%] overflow-hidden z-0 select-none pointer-events-none">
-        
-        {/* Todas as fotos sobrepostas em camadas para transição direta foto-sobre-foto */}
+      {/* ── DESKTOP: FUSÃO SUAVE CONTÍNUA (FOTO-SOBRE-FOTO SEM CORTE) ── */}
+      <div 
+        className="hero-carousel-container hidden lg:block absolute right-0 top-0 bottom-0 w-[52%] xl:w-[50%] overflow-hidden z-0 select-none pointer-events-none"
+        style={{
+          maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 8%, rgba(0,0,0,1) 22%)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 8%, rgba(0,0,0,1) 22%)'
+        }}
+      >
+        {/* Todas as fotos sobrepostas em camadas para transição direta e suave */}
         {heroSlides.map((slide, idx) => (
           <img
             key={idx}
@@ -124,21 +129,18 @@ export default function Hero({ onOpenModal }) {
             className={`absolute inset-0 w-full h-full object-cover ${slide.position} transition-all duration-1200 ease-in-out will-change-[opacity,transform] ${
               current === idx
                 ? 'opacity-100 scale-100 z-10'
-                : 'opacity-0 scale-105 z-0'
+                : 'opacity-0 scale-[1.03] z-0'
             }`}
           />
         ))}
 
-        {/* Gradiente suave apenas no canto esquerdo da foto */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white from-0% via-white/30 via-8% to-transparent to-20% z-20" />
-        
-        {/* Leve fade no rodapé */}
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent z-20" />
+        {/* Leve fade no rodapé para fusão com a próxima seção */}
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent z-20" />
       </div>
 
-      {/* ── MOBILE: CROSSFADE CONTÍNUO COM CORTE CURVADO ORGÂNICO ── */}
+      {/* ── MOBILE: FOTO EM ALTA RESOLUÇÃO COM FUSÃO SUAVE ── */}
       <div className="hero-carousel-container lg:hidden relative w-full overflow-hidden mt-14 sm:mt-16 z-0 pointer-events-none">
-        <div className="relative w-full h-[410px] sm:h-[490px] overflow-hidden bg-[#1B2B5E]/5">
+        <div className="relative w-full h-[400px] sm:h-[480px] overflow-hidden">
           
           {/* Fotos sobrepostas em crossfade perfeito */}
           {heroSlides.map((slide, idx) => (
@@ -149,38 +151,30 @@ export default function Hero({ onOpenModal }) {
               className={`absolute inset-0 w-full h-full object-cover ${slide.position} transition-all duration-1200 ease-in-out will-change-[opacity,transform] ${
                 current === idx
                   ? 'opacity-100 scale-100 z-10'
-                  : 'opacity-0 scale-105 z-0'
+                  : 'opacity-0 scale-[1.03] z-0'
               }`}
             />
           ))}
           
-          {/* Curva elegante na base da foto */}
-          <div className="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none z-20">
-            <svg
-              viewBox="0 0 500 55"
-              preserveAspectRatio="none"
-              className="w-full h-10 sm:h-14 text-white fill-current"
-            >
-              <path d="M0,0 C150,45 350,45 500,0 L500,55 L0,55 Z" />
-            </svg>
-          </div>
+          {/* Fusão suave na base da foto (substituindo o corte rígido) */}
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white via-white/60 to-transparent z-20" />
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full z-10 relative h-full flex flex-col lg:justify-center">
 
         {/* ── DESKTOP CONTENT ── */}
-        <div className="hidden lg:flex flex-col max-w-[620px] text-left pt-8">
+        <div className="hidden lg:flex flex-col max-w-[580px] text-left pt-6">
 
-          <div className="hero-animate-text mb-5">
+          <div className="hero-animate-text mb-4">
             <span className="text-[11px] font-bold tracking-[0.15em] text-[#2563EB] uppercase">
               Especialista em Envelhecimento & Longevidade
             </span>
-            <div className="h-[2px] w-12 bg-[#2563EB] mt-2.5" />
+            <div className="h-[2px] w-12 bg-[#2563EB] mt-2" />
           </div>
 
           {/* H1 com Typing Effect */}
-          <h1 className="hero-animate-text font-serif text-[46px] leading-[1.14] font-normal tracking-tight mb-5 min-h-[115px]">
+          <h1 className="hero-animate-text font-serif text-[44px] xl:text-[48px] leading-[1.14] font-normal tracking-tight mb-5 min-h-[115px]">
             <span className="text-[#1B2B5E] block mb-2">
               {displayedLines[0]}
               {displayedLines[0].length < 'Movimento para viver bem'.length && (
@@ -220,8 +214,8 @@ export default function Hero({ onOpenModal }) {
         </div>
 
         {/* ── MOBILE CONTENT ── */}
-        <div className="lg:hidden w-full flex flex-col pt-5 pb-8 px-3 z-10 relative">
-          <div className="hero-animate-text mb-3.5 text-left">
+        <div className="lg:hidden w-full flex flex-col pt-2 pb-8 px-2 z-10 relative">
+          <div className="hero-animate-text mb-3 text-left">
             <span className="text-[11px] font-bold tracking-[0.14em] text-[#2563EB] uppercase">
               Especialista em Envelhecimento & Longevidade
             </span>
