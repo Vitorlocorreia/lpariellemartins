@@ -215,7 +215,7 @@ const photos = [
     id: 4,
     url: "/images/proof/supermercado-escolhendo.jpg",
     title: "Se abaixar sem medo",
-    desc: "Mobilidade que devolve a autonomia.",
+    desc: "Mobilidade que devolve a independência e autonomia.",
     span: "row-span-2",
   },
   {
@@ -236,14 +236,14 @@ const photos = [
     id: 7,
     url: "/images/proof/carrinho-supermercado-2.jpg",
     title: "Viver com leveza",
-    desc: "Cada gesto feito com segurança e autonomia.",
+    desc: "Cada gesto feito com segurança, independência e autonomia.",
     span: "row-span-1",
   },
   {
     id: 8,
     url: "/images/proof/carro-saindo.jpg",
     title: "Sair do carro sozinha",
-    desc: "Sem ajuda, no seu ritmo, com sua autonomia.",
+    desc: "Sem ajuda, no seu ritmo, com sua independência e autonomia.",
     span: "col-span-2 row-span-2",
   },
   {
@@ -402,7 +402,7 @@ export default function ProofGallery() {
         <p className="text-[#4B5E8A] text-sm sm:text-base max-w-xl mx-auto">
           Essa é a minha aluna. Ela realiza isso toda semana — com força,
           equilíbrio e segurança.{" "}
-          <strong className="text-[#1B2B5E]">Você também pode conquistar essa autonomia comigo.</strong>
+          <strong className="text-[#1B2B5E]">Você também pode conquistar essa independência e autonomia comigo.</strong>
         </p>
       </motion.div>
 
