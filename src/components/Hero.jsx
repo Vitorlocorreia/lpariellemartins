@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Calendar, ArrowRight } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
 import gsap from 'gsap';
 
 /* ── Typing effect hook ── */
@@ -71,11 +70,11 @@ export default function Hero({ onOpenModal }) {
   const heroRef = useRef(null);
   const [current, setCurrent] = useState(0);
 
-  // Transição 100% automática e contínua a cada 4 segundos
+  // Transição 100% contínua e suave a cada 4.5 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent(prev => (prev + 1) % heroSlides.length);
-    }, 4000);
+    }, 4500);
     return () => clearInterval(interval);
   }, []);
 
@@ -113,46 +112,50 @@ export default function Hero({ onOpenModal }) {
       className="relative lg:min-h-[92vh] flex flex-col justify-start lg:justify-center pt-0 lg:pt-20 pb-10 lg:pb-12 overflow-hidden bg-white"
     >
 
-      {/* ── DESKTOP: TRANSIÇÃO AUTOMÁTICA CLEAN COM FUSÃO SUAVE ── */}
+      {/* ── DESKTOP: CROSSFADE CONTÍNUO (ZERO FLASH BRANCO) COM FUSÃO SUAVE ── */}
       <div className="hero-carousel-container hidden lg:block absolute right-0 top-0 bottom-0 w-[54%] xl:w-[50%] overflow-hidden z-0 select-none pointer-events-none">
-        <AnimatePresence initial={false} mode="wait">
-          <motion.img
-            key={current}
-            src={heroSlides[current].src}
-            alt={heroSlides[current].alt}
-            initial={{ opacity: 0, scale: 1.04 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.1, ease: "easeInOut" }}
-            className={`w-full h-full object-cover ${heroSlides[current].position}`}
+        
+        {/* Todas as fotos sobrepostas em camadas para transição direta foto-sobre-foto */}
+        {heroSlides.map((slide, idx) => (
+          <img
+            key={idx}
+            src={slide.src}
+            alt={slide.alt}
+            className={`absolute inset-0 w-full h-full object-cover ${slide.position} transition-all duration-1200 ease-in-out will-change-[opacity,transform] ${
+              current === idx
+                ? 'opacity-100 scale-100 z-10'
+                : 'opacity-0 scale-105 z-0'
+            }`}
           />
-        </AnimatePresence>
+        ))}
 
         {/* Gradiente suave apenas no canto esquerdo da foto */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white from-0% via-white/30 via-8% to-transparent to-20%" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white from-0% via-white/30 via-8% to-transparent to-20% z-20" />
         
         {/* Leve fade no rodapé */}
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent z-20" />
       </div>
 
-      {/* ── MOBILE: TRANSIÇÃO AUTOMÁTICA COM CORTE CURVADO ORGÂNICO ── */}
+      {/* ── MOBILE: CROSSFADE CONTÍNUO COM CORTE CURVADO ORGÂNICO ── */}
       <div className="hero-carousel-container lg:hidden relative w-full overflow-hidden mt-14 sm:mt-16 z-0 pointer-events-none">
-        <div className="relative w-full h-[410px] sm:h-[490px] overflow-hidden">
-          <AnimatePresence initial={false} mode="wait">
-            <motion.img
-              key={current}
-              src={heroSlides[current].src}
-              alt={heroSlides[current].alt}
-              initial={{ opacity: 0, scale: 1.04 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.0, ease: "easeInOut" }}
-              className={`w-full h-full object-cover ${heroSlides[current].position}`}
+        <div className="relative w-full h-[410px] sm:h-[490px] overflow-hidden bg-[#1B2B5E]/5">
+          
+          {/* Fotos sobrepostas em crossfade perfeito */}
+          {heroSlides.map((slide, idx) => (
+            <img
+              key={idx}
+              src={slide.src}
+              alt={slide.alt}
+              className={`absolute inset-0 w-full h-full object-cover ${slide.position} transition-all duration-1200 ease-in-out will-change-[opacity,transform] ${
+                current === idx
+                  ? 'opacity-100 scale-100 z-10'
+                  : 'opacity-0 scale-105 z-0'
+              }`}
             />
-          </AnimatePresence>
+          ))}
           
           {/* Curva elegante na base da foto */}
-          <div className="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none z-10">
+          <div className="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none z-20">
             <svg
               viewBox="0 0 500 55"
               preserveAspectRatio="none"
