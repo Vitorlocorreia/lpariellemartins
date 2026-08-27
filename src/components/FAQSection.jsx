@@ -122,7 +122,7 @@ export default function FAQSection({ onOpenModal, whatsappUrl }) {
 
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <a
-                  href={whatsappUrl || "https://wa.me/5511999999999"}
+                  href={whatsappUrl || "https://wa.me/5581986833360"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20BD5A] text-white px-8 py-4 rounded-xl font-bold text-sm sm:text-base shadow-md shadow-emerald-500/20 transition-all hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer"

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { X, Calendar, Send } from 'lucide-react';
 import { fireConfetti } from '../utils/confetti';
 
-export default function BookingModal({ isOpen, onClose, whatsappNumber = "5511999999999" }) {
+export default function BookingModal({ isOpen, onClose, whatsappNumber = "5581986833360" }) {
   const [formData, setFormData] = useState({
     nome: '',
     whatsapp: '',
@@ -84,7 +84,7 @@ export default function BookingModal({ isOpen, onClose, whatsappNumber = "551199
               <input 
                 type="tel" 
                 required
-                placeholder="(11) 99999-9999"
+                placeholder="(81) 98683-3360"
                 value={formData.whatsapp}
                 onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
                 className="w-full px-4 py-3 rounded-xl border border-blue-100 bg-white text-[#1B2B5E] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 text-sm"
@@ -97,7 +97,7 @@ export default function BookingModal({ isOpen, onClose, whatsappNumber = "551199
               <input 
                 type="text" 
                 required
-                placeholder="Ex: Moema, SP"
+                placeholder="Ex: Recife, PE"
                 value={formData.bairro}
                 onChange={(e) => setFormData({...formData, bairro: e.target.value})}
                 className="w-full px-4 py-3 rounded-xl border border-blue-100 bg-white text-[#1B2B5E] focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 text-sm"

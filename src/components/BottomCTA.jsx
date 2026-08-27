@@ -71,7 +71,7 @@ export default function BottomCTA({ onOpenModal, whatsappUrl }) {
                 </button>
 
                 <a
-                  href={whatsappUrl || "https://wa.me/5511999999999"}
+                  href={whatsappUrl || "https://wa.me/5581986833360"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="cta-button-anim w-full sm:w-auto flex items-center justify-center gap-2.5 border border-white/20 text-white hover:bg-white/10 px-7 py-4 rounded-xl font-bold text-sm transition-all bg-white/5 backdrop-blur-md text-center cursor-pointer"

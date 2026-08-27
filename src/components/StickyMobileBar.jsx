@@ -38,7 +38,7 @@ export default function StickyMobileBar({ onOpenModal, whatsappUrl }) {
       </button>
 
       <a
-        href={whatsappUrl || "https://wa.me/5511999999999"}
+        href={whatsappUrl || "https://wa.me/5581986833360"}
         target="_blank"
         rel="noopener noreferrer"
         className="w-12 h-12 flex items-center justify-center bg-[#22C55E] active:bg-[#16A34A] text-white rounded-xl shadow-md shadow-green-500/25 active:scale-95 transition-all shrink-0 cursor-pointer"

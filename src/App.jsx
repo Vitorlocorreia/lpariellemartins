@@ -19,7 +19,7 @@ export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-  const whatsappNumber = "5511999999999";
+  const whatsappNumber = "5581986833360";
   const whatsappMessage = encodeURIComponent("Olá Arielle! Gostaria de agendar minha consulta inicial e saber mais sobre seus acompanhamentos.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 

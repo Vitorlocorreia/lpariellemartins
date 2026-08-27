@@ -62,10 +62,15 @@ export default function Footer() {
           <div className="md:col-span-4 space-y-2.5">
             <h4 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">Fale comigo</h4>
             <div className="space-y-2.5 text-blue-200/90">
-              <div className="flex items-center gap-2.5">
+              <a 
+                href="https://wa.me/5581986833360" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 hover:text-white transition-colors"
+              >
                 <Phone size={15} className="text-[#60A5FA]" />
-                <span>(11) 99999-9999</span>
-              </div>
+                <span>(81) 98683-3360</span>
+              </a>
               <div className="flex items-center gap-2.5">
                 <Instagram size={15} className="text-[#60A5FA]" />
                 <span>@ariellemartins.pt</span>
