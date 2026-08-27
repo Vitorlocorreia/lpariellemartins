@@ -45,11 +45,6 @@ const heroSlides = [
     position: "object-[center_10%]"
   },
   {
-    src: "/images/hero/hero-3.webp",
-    alt: "Arielle caminhando com aluna na calçada ao ar livre",
-    position: "object-[center_18%]"
-  },
-  {
     src: "/images/hero/hero-1.webp",
     alt: "Arielle Martins Personal Trainer de Longevidade",
     position: "object-[center_15%]"
