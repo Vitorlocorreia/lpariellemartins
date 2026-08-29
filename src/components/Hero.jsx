@@ -40,6 +40,11 @@ function useTypingEffect(lines, speed = 50, delayBetween = 500) {
 /* ── Lista de Fotos Embaralhadas do Hero (Ultra-HQ WebP) ── */
 const heroSlides = [
   {
+    src: "/images/hero/hero-main.webp",
+    alt: "Arielle Martins Personal Trainer de Longevidade",
+    position: "object-[center_15%]"
+  },
+  {
     src: "/images/hero/hero-5.webp",
     alt: "Arielle Martins sorrindo com aluna durante treino",
     position: "object-[center_10%]"
