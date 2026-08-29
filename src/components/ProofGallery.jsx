@@ -130,6 +130,12 @@ function VideoCarousel() {
       badge: "Relato Real • Independência",
       title: "Força e confiança para viver o melhor da longevidade",
       subtitle: "Depoimento sincero sobre a evolução dos movimentos, equilíbrio e bem-estar físico."
+    },
+    {
+      src: "/videos/depoimento-3.mov",
+      badge: "Relato Real • Vitalidade",
+      title: "Resultados reais e liberdade no dia a dia",
+      subtitle: "Experiência transformadora com acompanhamento personalizado e foco em saúde funcional."
     }
   ];
 
