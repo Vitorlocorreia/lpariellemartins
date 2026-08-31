@@ -27,34 +27,81 @@ async function main() {
 
   // 3. OG Image (1200x630)
   try {
+    const photoBuf = await sharp('public/images/hero/hero-main.jpg')
+      .resize(480, 560, { fit: 'cover', position: 'top' })
+      .composite([{
+        input: Buffer.from('<svg width="480" height="560"><rect x="0" y="0" width="480" height="560" rx="28" ry="28" fill="#fff"/></svg>'),
+        blend: 'dest-in'
+      }])
+      .png()
+      .toBuffer();
+
     const ogSvg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#1B2B5E"/>
-          <stop offset="60%" stop-color="#111C40"/>
+          <stop offset="50%" stop-color="#111C40"/>
           <stop offset="100%" stop-color="#0B132B"/>
         </linearGradient>
+        <radialGradient id="glow" cx="75%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#2563EB" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+        </radialGradient>
       </defs>
       <rect width="1200" height="630" fill="url(#bg)"/>
-      <circle cx="1000" cy="150" r="300" fill="#2563EB" opacity="0.25"/>
-      <rect x="80" y="80" width="64" height="64" rx="16" fill="#2563EB"/>
-      <path d="M96 128V96l32 36 32-36v64h-14v-42l-18 20-18-20v42H96z" fill="#FFFFFF"/>
-      <text x="160" y="122" font-family="sans-serif" font-size="28" font-weight="bold" fill="#FFFFFF" letter-spacing="1">ARIELLE MARTINS</text>
-      <text x="80" y="240" font-family="sans-serif" font-size="20" font-weight="bold" fill="#60A5FA" letter-spacing="3">ESPECIALISTA EM GERONTOLOGIA</text>
-      <text x="80" y="320" font-family="serif" font-size="52" font-weight="bold" fill="#FFFFFF">Movimento para viver bem</text>
-      <text x="80" y="390" font-family="serif" font-size="52" font-weight="bold" fill="#60A5FA">em todas as fases da vida.</text>
-      <text x="80" y="470" font-family="sans-serif" font-size="24" fill="#CBD5E1">Treinamento especializado para adultos e idosos.</text>
-      <text x="80" y="510" font-family="sans-serif" font-size="24" fill="#CBD5E1">Força, equilíbrio, funcionalidade e autonomia.</text>
-      <rect x="80" y="550" width="300" height="4" rx="2" fill="#2563EB"/>
+      <rect width="1200" height="630" fill="url(#glow)"/>
+
+      <!-- Brand Logo -->
+      <rect x="70" y="60" width="52" height="52" rx="14" fill="#2563EB"/>
+      <path d="M84 98V74l19 22 19-22v24h-9V82l-10 12-10-12v16H84z" fill="#FFFFFF"/>
+      <text x="136" y="94" font-family="sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF" letter-spacing="1.5">ARIELLE MARTINS</text>
+      <text x="136" y="110" font-family="sans-serif" font-size="12" font-weight="bold" fill="#60A5FA" letter-spacing="2">LONGEVIDADE &amp; SAÚDE</text>
+
+      <!-- Badge -->
+      <rect x="70" y="150" width="290" height="34" rx="17" fill="#2563EB" fill-opacity="0.25" stroke="#2563EB" stroke-opacity="0.5" stroke-width="1"/>
+      <text x="90" y="172" font-family="sans-serif" font-size="13" font-weight="bold" fill="#60A5FA" letter-spacing="1.5">ESPECIALISTA EM GERONTOLOGIA</text>
+
+      <!-- Headline -->
+      <text x="70" y="240" font-family="serif" font-size="42" font-weight="normal" fill="#FFFFFF">Movimento para viver bem</text>
+      <text x="70" y="295" font-family="serif" font-size="42" font-weight="bold" fill="#60A5FA">em todas as fases da vida.</text>
+
+      <!-- Subtitle -->
+      <text x="70" y="370" font-family="sans-serif" font-size="19" fill="#CBD5E1" font-weight="400">Treinamento especializado para adultos e idosos.</text>
+      <text x="70" y="402" font-family="sans-serif" font-size="19" fill="#94A3B8" font-weight="400">Força, equilíbrio, funcionalidade e autonomia.</text>
+
+      <!-- Feature Pills -->
+      <g transform="translate(70, 445)">
+        <rect x="0" y="0" width="180" height="36" rx="10" fill="#FFFFFF" fill-opacity="0.1" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1"/>
+        <text x="18" y="23" font-family="sans-serif" font-size="13" font-weight="bold" fill="#F8FAFC">✓ Presencial &amp; On-line</text>
+
+        <rect x="195" y="0" width="190" height="36" rx="10" fill="#FFFFFF" fill-opacity="0.1" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1"/>
+        <text x="18" y="23" font-family="sans-serif" font-size="13" font-weight="bold" fill="#F8FAFC">✓ Prevenção de Quedas</text>
+      </g>
+
+      <!-- Domain Link -->
+      <text x="70" y="555" font-family="sans-serif" font-size="16" font-weight="bold" fill="#60A5FA">www.ariellelongividade.com.br</text>
+      <line x1="70" y1="570" x2="320" y2="570" stroke="#2563EB" stroke-width="2"/>
+
+      <!-- Photo Border Frame -->
+      <rect x="666" y="31" width="488" height="568" rx="32" fill="none" stroke="#60A5FA" stroke-opacity="0.4" stroke-width="2"/>
     </svg>`;
 
     await sharp(Buffer.from(ogSvg))
-      .jpeg({ quality: 90 })
+      .composite([
+        {
+          input: photoBuf,
+          top: 35,
+          left: 670
+        }
+      ])
+      .jpeg({ quality: 92 })
       .toFile('public/og-image.jpg');
 
-    await sharp(Buffer.from(ogSvg))
-      .webp({ quality: 90 })
+    await sharp('public/og-image.jpg')
+      .webp({ quality: 92 })
       .toFile('public/og-image.webp');
+
+    console.log('OG Image generated with real photo!');
   } catch (e) {
     console.error('OG error:', e);
   }
@@ -64,7 +111,7 @@ async function main() {
 User-agent: *
 Allow: /
 
-Sitemap: https://ariellemartins.com.br/sitemap.xml
+Sitemap: https://www.ariellelongividade.com.br/sitemap.xml
 `;
   fs.writeFileSync('public/robots.txt', robotsTxt);
 
