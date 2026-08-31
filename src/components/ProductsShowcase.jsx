@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, CheckCircle2, ArrowRight, Eye, Sparkles, MessageCircle, X, ChevronRight } from 'lucide-react';
+import { BookOpen, CheckCircle2, ArrowRight, Eye, Sparkles, MessageCircle, X, Clock, Bell } from 'lucide-react';
 import DottedPattern from './decorations/DottedPattern';
 import BackgroundCircle from './decorations/BackgroundCircle';
 import { useTilt } from '../hooks/useTilt';
@@ -19,7 +19,6 @@ function TiltCard({ className, children }) {
 
 export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
   const sectionRef = useRef(null);
-  const [activeTab, setActiveTab] = useState('cover'); // 'cover' | 'inside'
   const [isZoomOpen, setIsZoomOpen] = useState(false);
 
   useEffect(() => {
@@ -47,14 +46,10 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
     return () => ctx.revert();
   }, []);
 
-  const ebookBuyMessage = encodeURIComponent("Olá Arielle! Gostaria de adquirir o seu e-book 'Manual Prático de Treinamento para Idosos'.");
+  const waitlistMessage = encodeURIComponent("Olá Arielle! Gostaria de entrar na lista de espera para ser avisado(a) em primeira mão no lançamento do e-book 'Manual Prático de Treinamento para Idosos'.");
   const ebookWhatsappUrl = whatsappUrl 
-    ? whatsappUrl.replace(/text=.*$/, `text=${ebookBuyMessage}`)
-    : `https://wa.me/5581986833360?text=${ebookBuyMessage}`;
-
-  const currentImage = activeTab === 'cover' 
-    ? '/images/ebook-cover.webp' 
-    : '/images/ebook-inside.webp';
+    ? whatsappUrl.replace(/text=.*$/, `text=${waitlistMessage}`)
+    : `https://wa.me/5581986833360?text=${waitlistMessage}`;
 
   const highlights = [
     {
@@ -85,9 +80,9 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12 text-left">
-          <div className="inline-flex items-center gap-2 bg-blue-50 text-[#2563EB] px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-            <Sparkles size={14} />
-            <span>Publicação Oficial</span>
+          <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-800 border border-amber-200/80 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+            <Clock size={14} className="text-amber-600 animate-pulse" />
+            <span>Lançamento em Breve</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1B2B5E] font-medium leading-tight">
             Manual Prático de Treinamento para Idosos
@@ -99,65 +94,47 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
         <div className="ebook-anim-card bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-blue-100/90 shadow-xl relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Left Column: Interactive 3D Book Preview */}
+            {/* Left Column: Premium 3D Book Cover Stand */}
             <div className="lg:col-span-5 flex flex-col items-center">
-              
-              {/* Tab Selector (Capa vs Páginas Internas) */}
-              <div className="inline-flex p-1 bg-slate-100 rounded-xl mb-4 text-xs font-semibold text-[#1B2B5E] z-10">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('cover')}
-                  className={`px-4 py-2 rounded-lg transition-all cursor-pointer ${
-                    activeTab === 'cover' 
-                      ? 'bg-[#2563EB] text-white shadow-sm font-bold' 
-                      : 'text-[#4B5E8A] hover:text-[#1B2B5E]'
-                  }`}
-                >
-                  Capa do Livro
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('inside')}
-                  className={`px-4 py-2 rounded-lg transition-all cursor-pointer ${
-                    activeTab === 'inside' 
-                      ? 'bg-[#2563EB] text-white shadow-sm font-bold' 
-                      : 'text-[#4B5E8A] hover:text-[#1B2B5E]'
-                  }`}
-                >
-                  Páginas Internas
-                </button>
-              </div>
-
-              {/* Image Preview with Tilt and Zoom Click */}
               <TiltCard className="relative w-full max-w-[340px] sm:max-w-[380px] rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 group cursor-pointer bg-slate-50">
                 <div onClick={() => setIsZoomOpen(true)} className="relative aspect-[4/5] w-full overflow-hidden">
                   <img
-                    src={currentImage}
-                    alt={activeTab === 'cover' ? 'Capa do E-book Manual Prático de Treinamento para Idosos' : 'Páginas internas do E-book'}
+                    src="/images/ebook-cover.webp"
+                    alt="Capa do E-book Manual Prático de Treinamento para Idosos por Arielle Alexandre Martins"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white font-bold text-xs uppercase tracking-wider backdrop-blur-[2px]">
                     <Eye size={18} />
-                    <span>Ampliar visualização</span>
+                    <span>Ampliar Capa</span>
+                  </div>
+
+                  {/* Ribbon Em Breve sobreposto na capa */}
+                  <div className="absolute top-3 right-3 bg-amber-500/90 backdrop-blur-sm text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow-md tracking-wider flex items-center gap-1">
+                    <Sparkles size={12} />
+                    <span>Em Breve</span>
                   </div>
                 </div>
               </TiltCard>
 
-              <span className="text-[11px] text-[#4B5E8A] mt-3 flex items-center gap-1.5">
+              <span className="text-[11px] text-[#4B5E8A] mt-3.5 flex items-center gap-1.5 font-medium">
                 <BookOpen size={14} className="text-[#2563EB]" />
                 Autora: Arielle Alexandre Martins
               </span>
             </div>
 
-            {/* Right Column: E-book Information & Value Proposition */}
+            {/* Right Column: E-book Information & Waitlist Proposition */}
             <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
               <div>
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="text-[11px] font-bold tracking-wider text-[#2563EB] uppercase bg-blue-50 px-3 py-1 rounded-full">
-                    E-book Digital • PDF
+                    E-book Oficial
                   </span>
-                  <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200/60">
-                    Acesso Imediato
+                  <span className="text-[11px] font-bold text-amber-800 bg-amber-100/90 px-3 py-1 rounded-full border border-amber-300/60 flex items-center gap-1">
+                    <Clock size={12} />
+                    <span>Em Breve</span>
+                  </span>
+                  <span className="text-[11px] font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full">
+                    Lista de Espera Aberta
                   </span>
                 </div>
 
@@ -166,7 +143,7 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
                 </h3>
 
                 <p className="text-[#4B5E8A] text-sm sm:text-base leading-relaxed mb-6">
-                  Desenvolvido por quem atua diariamente na prática clínica e funcional do envelhecimento, este manual reúne a fundamentação e a visão estratégica que todo profissional precisa para avaliar, adaptar e prescrever treinos com segurança e resultados reais.
+                  Desenvolvido por quem atua diariamente na prática clínica e funcional do envelhecimento, este manual reunirá a fundamentação e a visão estratégica necessárias para avaliar, adaptar e prescrever treinos com total segurança. <strong className="text-[#1B2B5E]">Entre na lista de espera para ser avisado(a) em primeira mão no dia do lançamento.</strong>
                 </p>
 
                 {/* Highlights List */}
@@ -197,9 +174,9 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto flex-1 h-[52px] flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold px-7 rounded-xl text-sm shadow-lg shadow-blue-500/25 active:scale-[0.98] transition-all cursor-pointer"
                 >
-                  <MessageCircle size={18} />
-                  <span>Adquirir E-book via WhatsApp</span>
-                  <ChevronRight size={16} />
+                  <Bell size={18} />
+                  <span>Entrar na Lista de Espera (WhatsApp)</span>
+                  <ArrowRight size={16} />
                 </a>
 
                 <button
@@ -208,7 +185,7 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
                   className="w-full sm:w-auto h-[52px] flex items-center justify-center gap-2 border border-[#2563EB]/40 text-[#1B2B5E] hover:bg-[#F0F4FF] px-6 rounded-xl text-sm font-semibold transition-all bg-white active:scale-[0.98] cursor-pointer"
                 >
                   <span>Tirar Dúvidas</span>
-                  <ArrowRight size={16} className="text-[#2563EB]" />
+                  <MessageCircle size={16} className="text-[#2563EB]" />
                 </button>
               </div>
 
@@ -219,14 +196,14 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
 
       </div>
 
-      {/* Modal de Zoom da Imagem */}
+      {/* Modal de Zoom da Capa */}
       {isZoomOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm animate-fade-in"
           onClick={() => setIsZoomOpen(false)}
         >
           <div
-            className="relative max-w-2xl w-full max-h-[90vh] flex flex-col items-center justify-center"
+            className="relative max-w-lg w-full max-h-[90vh] flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -237,8 +214,8 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
               <X size={22} />
             </button>
             <img
-              src={currentImage}
-              alt="Visualização do E-book"
+              src="/images/ebook-cover.webp"
+              alt="Capa do E-book em Alta Resolução"
               className="max-h-[82vh] w-auto rounded-2xl object-contain shadow-2xl border border-white/20"
             />
           </div>
