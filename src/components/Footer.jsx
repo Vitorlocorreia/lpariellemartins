@@ -75,10 +75,13 @@ export default function Footer() {
                 <Instagram size={15} className="text-[#60A5FA]" />
                 <span>@ariellemartins.pt</span>
               </div>
-              <div className="flex items-center gap-2.5">
+              <a 
+                href="mailto:contato@ariellelongividade.com.br"
+                className="flex items-center gap-2.5 hover:text-white transition-colors"
+              >
                 <Mail size={15} className="text-[#60A5FA]" />
-                <span>contato@ariellemartins.com.br</span>
-              </div>
+                <span>contato@ariellelongividade.com.br</span>
+              </a>
             </div>
           </div>
 
