@@ -66,9 +66,10 @@ export default function App() {
         {/* Section 5: Como funciona */}
         <HowItWorks />
 
-        {/* Section 6: Conheça meus e-books e infoprodutos */}
+        {/* Section 6: Conheça o e-book oficial */}
         <ProductsShowcase 
           onOpenModal={() => setIsBookingModalOpen(true)}
+          whatsappUrl={whatsappUrl}
         />
 
         {/* Section 7: Prova Real — galeria de fotos de autonomia funcional */}

@@ -40,7 +40,7 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
     { name: 'Início', href: '#inicio', section: 'inicio' },
     { name: 'Sobre', href: '#sobre', section: 'sobre' },
     { name: 'Programas', href: '#programas', section: 'programas' },
-    { name: 'Produtos', href: '#produtos', section: 'produtos' },
+    { name: 'E-book', href: '#produtos', section: 'produtos' },
     { name: 'Depoimentos', href: '#depoimentos', section: 'depoimentos' },
     { name: 'Dúvidas', href: '#faq', section: 'faq' },
   ];

@@ -49,7 +49,7 @@ export default function Footer() {
             <h4 className="font-bold text-white uppercase tracking-wider text-[11px] mb-3">Navegação</h4>
             <div className="grid grid-cols-2 gap-2 text-xs text-blue-200/80">
               <a href="#inicio" className="hover:text-white transition-colors">Início</a>
-              <a href="#produtos" className="hover:text-white transition-colors">Produtos</a>
+              <a href="#produtos" className="hover:text-white transition-colors">E-book</a>
               <a href="#sobre" className="hover:text-white transition-colors">Sobre</a>
               <a href="#depoimentos" className="hover:text-white transition-colors">Depoimentos</a>
               <a href="#programas" className="hover:text-white transition-colors">Mentoria</a>

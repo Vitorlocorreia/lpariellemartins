@@ -9,7 +9,7 @@ export default function MobileDrawer({ isOpen, onClose, onOpenModal, whatsappUrl
     { name: 'Início', href: '#inicio' },
     { name: 'Sobre', href: '#sobre' },
     { name: 'Programas', href: '#programas' },
-    { name: 'Produtos', href: '#produtos' },
+    { name: 'E-book', href: '#produtos' },
     { name: 'Depoimentos', href: '#depoimentos' },
     { name: 'Dúvidas', href: '#faq' },
   ];
