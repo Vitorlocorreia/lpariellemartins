@@ -125,24 +125,24 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full">
                 <a
                   href={ebookWhatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 h-13 sm:h-14 flex items-center justify-center gap-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold px-6 rounded-2xl text-sm sm:text-[15px] shadow-lg shadow-blue-500/25 active:scale-[0.98] transition-all cursor-pointer"
+                  className="flex-1 min-h-[58px] sm:min-h-[60px] py-4 px-6 flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold rounded-2xl text-[15px] sm:text-base shadow-xl shadow-blue-500/25 active:scale-[0.98] transition-all cursor-pointer text-center"
                 >
-                  <Bell size={18} />
+                  <Bell size={20} className="shrink-0" />
                   <span>Entrar na Lista de Espera</span>
-                  <ArrowRight size={16} />
+                  <ArrowRight size={18} className="shrink-0" />
                 </a>
 
                 <button
                   type="button"
                   onClick={onOpenModal}
-                  className="sm:w-auto h-13 sm:h-14 flex items-center justify-center gap-2 border border-blue-200 text-[#1B2B5E] hover:bg-blue-50 hover:border-blue-300 px-6 rounded-2xl text-sm font-semibold transition-all bg-white active:scale-[0.98] cursor-pointer"
+                  className="sm:w-auto min-h-[58px] sm:min-h-[60px] py-4 px-7 flex items-center justify-center gap-2 border-2 border-blue-200 text-[#1B2B5E] hover:bg-blue-50 hover:border-[#2563EB]/40 rounded-2xl text-sm sm:text-[15px] font-bold transition-all bg-white active:scale-[0.98] cursor-pointer"
                 >
-                  <MessageCircle size={17} className="text-[#2563EB]" />
+                  <MessageCircle size={19} className="text-[#2563EB] shrink-0" />
                   <span>Tirar Dúvidas</span>
                 </button>
               </div>
