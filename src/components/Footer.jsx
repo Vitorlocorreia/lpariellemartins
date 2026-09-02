@@ -76,11 +76,11 @@ export default function Footer() {
                 <span>@ariellemartins.pt</span>
               </div>
               <a 
-                href="mailto:contato@ariellelongividade.com.br"
+                href="mailto:contato@ariellelongevidade.com.br"
                 className="flex items-center gap-2.5 hover:text-white transition-colors"
               >
                 <Mail size={15} className="text-[#60A5FA]" />
-                <span>contato@ariellelongividade.com.br</span>
+                <span>contato@ariellelongevidade.com.br</span>
               </a>
             </div>
           </div>

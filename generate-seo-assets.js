@@ -79,7 +79,7 @@ async function main() {
       </g>
 
       <!-- Domain Link -->
-      <text x="70" y="555" font-family="sans-serif" font-size="16" font-weight="bold" fill="#60A5FA">www.ariellelongividade.com.br</text>
+      <text x="70" y="555" font-family="sans-serif" font-size="16" font-weight="bold" fill="#60A5FA">www.ariellelongevidade.com.br</text>
       <line x1="70" y1="570" x2="320" y2="570" stroke="#2563EB" stroke-width="2"/>
 
       <!-- Photo Border Frame -->
@@ -111,7 +111,7 @@ async function main() {
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ariellelongividade.com.br/sitemap.xml
+Sitemap: https://ariellelongevidade.com.br/sitemap.xml
 `;
   fs.writeFileSync('public/robots.txt', robotsTxt);
 
@@ -119,7 +119,7 @@ Sitemap: https://www.ariellelongividade.com.br/sitemap.xml
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ariellemartins.com.br/</loc>
+    <loc>https://ariellelongevidade.com.br/</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -140,7 +140,7 @@ O trabalho parte de uma ideia simples: não basta acrescentar anos à vida. É p
 ## Modalidades de Atendimento
 - **Consulta Inicial:** Ponto de partida individualizado para compreender histórico, rotina e objetivos de cada pessoa.
 - **Acompanhamento Presencial:** Treinamento próximo e personalizado, com foco em força funcional, equilíbrio, mobilidade e segurança para o cotidiano.
-- **Acompanhamento On-line:** Planejamento estruturado para quem deseja treinar com orientação profissional à distância.
+- **Acompanhamento On-line:** Planejamento estruturado para quem deseja treinar com acompanhamento profissional à distância.
 
 ## Método
 1. Conhecer
@@ -149,9 +149,9 @@ O trabalho parte de uma ideia simples: não basta acrescentar anos à vida. É p
 4. Acompanhar
 
 ## Contato & Agendamento
-- Website Oficial: https://ariellemartins.com.br
+- Website Oficial: https://ariellelongevidade.com.br
 - Instagram: @ariellemartins.pt
-- E-mail: contato@ariellemartins.com.br
+- E-mail: contato@ariellelongevidade.com.br
 `;
   fs.writeFileSync('public/llms.txt', llmsTxt);
 
