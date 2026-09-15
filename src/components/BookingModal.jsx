@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { X, Calendar, Send } from 'lucide-react';
 import { fireConfetti } from '../utils/confetti';
+import { captureAndGetUtms, trackLeadConversion } from '../utils/tracking';
 
 export default function BookingModal({ isOpen, onClose, whatsappNumber = "5581986833360" }) {
   const [formData, setFormData] = useState({
@@ -21,7 +22,20 @@ export default function BookingModal({ isOpen, onClose, whatsappNumber = "558198
       const rect = submitBtnRef.current.getBoundingClientRect();
       fireConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
     }
-    const text = `Olá Arielle! Gostaria de agendar uma avaliação gratuita.%0A%0A*Nome:* ${encodeURIComponent(formData.nome)}%0A*WhatsApp:* ${encodeURIComponent(formData.whatsapp)}%0A*Bairro/Cidade:* ${encodeURIComponent(formData.bairro)}%0A*Perfil:* ${encodeURIComponent(formData.paraQuem)}%0A*Mensagem:* ${encodeURIComponent(formData.mensagem || 'Tenho interesse em iniciar treinos focados na saúde e mobilidade.')}`;
+    
+    // Rastreia conversão no Google Analytics (GA4)
+    trackLeadConversion('booking_modal', {
+      lead_profile: formData.paraQuem,
+      lead_neighborhood: formData.bairro,
+    });
+
+    const utms = captureAndGetUtms();
+    let utmInfo = '';
+    if (utms.utm_source) {
+      utmInfo = `%0A%0A_Origem: ${encodeURIComponent(utms.utm_source)}${utms.utm_campaign ? ` / ${encodeURIComponent(utms.utm_campaign)}` : ''}_`;
+    }
+
+    const text = `Olá Arielle! Gostaria de agendar uma avaliação gratuita.%0A%0A*Nome:* ${encodeURIComponent(formData.nome)}%0A*WhatsApp:* ${encodeURIComponent(formData.whatsapp)}%0A*Bairro/Cidade:* ${encodeURIComponent(formData.bairro)}%0A*Perfil:* ${encodeURIComponent(formData.paraQuem)}%0A*Mensagem:* ${encodeURIComponent(formData.mensagem || 'Tenho interesse em iniciar treinos focados na saúde e mobilidade.')}${utmInfo}`;
     setTimeout(() => {
       window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
       onClose();
