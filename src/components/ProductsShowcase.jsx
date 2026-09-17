@@ -45,10 +45,7 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
     return () => ctx.revert();
   }, []);
 
-  const waitlistMessage = encodeURIComponent("Olá Arielle! Gostaria de entrar na lista de espera para ser avisado(a) no lançamento do e-book 'Manual Prático de Treinamento para Idosos'.");
-  const ebookWhatsappUrl = whatsappUrl 
-    ? whatsappUrl.replace(/text=.*$/, `text=${waitlistMessage}`)
-    : `https://wa.me/5581986833360?text=${waitlistMessage}`;
+  const ebookEduzzUrl = "https://sun.eduzz.com/D0R88BJ69Y";
 
   return (
     <section ref={sectionRef} id="produtos" className="py-12 sm:py-16 lg:py-20 bg-[#F4F7FC] relative overflow-hidden">
@@ -92,11 +89,11 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
               
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 bg-blue-50 text-[#2563EB] border border-blue-200/80 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                  <Clock size={13} className="text-[#2563EB]" />
-                  <span>Lançamento em Breve</span>
+                  <Sparkles size={13} className="text-[#2563EB]" />
+                  <span>Disponível Agora</span>
                 </span>
                 <span className="text-xs font-semibold text-[#1B2B5E]/70 bg-slate-100 px-3 py-1 rounded-full">
-                  E-book Digital
+                  E-book Digital • Acesso Imediato
                 </span>
               </div>
 
@@ -124,17 +121,17 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
                 </div>
               </div>
 
-              {/* Action Button (Single Primary CTA) */}
+              {/* Action Button (Eduzz Checkout CTA) */}
               <div className="pt-3 w-full">
                 <a
-                  href={ebookWhatsappUrl}
+                  href={ebookEduzzUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full min-h-[58px] sm:min-h-[60px] py-4 px-6 flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold rounded-2xl text-[15px] sm:text-base shadow-xl shadow-blue-500/25 active:scale-[0.98] transition-all cursor-pointer text-center"
+                  className="w-full min-h-[58px] sm:min-h-[60px] py-4 px-6 flex items-center justify-center gap-2.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold rounded-2xl text-[15px] sm:text-base shadow-xl shadow-blue-500/25 active:scale-[0.98] transition-all cursor-pointer text-center group"
                 >
-                  <Bell size={20} className="shrink-0" />
-                  <span>Entrar na Lista de Espera</span>
-                  <ArrowRight size={18} className="shrink-0" />
+                  <BookOpen size={20} className="shrink-0" />
+                  <span>Garantir meu E-book Agora</span>
+                  <ArrowRight size={18} className="shrink-0 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
 
