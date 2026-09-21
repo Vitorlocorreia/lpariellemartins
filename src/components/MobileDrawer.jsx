@@ -8,8 +8,8 @@ export default function MobileDrawer({ isOpen, onClose, onOpenModal, whatsappUrl
   const navLinks = [
     { name: 'Início', href: '#inicio' },
     { name: 'Sobre', href: '#sobre' },
-    { name: 'Programas', href: '#programas' },
     { name: 'E-book', href: '#produtos' },
+    { name: 'Programas', href: '#programas' },
     { name: 'Depoimentos', href: '#depoimentos' },
     { name: 'Dúvidas', href: '#faq' },
   ];

@@ -81,22 +81,22 @@ export default function App() {
           onOpenModal={() => setIsBookingModalOpen(true)}
         />
 
-        {/* Section 3: Escolha como posso te ajudar */}
-        <OfferingsSection 
-          onOpenModal={() => setIsBookingModalOpen(true)}
-        />
-
-        {/* Section 4: Por que treinar comigo? */}
-        <WhyTrainSection />
-
-        {/* Section 5: Como funciona */}
-        <HowItWorks />
-
-        {/* Section 6: Conheça o e-book oficial */}
+        {/* Section 3: Conheça o e-book oficial */}
         <ProductsShowcase 
           onOpenModal={() => setIsBookingModalOpen(true)}
           whatsappUrl={whatsappUrl}
         />
+
+        {/* Section 4: Escolha como posso te ajudar */}
+        <OfferingsSection 
+          onOpenModal={() => setIsBookingModalOpen(true)}
+        />
+
+        {/* Section 5: Por que treinar comigo? */}
+        <WhyTrainSection />
+
+        {/* Section 6: Como funciona */}
+        <HowItWorks />
 
         {/* Section 7: Prova Real — galeria de fotos de autonomia funcional */}
         <ProofGallery />

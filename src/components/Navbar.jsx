@@ -21,7 +21,7 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
 
   // Scroll Spy: detecta seção ativa
   useEffect(() => {
-    const sectionIds = ['inicio', 'sobre', 'programas', 'produtos', 'depoimentos', 'faq'];
+    const sectionIds = ['inicio', 'sobre', 'produtos', 'programas', 'depoimentos', 'faq'];
     const observers = [];
     sectionIds.forEach(id => {
       const el = document.getElementById(id);
@@ -39,8 +39,8 @@ export default function Navbar({ onOpenMobileMenu, whatsappUrl }) {
   const navLinks = [
     { name: 'Início', href: '#inicio', section: 'inicio' },
     { name: 'Sobre', href: '#sobre', section: 'sobre' },
-    { name: 'Programas', href: '#programas', section: 'programas' },
     { name: 'E-book', href: '#produtos', section: 'produtos' },
+    { name: 'Programas', href: '#programas', section: 'programas' },
     { name: 'Depoimentos', href: '#depoimentos', section: 'depoimentos' },
     { name: 'Dúvidas', href: '#faq', section: 'faq' },
   ];
