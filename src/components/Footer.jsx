@@ -3,7 +3,7 @@ import Logo from './Logo';
 import { Phone, Instagram, Mail } from 'lucide-react';
 import AmbientWaves from './decorations/AmbientWaves';
 
-export default function Footer() {
+export default function Footer({ onOpenDashboard }) {
   const footerRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
@@ -55,6 +55,15 @@ export default function Footer() {
               <a href="#programas" className="hover:text-white transition-colors">Mentoria</a>
               <a href="#contato" className="hover:text-white transition-colors">Contato</a>
               <a href="#programas" className="hover:text-white transition-colors">Consultoria</a>
+              {onOpenDashboard && (
+                <button
+                  type="button"
+                  onClick={onOpenDashboard}
+                  className="text-left text-blue-300 hover:text-white font-semibold transition-colors cursor-pointer"
+                >
+                  Dashboard ↗
+                </button>
+              )}
             </div>
           </div>
 
@@ -90,10 +99,21 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-blue-300/70">
           <p>© {new Date().getFullYear()} Arielle Martins Personal Trainer. Todos os direitos reservados.</p>
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
             <a href="#" className="hover:text-white transition-colors">Política de Privacidade</a>
             <span>|</span>
             <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
+            {onOpenDashboard && (
+              <>
+                <span>|</span>
+                <button
+                  onClick={onOpenDashboard}
+                  className="hover:text-white text-blue-300 font-semibold transition-colors cursor-pointer"
+                >
+                  Painel de Métricas &amp; Tracking
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

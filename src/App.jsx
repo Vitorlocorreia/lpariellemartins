@@ -14,11 +14,50 @@ import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import StickyMobileBar from './components/StickyMobileBar';
+import Dashboard from './components/dashboard/Dashboard';
 import { captureAndGetUtms, trackLeadConversion } from './utils/tracking';
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  // Routing / View state: 'site' | 'dashboard'
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname.toLowerCase();
+      const search = window.location.search.toLowerCase();
+      if (path.startsWith('/dashboard') || path.startsWith('/admin') || search.includes('dashboard') || search.includes('view=dashboard')) {
+        return 'dashboard';
+      }
+    }
+    return 'site';
+  });
+
+  const navigateTo = (viewName) => {
+    setCurrentView(viewName);
+    if (typeof window !== 'undefined') {
+      if (viewName === 'dashboard') {
+        window.history.pushState({}, '', '/dashboard');
+      } else {
+        window.history.pushState({}, '', '/');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname.toLowerCase();
+      const search = window.location.search.toLowerCase();
+      if (path.startsWith('/dashboard') || path.startsWith('/admin') || search.includes('dashboard')) {
+        setCurrentView('dashboard');
+      } else {
+        setCurrentView('site');
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   const whatsappNumber = "5581986833360";
   const defaultMessage = "Olá Arielle! Gostaria de agendar minha consulta inicial e saber mais sobre seus acompanhamentos.";
@@ -49,6 +88,11 @@ export default function App() {
     return () => document.removeEventListener('click', handleGlobalClick);
   }, []);
 
+  // Se a rota for o Dashboard, renderiza a visão de analytics
+  if (currentView === 'dashboard') {
+    return <Dashboard onBackToSite={() => navigateTo('site')} />;
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F4F7FC] text-[#1B2B5E] selection:bg-[#2563EB] selection:text-white pb-16 md:pb-0 overflow-x-hidden w-full">
       {/* Navbar */}
@@ -65,7 +109,7 @@ export default function App() {
         whatsappUrl={whatsappUrl}
       />
 
-      {/* Main Page Sections — Estrutura original com a nova copy encaixada */}
+      {/* Main Page Sections */}
       <main className="flex-grow">
         {/* Section 1: Hero Section */}
         <Hero 
@@ -109,7 +153,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer onOpenDashboard={() => navigateTo('dashboard')} />
 
       {/* Booking Form Modal */}
       <BookingModal 
