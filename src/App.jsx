@@ -15,7 +15,7 @@ import BookingModal from './components/BookingModal';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import StickyMobileBar from './components/StickyMobileBar';
 import Dashboard from './components/dashboard/Dashboard';
-import { captureAndGetUtms, trackLeadConversion } from './utils/tracking';
+import { captureAndGetUtms, trackLeadConversion, trackCheckoutInitiated } from './utils/tracking';
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -72,15 +72,21 @@ export default function App() {
     }
     setWhatsappUrl(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage + suffix)}`);
 
-    // 2. Ouvinte global para qualquer clique em links do WhatsApp -> dispara conversão no GA4
+    // 2. Ouvinte global para qualquer clique em links do WhatsApp ou Eduzz -> dispara conversão no GA4 e Meta Pixel
     const handleGlobalClick = (e) => {
-      const link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"]');
-      if (link) {
-        const source = link.getAttribute('data-tracking-source') || 
-                       link.getAttribute('aria-label') || 
-                       link.innerText?.trim() || 
+      const waLink = e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"]');
+      if (waLink) {
+        const source = waLink.getAttribute('data-tracking-source') || 
+                       waLink.getAttribute('aria-label') || 
+                       waLink.innerText?.trim() || 
                        'whatsapp_link';
         trackLeadConversion(source);
+        return;
+      }
+
+      const eduzzLink = e.target.closest('a[href*="eduzz.com"]');
+      if (eduzzLink) {
+        trackCheckoutInitiated();
       }
     };
 
