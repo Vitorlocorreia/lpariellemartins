@@ -59,6 +59,43 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  // Rolagem automática para âncoras (#produtos, #ebook, #sobre, etc.) ao abrir link direto
+  useEffect(() => {
+    if (currentView !== 'site') return;
+
+    const scrollToTargetFromUrl = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      const path = window.location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+
+      let targetId = hash || path;
+      if (targetId === 'ebook' || targetId === 'e-book' || targetId === 'produto') {
+        targetId = 'produtos';
+      }
+
+      if (!targetId) return;
+
+      const el = document.getElementById(targetId);
+      if (el) {
+        const yOffset = -88; // Compensa a altura da Navbar fixa
+        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+    };
+
+    // Dispara imediatamente após montagem e reforça após carregamento de layout/imagens
+    const t1 = setTimeout(scrollToTargetFromUrl, 100);
+    const t2 = setTimeout(scrollToTargetFromUrl, 450);
+    const t3 = setTimeout(scrollToTargetFromUrl, 900);
+
+    window.addEventListener('hashchange', scrollToTargetFromUrl);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      window.removeEventListener('hashchange', scrollToTargetFromUrl);
+    };
+  }, [currentView]);
+
   const whatsappNumber = "5581986833360";
   const defaultMessage = "Olá Arielle! Gostaria de agendar minha consulta inicial e saber mais sobre seus acompanhamentos.";
   const [whatsappUrl, setWhatsappUrl] = useState(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`);

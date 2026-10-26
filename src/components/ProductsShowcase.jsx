@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, CheckCircle2, ArrowRight, Eye, Sparkles, MessageCircle, X, Clock, Bell } from 'lucide-react';
+import { BookOpen, CheckCircle2, ArrowRight, Eye, Sparkles, X } from 'lucide-react';
 import DottedPattern from './decorations/DottedPattern';
 import BackgroundCircle from './decorations/BackgroundCircle';
 import { useTilt } from '../hooks/useTilt';
@@ -17,7 +17,7 @@ function TiltCard({ className, children }) {
   );
 }
 
-export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
+export default function ProductsShowcase() {
   const sectionRef = useRef(null);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
 
@@ -48,7 +48,7 @@ export default function ProductsShowcase({ onOpenModal, whatsappUrl }) {
   const ebookEduzzUrl = "https://sun.eduzz.com/D0R88BJ69Y";
 
   return (
-    <section ref={sectionRef} id="produtos" className="py-12 sm:py-16 lg:py-20 bg-[#F4F7FC] relative overflow-hidden">
+    <section ref={sectionRef} id="produtos" className="scroll-mt-24 py-12 sm:py-16 lg:py-20 bg-[#F4F7FC] relative overflow-hidden">
       {/* Background Subtle Accents */}
       <BackgroundCircle size={360} color="#E0E7FF" opacity={0.4} className="-top-12 left-1/4 z-0" />
       <DottedPattern rows={5} cols={6} color="#2563EB" opacity={0.08} className="absolute top-6 right-6 z-0 hidden sm:block" />
